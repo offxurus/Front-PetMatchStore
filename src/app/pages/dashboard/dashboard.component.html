@@ -1,0 +1,22 @@
+<app-header></app-header>
+<div class="container">
+    <div class="container-title">
+        <h1> Bem Vindo ao PETMATCH STORE!</h1>
+    </div>
+    
+    <div class="container-itens">
+        <a 
+        *ngIf="userGroup === 'estoquista' || userGroup === 'admin'"
+        class="produtos" routerLink="/products">
+            Lista de produtos
+        </a>
+        <a 
+        *ngIf="userGroup === 'admin'"
+        class="usuarios" routerLink="/list-user">
+            Lista de Usuários
+        </a>
+    </div>
+    <div class="content-image">
+        <img class="img" src="assets/dash-pet.png">
+    </div>
+</div>

@@ -1,0 +1,82 @@
+/*-----------------------------------------------
+Font default
+-----------------------------------------------*/
+$font-family-regular: "Montsearrat-regular";
+$font-family-bold: "Montsearrat-bold";
+
+/*-----------------------------------------------
+Color Palettes
+-----------------------------------------------*/
+:root {
+  --primary-background: #ffde59;
+  --secondary-background: #5271ff;
+  --footer-background: #424242;
+  --header-background: #ffde59;
+  --second_footer: #030101;
+  --background-page: #ffffff;
+  --title: #424242;
+  --subtitle: #8d8d8d;
+  --card: #ffffff;
+  --inactive: #d3d3d3;
+  --filter-background: #f8f8f8;
+}
+
+/*-----------------------------------------------
+Color Editable
+-----------------------------------------------*/
+$primary: var(--primary-background);
+$secondary: var(--secondary-background);
+$button: var(--buttom-background);
+$footer: var(--footer-background);
+$header: var(--header-background);
+$second_footer: var(--second_footer);
+$background-page: var(--background-page);
+$card: var(--card);
+$title: var(--title);
+$subtitle: var(--subtitle);
+$inactive: var(--inactive);
+$filter-background: var(--filter-background);
+/*-----------------------------------------------
+Color Default
+-----------------------------------------------*/
+$background-contact: #424242;
+$placeholder: #8d8d8d;
+$input-color: #424242;
+$input-background: #ececec;
+$dark: #000000;
+$light: #ffffff;
+$blue: #059bff;
+$green: #22cece;
+$red: #ff3d67;
+$orange: #ff9124;
+$trans: transparent;
+$success: #0ed430;
+$error: #ff0000;
+
+/*-----------------------------------------------
+Arrays
+-----------------------------------------------*/
+$colors: (
+  'primary' $primary, 'secondary' $secondary,
+  'dark' $dark, 'light' $light,
+  'title' $title, 'subtitle' $subtitle,
+  'inactive' $inactive, 'trans' $trans
+  'blue' $blue, 'green' $green, 'red' $red, 'orange' $orange,
+  'success' $success, 'error' $error, 'input-color' $input-color,
+  'input-background' $input-background
+);
+
+$text-align: (left, right, center, justify);
+$text-transform: (lowercase, uppercase, capitalize);
+
+/*-----------------------------------------------
+Breakpoints
+-----------------------------------------------*/
+$breakpoints: (
+  phone-upper-boundary: 768px,
+  tablet-portrait-upper-boundary: 1024px,
+  tablet-landscape-upper-boundary: 1200px,
+  desktop-small-boundary: 1400px,
+  desktop-medium-boundary: 1920px,
+  desktop-upper-boundary: 2560px
+);
