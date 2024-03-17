@@ -1,0 +1,131 @@
+@import '../../../assets/styles/variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.container-content {
+  margin-top: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  overflow-y: hidden;
+
+  .box{
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 36px;
+    width: 50%;
+    margin-top: 3vh;
+    border-radius: 20px;
+  .login-title {
+        font-family: Montserrat;
+        font-weight: 900;
+        color: $light;
+        font-size: 40px;
+        text-transform: uppercase;
+        text-align: center;
+        display: flex;
+        padding-top: 50px;
+        align-content: center;
+        justify-content: center;
+  }
+
+  .sign-in-description {
+    margin: 40px 0px 60px 0px;
+    font-size: 20px;
+    text-align: center;
+    color: #E5E8E8;
+
+    .sign-in {
+      cursor: pointer;
+      color: #26648E;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  mat-form-field {
+    background-color: #17202A;
+    border: solid;
+    border-color: #E5E8E8;
+    min-width: 380px;
+
+    mat-label {
+      color: #E5E8E8;
+    }
+
+    input {
+      color: #E5E8E8;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px #17202A inset !important;
+      -webkit-text-fill-color: #E5E8E8 !important;
+    }
+
+    .mat-form-field-label-wrapper {
+      background-color: #17202A;
+      color: #E5E8E8;
+    }
+
+    button {
+      border: none;
+      background-color: #17202A;
+      mat-icon {
+        color: #E5E8E8;
+        font-size: 24px;
+      }
+    }
+  }
+
+  .password-form {
+    margin: 35px 0px 25px 0px;
+  }
+
+  section {
+    display: table;
+  }
+
+  .login-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+
+    button {
+      height: 60px;
+      font-size: 20px;
+      color: $light;
+      cursor: pointer;
+      min-width: 200px;
+      margin-bottom: 40px;
+      background-color: $primary;
+      border-radius: 20px;
+      border-color: transparent;
+    }
+  }
+
+  .spinner {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+  .content-image{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    z-index: 999;
+    margin-top: -70px;
+    .img {
+      max-width: 450px;
+      height: auto;
+    }
+  }
+}
+

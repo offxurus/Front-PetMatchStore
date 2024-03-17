@@ -1,0 +1,37 @@
+<app-header></app-header>
+<div class="container-content">
+  <div class="box">
+      <div class="login-title">
+        <span> Acesse sua conta </span>
+      </div>
+      <div class="sign-in-description">
+        <span>
+          Caso não tenha acesso, entre em contato com o administrador
+        </span>
+      </div>
+      <form class="example-form">
+        <mat-form-field class="email-form" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input [value]="userParams.email" (change)="changeEmail($event)" type="email" matInput placeholder="Ex. pat@example.com">
+        </mat-form-field>
+
+        <mat-form-field class="password-form" appearance="fill">
+          <mat-label>Enter your password</mat-label>
+          <input [value]="userParams.password" (change)="changePassword($event)" matInput [type]="hide ? 'password' : 'text'">
+          <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </form>
+      <div class="login-button">
+        <button (click)="loginIn()"> Login in </button>
+      </div>
+      <div class="spinner">
+        <mat-spinner [diameter]=50 *ngIf="showLoading"></mat-spinner>
+      </div>
+    </div>
+  <div class="content-image">
+    <img class="img" src="assets/petlogin.png">
+  </div>
+</div>
+

@@ -1,0 +1,59 @@
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<div class="card mt-3 main">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <div>
+        <h4>Produtos</h4>
+        <button type="button" class="btn btn-primary mt-2 mt-md-0" routerLink="/create-product"><i class="fas fa-plus"></i> Novo Produto</button>
+    </div>
+    <div style="flex: 1; display: flex; justify-content: center;">
+        <input #searchBox id="search-box" class="form-control" style="width: 300px;" placeholder="Pesquisar">
+    </div>
+  </div>
+
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="border-right">Código</th>
+          <th class="border-right">Nome</th>
+          <th class="border-right">Quantidade</th>
+          <th class="border-right">Valor</th>
+          <th class="border-right">Status</th>
+          <th>Opções</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td class="border-right">{{ product.code }}</td>
+          <td class="border-right">{{ product.name }}</td>
+          <td class="border-right">{{ product.quantity }}</td>
+          <td class="border-right">{{ product.price }}</td>
+          <td class="border-right">{{ product.active ? 'Ativo' : 'Desativado' }}</td>
+          <td>
+            <span class="d-flex align-items-center">
+              <button class="btn btn-outline-warning mb-1 me-3 btn-sm">
+                <i class="fas fa-pencil-alt"></i> <!--alterar -->
+              </button>
+  
+              <button class="btn btn-outline-danger mb-1 me-3 btn-sm" *ngIf="product.active" >
+                <i class="fas fa-times-circle"></i> <!--inativar -->
+              </button>
+  
+              <button class="btn btn-outline-success mb-1 me-3 btn-sm" *ngIf="!product.active" >
+                <i class="fas fa-check-circle"></i> <!--reativar -->
+              </button>
+  
+              <button class="btn btn-outline-info mb-1 me-3 btn-sm">
+                <i class="fas fa-eye"></i> <!--visualizar -->
+              </button>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <ng-template #loading>
+      <span>Carregando...</span>
+    </ng-template>
+  </div>
+  
