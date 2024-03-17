@@ -15,9 +15,12 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { SharedModule } from './shared/shared.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { FormsModule } from '@angular/forms';
+import { LoginModule } from './pages/login/login.module';
+import { LoginClientComponent } from './pages/login-client/login-client.component';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent],
+  declarations: [AppComponent, DashboardComponent, LoginClientComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,6 +35,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     MatSelectModule,
     MatSlideToggleModule, 
     SharedModule,
+    FormsModule, 
+    LoginModule
   ],
   providers: [UserService, HttpClient],
   bootstrap: [AppComponent],

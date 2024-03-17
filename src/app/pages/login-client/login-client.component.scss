@@ -128,20 +128,3 @@
     }
   }
 }
-
-::ng-deep {
-
-  .cdk-overlay-pane{
-    width: 40% !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  mat-dialog-container {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-}
-
-

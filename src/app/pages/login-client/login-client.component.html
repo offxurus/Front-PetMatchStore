@@ -11,8 +11,8 @@
       </div>
       <form class="example-form">
         <mat-form-field class="email-form" appearance="fill">
-          <mat-label>Email</mat-label>
-          <input [value]="userParams.email" (change)="changeEmail($event)" type="email" matInput placeholder="Ex. pat@example.com">
+            <mat-label>CPF</mat-label>
+            <input [value]="userParams.cpf" (change)="changeCpf($event)" type="text" matInput placeholder="Ex. 123.456.789-00">
         </mat-form-field>
 
         <mat-form-field class="password-form" appearance="fill">
@@ -35,8 +35,3 @@
   </div>
 </div>
 
-<ng-template #clientePopup>
-  <mat-dialog-content>
-    <p>Você faz parte dos nossos clientes e está tentando acessar o login de usuários administradores. Para acessar o seu login, clique <a href="#">aqui</a>.</p>
-  </mat-dialog-content>
-</ng-template>

@@ -3,14 +3,13 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogLoginClientComponent } from 'src/app/components/dialog-login-client/dialog-login-client.component';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  templateUrl: './login-client.component.html',
+  styleUrls: ['./login-client.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginClientComponent implements OnInit {
   public hide: boolean = true;
   public userParams: User = { email: '', password: '' };
   public showLoading: boolean = false;
@@ -23,8 +22,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  changeEmail(event: any) {
-    this.userParams.email = event.target.value;
+  changeCpf(event: any) {
+    this.userParams.cpf = event.target.value;
   }
 
   changePassword(event: any) {
@@ -33,7 +32,7 @@ export class LoginComponent implements OnInit {
 
   loginIn() {
     this.showLoading = true;
-    if (this.userParams && this.userParams.email && this.userParams.password) {
+    if (this.userParams && this.userParams.cpf && this.userParams.password) {
       this._userService.userSingIn(this.userParams).subscribe(
         (response) => {
           if (!response.id) {
@@ -44,24 +43,11 @@ export class LoginComponent implements OnInit {
               alert('Usuário Inativo');
             } else if (response.group !== 'cliente') {
               this._router.navigate(['/dashboard']);
-            } else {
-              this.openDialog();
-              this.showLoading = false;
-            }
+            } 
           }
         },
         () => (this.showLoading = false)
       );
     }
-  }
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogLoginClientComponent, {
-      width: '250px',
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-    });
   }
 }
