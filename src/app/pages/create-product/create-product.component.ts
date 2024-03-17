@@ -1,4 +1,3 @@
-// create-product.component.ts
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/interfaces/products';
@@ -10,8 +9,8 @@ import { ProductsService } from 'src/app/services/products.service';
   styleUrls: ['./create-product.component.scss'],
 })
 export class CreateProductComponent {
-  public newProduct: Product = {id: '', code: 1, name: '', price: 0, quantity: 0, active: true };
-  
+  public newProduct: Product = {name: '', price: 0, quantity: 0, active: true };
+
   constructor(
     private _productService: ProductsService,
     private _router: Router

@@ -10,16 +10,9 @@
         </span>
       </div>
       <form class="example-form">
-        <mat-form-field class="email-form" appearance="fill"
-        *ngIf="userGroup === 'estoquista' || userGroup === 'admin'">
+        <mat-form-field class="email-form" appearance="fill">
           <mat-label>Email</mat-label>
           <input [value]="userParams.email" (change)="changeEmail($event)" type="email" matInput placeholder="Ex. pat@example.com">
-        </mat-form-field>
-
-        <mat-form-field class="CPF-form" appearance="fill"
-        *ngIf="userGroup === 'cliente'">
-          <mat-label>CPF</mat-label>
-          <input [value]="userParams.cpf"(change)="changeEmail($event)" type="email" matInput placeholder="Ex. pat@example.com">
         </mat-form-field>
 
         <mat-form-field class="password-form" appearance="fill">
@@ -41,4 +34,3 @@
     <img class="img" src="assets/petlogin.png">
   </div>
 </div>
-

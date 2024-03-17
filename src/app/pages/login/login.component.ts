@@ -10,21 +10,12 @@ import { UserService }        from 'src/app/services/user.service';
 })
 export class LoginComponent implements OnInit {
   public hide: boolean = true;
-  public userParams: User = { email: '', password: '', cpf: ''};
+  public userParams: User = { email: '', password: '' };
   public showLoading: boolean = false;
-  public userGroup: string = '';
-
 
   constructor(private _router: Router, private _userService: UserService) {}
 
-  ngOnInit() {
-    const currentUser = this._userService.getCurrentUser();
-
-    // Verificar se o usuário está logado e obter o grupo
-    if (currentUser && currentUser.group) {
-      this.userGroup = currentUser.group;
-    }
-  }
+  ngOnInit(): void {}
 
   changeEmail(event: any) {
     this.userParams.email = event.target.value;
