@@ -64,7 +64,7 @@ export class ListUserComponent implements OnInit {
         },
         (error) => {
           this.showLoading = false;
-          console.error('Erro ao atualizar usuário:', error);
+          alert(error);
         }
       );
     }

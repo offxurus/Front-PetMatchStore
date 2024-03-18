@@ -37,6 +37,8 @@ export class SignInComponent implements OnInit {
     if(history.state.id && history.state){
       this.currentUserId = history.state.id;
     }
+    const currentUser = this._userService.getCurrentUser();
+    this.currentUserId = currentUser?.id ? currentUser.id : ''
   }
 
   changeName(event: any) {

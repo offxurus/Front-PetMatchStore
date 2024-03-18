@@ -59,6 +59,10 @@ export class UserService {
     }
   }
 
+  logout(): void {
+    localStorage.removeItem('currentUser');
+  }
+
   createUser(userParams: User): Observable<User> {
     return new Observable<User>((observer) => {
       this.http.post<User>(`${environment.apiUrl}/users`, userParams).subscribe(

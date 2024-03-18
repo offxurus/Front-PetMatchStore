@@ -1,4 +1,6 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
 <div class="card mt-3 main">
   <div class="card-header d-flex justify-content-between align-items-center">
     <div>
@@ -31,21 +33,20 @@
           <td class="border-right">{{ product.active ? 'Ativo' : 'Desativado' }}</td>
           <td>
             <span class="d-flex align-items-center">
-              <button class="btn btn-outline-warning mb-1 me-3 btn-sm">
-                <i class="fas fa-pencil-alt"></i> <!--alterar -->
+              
+              <button class="btn btn-outline-warning mb-1 me-3 btn-sm" *ngIf="product.active">
+                <i class="bi bi-pencil"></i> <!--alterar -->
               </button>
-  
-              <button class="btn btn-outline-danger mb-1 me-3 btn-sm" *ngIf="product.active" >
-                <i class="fas fa-times-circle"></i> <!--inativar -->
-              </button>
-  
-              <button class="btn btn-outline-success mb-1 me-3 btn-sm" *ngIf="!product.active" >
-                <i class="fas fa-check-circle"></i> <!--reativar -->
-              </button>
-  
-              <button class="btn btn-outline-info mb-1 me-3 btn-sm">
+
+              <button class="btn btn-outline-info mb-1 me-3 btn-sm" *ngIf="product.active">
                 <i class="fas fa-eye"></i> <!--visualizar -->
               </button>
+  
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="activeSwitch{{product.id}}" [checked]="product.active" (change)="activeProduct(product.active, product)">
+                <label class="form-check-label" for="activeSwitch{{product.id}}">{{ product.active ? 'Ativo' : 'Inativo' }}</label>
+              </div>
+  
             </span>
           </td>
         </tr>

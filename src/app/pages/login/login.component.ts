@@ -21,7 +21,11 @@ export class LoginComponent implements OnInit {
     private dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if(this._userService.getCurrentUser()){
+      this._router.navigate(['/dashboard']);
+    }
+  }
 
   changeEmail(event: any) {
     this.userParams.email = event.target.value;

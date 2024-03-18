@@ -26,7 +26,7 @@
       <input [(ngModel)]="userParams.cpf" name="cpf" matInput>
     </mat-form-field>
 
-    <mat-form-field class="group-form" appearance="fill" *ngIf="currentUser.id != this.currentUserId">
+    <mat-form-field class="group-form" appearance="fill" *ngIf="isUpdating && currentUser.id != this.currentUserId">
       <mat-label>Grupo</mat-label>
       <mat-select [(ngModel)]="userParams.group" name="group">
         <mat-option value="admin">Admin</mat-option>

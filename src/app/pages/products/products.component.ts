@@ -11,6 +11,9 @@ import { ProductsService }    from 'src/app/services/products.service';
 export class ProductsComponent implements OnInit {
   public products: Product[] = [];
   public showLoading: boolean = true;
+  public productParams: Product = {name: '', quantity: 0, price: 0, active: true };
+  public currentProductId: string = '';
+
   constructor(
     private _productService: ProductsService,
     private _router: Router
@@ -25,5 +28,27 @@ export class ProductsComponent implements OnInit {
       this.products = response;
       this.showLoading = false;
     });
+  }
+
+  updateProduct(product: Product): void {
+    this._router.navigate(['/products'], {state: {product: product, id: this.currentProductId}})
+  }
+
+  activeProduct(active: boolean =true, product: Product): void {
+    if(confirm("Confirma a alteração de status")){
+      this.productParams = product;
+      this.productParams.active = !active;
+      this.showLoading = true;
+      this._productService.UpdateProduct(this.productParams).subscribe(
+        () => {
+          this.showLoading = false;
+          this.getProducts();
+        },
+        error => {
+          this.showLoading = false;
+          console.error('Erro ao atualizar produtos:', error);
+        }
+      );
+    }
   }
 }

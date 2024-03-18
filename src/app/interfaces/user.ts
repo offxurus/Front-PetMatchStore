@@ -2,6 +2,7 @@ export interface UserSignIn {
   id?: string;
   group?: string;
   active?: boolean;
+  name?: string;
 }
 
 export interface User {

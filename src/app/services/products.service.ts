@@ -42,4 +42,19 @@ export class ProductsService {
       );
     });
   }
+
+  UpdateProduct(newProduct: Product): Observable<Product> {
+    return new Observable<Product>((observer) => {
+    this.http.post<Product>(`${environment.apiUrl}/products/${newProduct.id}`, newProduct).subscribe(
+      (product) => {
+        observer.next(product);
+        observer.complete();
+      },
+      (error) => {
+        observer.error(error);
+        observer.complete();
+      }
+      );
+    });
+  }
 }
