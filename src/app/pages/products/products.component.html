@@ -42,7 +42,7 @@
                 <i class="fas fa-eye"></i> <!--visualizar -->
               </button>
   
-              <div class="form-check form-switch">
+              <div class="form-check form-switch" *ngIf="currentUser && currentUser.group != 'estoquista'">
                 <input class="form-check-input" type="checkbox" id="activeSwitch{{product.id}}" [checked]="product.active" (change)="activeProduct(product.active, product)">
                 <label class="form-check-label" for="activeSwitch{{product.id}}">{{ product.active ? 'Ativo' : 'Inativo' }}</label>
               </div>

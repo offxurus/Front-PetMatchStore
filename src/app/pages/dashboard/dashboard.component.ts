@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UploadFilesService } from 'src/app/services/upload-files.service';
 import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,6 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class DashboardComponent implements OnInit {
   public userGroup: string = '';
+  public currentUser: User | null = { email: '', password: '', name: '', cpf: '', group: '', active: true};
 
   constructor(
     private _userService: UserService,
@@ -19,13 +21,19 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     // Obter o usuário logado
-    const currentUser = this._userService.getCurrentUser();
+    this.currentUser = this._userService.getCurrentUser();
 
     // Verificar se o usuário está logado e obter o grupo
-    if (currentUser && currentUser.group) {
-      this.userGroup = currentUser.group;
+    if (this.currentUser && this.currentUser.group) {
+      this.userGroup = this.currentUser.group;
     }
   }
+
+  listProducts(){
+    this._router.navigate(['/products'], {state: {user: this.currentUser}});
+  }
+
+
   uploadFile(event: any) {
     const file: File = event?.target.files[0]
     console.log("file_dashboard:",file)

@@ -5,6 +5,10 @@
     </div>
     
     <div class="container-itens">
+        <button *ngIf="userGroup === 'estoquista' || userGroup === 'admin'"
+        class="produtos" (click)="listProducts()">
+            Lista de produtos
+        </button>
         <a 
         *ngIf="userGroup === 'estoquista' || userGroup === 'admin'"
         class="produtos" routerLink="/products">

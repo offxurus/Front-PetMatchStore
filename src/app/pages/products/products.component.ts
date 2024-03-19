@@ -2,6 +2,8 @@ import { Component, OnInit }  from '@angular/core';
 import { Router }             from '@angular/router';
 import { Product }            from 'src/app/interfaces/products';
 import { ProductsService }    from 'src/app/services/products.service';
+import { User } from 'src/app/interfaces/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-products',
@@ -13,13 +15,22 @@ export class ProductsComponent implements OnInit {
   public showLoading: boolean = true;
   public productParams: Product = {name: '', quantity: 0, price: 0, active: true };
   public currentProductId: string = '';
+  public currentUser: User | null= { email: '', password: '', name: '', cpf: '', group: '', active: true};
 
   constructor(
     private _productService: ProductsService,
-    private _router: Router
+    private _router: Router,
+    private _userService: UserService
   ) {}
 
   ngOnInit(): void {
+    if(!this._userService.getCurrentUser()){
+      this._router.navigate(['/']);
+    }
+    if(history.state && history.state.user){
+      this.currentUser = history.state.user;
+    }
+    this.currentUser = this._userService.getCurrentUser();
     this.getProducts();
   }
 
