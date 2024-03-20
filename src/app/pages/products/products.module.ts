@@ -4,7 +4,8 @@ import { ProductsRoutingModule }      from './products-routing.module';
 import { ProductsComponent }          from './products.component';
 import { MatListModule }              from '@angular/material/list';
 import { MatProgressSpinnerModule }   from '@angular/material/progress-spinner';
-
+import { SharedModule } from 'src/app/shared/shared.module';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [ProductsComponent],
@@ -12,7 +13,9 @@ import { MatProgressSpinnerModule }   from '@angular/material/progress-spinner';
     CommonModule,
     ProductsRoutingModule,
     MatListModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    SharedModule,
+    MatIconModule
   ],
 })
 export class ProductsModule {}

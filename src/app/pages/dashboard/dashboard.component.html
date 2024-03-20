@@ -10,11 +10,6 @@
             Lista de produtos
         </button>
         <a 
-        *ngIf="userGroup === 'estoquista' || userGroup === 'admin'"
-        class="produtos" routerLink="/products">
-            Lista de produtos
-        </a>
-        <a 
         *ngIf="userGroup === 'admin'"
         class="usuarios" routerLink="/list-user">
             Lista de Usuários

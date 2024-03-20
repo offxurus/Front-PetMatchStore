@@ -1,6 +1,25 @@
+@import '../../../assets/styles/variables.scss';
+
+.mt-3{
+  margin-top: 16vh !important;
+  background-color: $footer !important;
+  .card-header{
+    padding: 20px;
+    color: $light;
+  }
+  .card-body{
+    padding: 20px;
+    .table, thead, th {
+      color: $light;
+      vertical-align: bottom;
+      border: 2px solid;
+      border-color: $primary;
+  }
+  }
+}
 .container-content {
   text-align: center;
-  margin-top: 35px;
+ 
 
   .spinner {
     display: flex;

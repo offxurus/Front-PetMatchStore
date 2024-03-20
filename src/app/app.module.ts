@@ -18,9 +18,12 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { LoginModule } from './pages/login/login.module';
 import { LoginClientComponent } from './pages/login-client/login-client.component';
+import { HomeComponent } from './pages/home/home.component';
+import { DialogGalleryComponent } from './components/dialog-gallery/dialog-gallery.component';
+import { MatToolbarModule } from '@angular/material/toolbar'; 
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, LoginClientComponent],
+  declarations: [AppComponent, DashboardComponent, LoginClientComponent, HomeComponent, DialogGalleryComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -36,7 +39,8 @@ import { LoginClientComponent } from './pages/login-client/login-client.componen
     MatSlideToggleModule, 
     SharedModule,
     FormsModule, 
-    LoginModule
+    LoginModule,
+    MatToolbarModule, 
   ],
   providers: [UserService, HttpClient],
   bootstrap: [AppComponent],

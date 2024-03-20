@@ -1,4 +1,6 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<app-header></app-header>
 <div class="card mt-3 main">
   <div class="card-header d-flex justify-content-between align-items-center">
     <div>
@@ -7,6 +9,8 @@
     </div>
     <div style="flex: 1; display: flex; justify-content: center;">
         <input #searchBox id="search-box" class="form-control" style="width: 300px;" (input)="search(searchBox.value)" placeholder="Pesquisar">
+        <mat-icon style="border-radius: 5px; width: 40px; height: 40px; background-color: #5271ff; margin-left: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center;"
+        tabindex="0">search</mat-icon>
     </div>
   </div>
 

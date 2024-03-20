@@ -8,6 +8,7 @@ import { MatRippleModule }          from '@angular/material/core';
 import { MatIconModule }            from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [ListUserComponent],
@@ -19,7 +20,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatRippleModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    SharedModule
   ],
 })
 export class ListUserModule {}

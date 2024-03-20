@@ -6,11 +6,16 @@ import { ListUserComponent } from './pages/list-user/list-user.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CreateProductComponent } from './pages/create-product/create-product.component';
 import { LoginClientComponent } from './pages/login-client/login-client.component';
+import { HomeComponent } from './pages/home/home.component';
 const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
       import('./pages/login/login.module').then((mod) => mod.LoginModule),
+  },
+  {
+    path: 'home',
+    component: HomeComponent
   },
   {
     path: 'dashboard',

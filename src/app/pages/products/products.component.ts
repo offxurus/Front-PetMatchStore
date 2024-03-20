@@ -17,7 +17,8 @@ export class ProductsComponent implements OnInit {
   public currentProductId: string = '';
   public currentUser: User | null= { email: '', password: '', name: '', cpf: '', group: '', active: true};
   public number: number = 0;
-
+  public searchValue: string = '';
+  
   constructor(
     private _productService: ProductsService,
     private _router: Router,
@@ -33,6 +34,19 @@ export class ProductsComponent implements OnInit {
     }
     this.currentUser = this._userService.getCurrentUser();
     this.getProducts();
+  }
+
+  realizarPesquisa(): void {
+    if (this.searchValue.trim() !== '') {
+      // Realizar a pesquisa apenas se o campo de pesquisa não estiver vazio
+      // Aqui você pode adicionar a lógica para filtrar a lista de produtos com base no valor de pesquisa
+      this.products = this.products.filter(product =>
+        product.name.toLowerCase().includes(this.searchValue.toLowerCase())
+      );
+    } else {
+      // Se o campo de pesquisa estiver vazio, exiba todos os produtos novamente
+      this.getProducts();
+    }
   }
 
   getProducts() {

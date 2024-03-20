@@ -12,7 +12,7 @@
       <form class="example-form">
         <mat-form-field class="email-form" appearance="fill">
             <mat-label>CPF</mat-label>
-            <input [value]="userParams.cpf" (change)="changeCpf($event)" type="text" matInput placeholder="Ex. 123.456.789-00">
+            <input [value]="userParams.cpf" (change)="changeCpf($event)" type="text" matInput placeholder="Ex. 123.456.789-00" maxlength="14">
         </mat-form-field>
 
         <mat-form-field class="password-form" appearance="fill">
