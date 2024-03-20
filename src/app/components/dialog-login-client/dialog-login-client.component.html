@@ -1,4 +1,6 @@
 <div class="popup-content">
-    <p>Você faz parte dos nossos clientes e está tentando acessar o login de usuários administradores. Para acessar o seu login, clique <a [routerLink]="['/login-client']">aqui</a>.</p>
+    <p>Você faz parte dos nossos clientes e está tentando acessar o login de usuários administradores. Para acessar o seu login, clique 
+        <a [routerLink]="['/login-client']"
+        (click)="closePopup()">aqui</a>.</p>
 </div>
   

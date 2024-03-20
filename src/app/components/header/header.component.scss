@@ -48,5 +48,29 @@
         margin-left: 55%;
       }
     }
+
+    .perfil{
+      display: flex;
+      align-content: end;
+      align-items: center;
+      width: 100%;
+      justify-content: end;
+      padding-right: 70px;
+
+      img{
+        width: 50px;
+        height: auto;
+      }
+
+      button{
+        margin-right: 20px;
+        width: 70px;
+        height: 25px;
+        border-radius: 5px;
+        background-color: $secondary;
+        color: $light;
+        cursor: pointer;
+      }
+    }
   }
 }
