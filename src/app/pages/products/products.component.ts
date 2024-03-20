@@ -16,6 +16,7 @@ export class ProductsComponent implements OnInit {
   public productParams: Product = {name: '', quantity: 0, price: 0, active: true };
   public currentProductId: string = '';
   public currentUser: User | null= { email: '', password: '', name: '', cpf: '', group: '', active: true};
+  public number: number = 0;
 
   constructor(
     private _productService: ProductsService,
@@ -35,8 +36,9 @@ export class ProductsComponent implements OnInit {
   }
 
   getProducts() {
-    this._productService.getProduct().subscribe((response) => {
-      this.products = response;
+    this._productService.getProduct(this.number).subscribe((response) => {
+      this.products = response.products;
+      this.number = response.cursor;
       this.showLoading = false;
     });
   }

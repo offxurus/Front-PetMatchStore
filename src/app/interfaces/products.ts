@@ -8,6 +8,6 @@ export interface Product {
 }
 
 export interface ProductsGetResponse {
-  cursor: string;
+  cursor: number;
   products: Array<Product>;
 }

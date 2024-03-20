@@ -10,15 +10,15 @@ import { ProductsGetResponse, Product }      from '../interfaces/products';
 export class ProductsService {
   constructor(private http: HttpClient) {}
 
-  getProduct(): Observable<Product[]> {
-    return new Observable<Product[]>(observer => {
+  getProduct(cursor: number): Observable<ProductsGetResponse> {
+    return new Observable<ProductsGetResponse>(observer => {
         this.http
           .get<ProductsGetResponse>(
-            `${environment.apiUrl}/products`
+            `${environment.apiUrl}/products?offset=${cursor}`
           )
           .subscribe(
             (response) => {
-              observer.next(response.products);
+              observer.next(response);
               observer.complete();
             },
             () => {
