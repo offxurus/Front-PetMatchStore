@@ -40,7 +40,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     SharedModule,
     FormsModule, 
     LoginModule,
-    MatToolbarModule
+    MatToolbarModule, 
   ],
   providers: [UserService, HttpClient],
   bootstrap: [AppComponent],

@@ -1,11 +1,14 @@
+@import '../../../assets/styles/variables.scss';
+
 .main {
-    background-color: #424242!important;
+    margin-top: 17vh !important;
+    background-color: $footer !important;
     height: 100%!important;
 }
 
 .table td,
 .table th {
-    border-top: 1px solid #FFEB3B;
+    border: 2px solid $primary;
     vertical-align: top;
     padding: 0.75rem;
     color: white;
