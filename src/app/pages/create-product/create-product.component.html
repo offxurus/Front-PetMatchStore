@@ -4,32 +4,30 @@
     <div class="box">
         <div class="content-form">
             <div class="title">
-                <span> Cadastrar Produto </span>
+                <span>{{ isUpdating ? 'Atualizar Produto' : 'Cadastrar Produto' }}</span>
             </div>
             <form (ngSubmit)="createProduct()">
-                <label for="name">Nome do Produto:</label>
-                <input type="text" id="name" name="name" [(ngModel)]="newProduct.name" maxlength="200" required>
+                <label for="name" *ngIf="(currentUser && currentUser.group != 'estoquista') || !isUpdating">Nome do Produto:</label>
+                <input type="text" id="name" name="name" [(ngModel)]="newProduct.name" maxlength="200" required *ngIf="(currentUser && currentUser.group != 'estoquista') || !isUpdating">
 
-                <label for="price">Preço:</label>
-                <input type="number" id="price" name="price" [(ngModel)]="newProduct.price" step="0.01" required>
+                <label for="price" *ngIf="(currentUser && currentUser.group != 'estoquista') || !isUpdating">Preço:</label>
+                <input type="number" id="price" name="price" [(ngModel)]="newProduct.price" step="0.01" required *ngIf="(currentUser && currentUser.group != 'estoquista') || !isUpdating">
 
                 <label for="quantity">Em estoque:</label>
                 <input type="number" id="quantity" name="quantity" [(ngModel)]="newProduct.quantity" required>
 
-                <label for="description">Descrição Detalhada:</label>
-                <textarea id="description" name="description" maxlength="200" required></textarea>
+                <label for="description" *ngIf="(currentUser && currentUser.group != 'estoquista') || !isUpdating">Descrição Detalhada:</label>
+                <textarea id="description" name="description" maxlength="200" required *ngIf="(currentUser && currentUser.group != 'estoquista') || !isUpdating" [(ngModel)]="newProduct.description"></textarea>
 
-                <label for="rating">Avaliação:</label>
-                <input type="number" id="rating" name="rating" min="1" max="5" step="0.5" required>
+                <label for="rating" *ngIf="(currentUser && currentUser.group != 'estoquista') || !isUpdating">Avaliação:</label>
+                <input type="number" id="rating" name="rating" min="1" max="5" step="0.5" [(ngModel)]="newProduct.rating" required *ngIf="(currentUser && currentUser.group != 'estoquista') || !isUpdating">
 
-                <button type="submit">Criar Produto</button>
+                <button type="submit">{{ isUpdating ? 'Salvar Produto' : 'Criar Produto' }}</button>
+                <button type="button" (click)="cancelCreate()">Cancelar</button>
             </form>
         </div>
         <div class="content-image">
-            <!--<p>Imagens do produto</p>
-            <input type="file" (change)="uploadFile($event)"> Xurusz concerte aqui-->
-            <img src="assets/teste.png"
-            (click)="openGaleria()">
+            <img [src]="isUpdating ? newProduct.image_default : 'assets/teste.png'" (click)="openGaleria(productId)">
         </div>
     </div>
 </div>

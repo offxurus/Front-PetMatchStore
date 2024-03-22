@@ -18,6 +18,8 @@ export class ProductsComponent implements OnInit {
   public currentUser: User | null= { email: '', password: '', name: '', cpf: '', group: '', active: true};
   public number: number = 0;
   public searchValue: string = '';
+
+  private originalProducts: Product[] = [];
   
   constructor(
     private _productService: ProductsService,
@@ -36,16 +38,13 @@ export class ProductsComponent implements OnInit {
     this.getProducts();
   }
 
-  realizarPesquisa(): void {
-    if (this.searchValue.trim() !== '') {
-      // Realizar a pesquisa apenas se o campo de pesquisa não estiver vazio
-      // Aqui você pode adicionar a lógica para filtrar a lista de produtos com base no valor de pesquisa
-      this.products = this.products.filter(product =>
-        product.name.toLowerCase().includes(this.searchValue.toLowerCase())
-      );
+  search(name: string): void {
+    if(!name || name === ''){
+      this.products = [...this.originalProducts];
     } else {
-      // Se o campo de pesquisa estiver vazio, exiba todos os produtos novamente
-      this.getProducts();
+      this.products = this.originalProducts.filter(product => 
+        product.name && product.name.toLowerCase().includes(name.toLowerCase())
+      );
     }
   }
 
@@ -54,11 +53,16 @@ export class ProductsComponent implements OnInit {
       this.products = response.products;
       this.number = response.cursor;
       this.showLoading = false;
+      this.originalProducts = [...this.products];
     });
   }
 
   updateProduct(product: Product): void {
     this._router.navigate(['/products'], {state: {product: product, id: this.currentProductId}})
+  }
+
+  updateProductItem(product: Product): void {
+    this._router.navigate(['/create-product'], {state: {product: product, id: this.currentProductId}})
   }
 
   activeProduct(active: boolean =true, product: Product): void {

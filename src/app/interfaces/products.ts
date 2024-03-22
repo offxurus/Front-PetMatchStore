@@ -5,6 +5,10 @@ export interface Product {
   quantity: number;
   price: number;
   active: boolean;
+  images?: string[];
+  image_default?: string;
+  description?: string;
+  rating?: number;
 }
 
 export interface ProductsGetResponse {

@@ -9,12 +9,11 @@
         <h4>Produtos</h4>
         <button type="button" class="btn btn-primary mt-2 mt-md-0" routerLink="/create-product"><i class="fas fa-plus"></i> Novo Produto</button>
     </div>
-    <div style="flex: 1; display: flex; justify-content: center;">
-        <input #searchBox id="search-box" class="form-control" style="width: 300px;" placeholder="Pesquisar">
-        <mat-icon style="border-radius: 5px; width: 40px; height: 40px; background-color: #5271ff; margin-left: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center;"
-        (click)="realizarPesquisa()" tabindex="0">search</mat-icon>
-       
-    </div>
+      <div style="flex: 1; display: flex; justify-content: center;">
+          <input #searchBox id="search-box" class="form-control" style="width: 300px;" (input)="search(searchBox.value)" placeholder="Pesquisar">
+          <mat-icon style="border-radius: 5px; width: 40px; height: 40px; background-color: #5271ff; margin-left: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center;"
+          tabindex="0">search</mat-icon>
+      </div>
   </div>
 
   <div class="card-body">
@@ -40,7 +39,7 @@
             <span class="d-flex align-items-center">
               
               <button class="btn btn-outline-warning mb-1 me-3 btn-sm" *ngIf="product.active">
-                <i class="bi bi-pencil"></i> <!--alterar -->
+                <i class="bi bi-pencil" (click)="updateProductItem(product)"></i> <!--alterar -->
               </button>
 
               <button class="btn btn-outline-info mb-1 me-3 btn-sm" *ngIf="product.active">

@@ -18,10 +18,15 @@ export class LoginClientComponent implements OnInit {
   constructor(
     private _router: Router,
     private _userService: UserService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private userService: UserService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if(!this.userService.getCurrentUser()){
+      this._router.navigate(['/']);
+    }
+  }
 
   changeCpf(event: any) {
     const cpf = event.target.value.replace(/\D/g, '');
