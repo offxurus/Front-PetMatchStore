@@ -4,6 +4,8 @@ import { Product }            from 'src/app/interfaces/products';
 import { ProductsService }    from 'src/app/services/products.service';
 import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
+import { DialogPreviewComponent } from 'src/app/components/dialog-preview/dialog-preview.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-products',
@@ -24,7 +26,8 @@ export class ProductsComponent implements OnInit {
   constructor(
     private _productService: ProductsService,
     private _router: Router,
-    private _userService: UserService
+    private _userService: UserService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -36,6 +39,22 @@ export class ProductsComponent implements OnInit {
     }
     this.currentUser = this._userService.getCurrentUser();
     this.getProducts();
+  }
+
+  openPreview(productId: string | undefined = undefined): void {
+    if (productId) {
+      const product = this.products.find(p => p.id === productId);
+      if (product) {
+        const dialogRef = this.dialog.open(DialogPreviewComponent, {
+          width: '80%',
+          height: '80%',
+          data: product
+        });
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('O modal foi fechado.');
+        });
+      }
+    }
   }
 
   search(name: string): void {
@@ -53,7 +72,7 @@ export class ProductsComponent implements OnInit {
       this.products = response.products;
       this.number = response.cursor;
       this.showLoading = false;
-      this.originalProducts = [...this.products];
+      this.originalProducts = [...this.products]
     });
   }
 

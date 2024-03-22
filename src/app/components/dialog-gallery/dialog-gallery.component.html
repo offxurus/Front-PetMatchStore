@@ -2,8 +2,12 @@
 
 <section id="gallery">
     <mat-toolbar color="primary">
+        <button mat-icon-button (click)="closeModal()" class="transparent-button">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
         <span>Galeria de Imagens</span>
-        <button mat-icon-button (click)="fileInput.click()">
+        <span class="spacer"></span>
+        <button mat-icon-button (click)="fileInput.click()" class="transparent-button">
             <mat-icon>add</mat-icon>
         </button>
     </mat-toolbar>
@@ -11,7 +15,7 @@
         <div class="image-container">
             <img src="{{image}}" alt="product" style="width: 300px; height: 300px;" class="gallery-image">
             <div class="image-buttons">
-                <button mat-icon-button>
+                <button mat-icon-button (click)="deleteImage(image)">
                     <mat-icon>delete</mat-icon>
                 </button>
                 <button mat-icon-button (click)="setImageDefault(image)" [ngClass]="{'selected': image === newProduct.image_default}">

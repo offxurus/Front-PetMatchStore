@@ -43,7 +43,7 @@
               </button>
 
               <button class="btn btn-outline-info mb-1 me-3 btn-sm" *ngIf="product.active">
-                <i class="fas fa-eye"></i> <!--visualizar -->
+                <i class="fas fa-eye" (click)="openPreview(product.id)"></i> <!--visualizar -->
               </button>
   
               <div class="form-check form-switch" *ngIf="currentUser && currentUser.group != 'estoquista'">

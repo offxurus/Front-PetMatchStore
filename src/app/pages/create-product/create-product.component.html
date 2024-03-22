@@ -27,7 +27,7 @@
             </form>
         </div>
         <div class="content-image">
-            <img [src]="isUpdating ? newProduct.image_default : 'assets/teste.png'" (click)="openGaleria(productId)">
+            <img [src]="isUpdating && newProduct.image_default ? newProduct.image_default : 'assets/teste.png'" (click)="openGaleria(productId)" style="width: 512px; height: 512px;">
         </div>
     </div>
 </div>

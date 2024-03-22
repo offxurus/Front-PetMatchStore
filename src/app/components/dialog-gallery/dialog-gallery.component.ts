@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { UploadFilesService } from 'src/app/services/upload-files.service';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Product } from 'src/app/interfaces/products';
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -21,6 +21,7 @@ export class DialogGalleryComponent implements OnInit {
     private _userService: UserService,
     private _router: Router,
     private _productService: ProductsService,
+    public dialogRef: MatDialogRef<DialogGalleryComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
@@ -29,13 +30,7 @@ export class DialogGalleryComponent implements OnInit {
       this._router.navigate(['/']);
     }
     this.newProduct =this.data
-    console.log("antes",this.newProduct)
     this.productId = this.newProduct.id;
-    console.log('productId:', this.productId);
-
-    if(this.newProduct.images && this.newProduct.images.length>0 && !this.newProduct.image_default){
-      this.newProduct.image_default = this.newProduct.images[0]
-    }
   }
 
 
@@ -48,6 +43,11 @@ export class DialogGalleryComponent implements OnInit {
         this.uploadService.uploadFile(file, this.productId).subscribe(
           response => {
             console.log(response);
+            if (response && response['path']){
+              if (!this.newProduct.images)
+                this.newProduct.images = []
+              this.newProduct.images?.push(response['path'])
+            }
           }
         );
       }
@@ -56,14 +56,39 @@ export class DialogGalleryComponent implements OnInit {
   setImageDefault(image_default: string){
     if (this.productId) {
       this.newProduct.image_default = image_default
-      this._productService.UpdateProduct(this.newProduct).subscribe(
-        () => {
-          alert('Imagem Principal definida');
-        },
-        () => {
-          alert('Erro ao atualizar imagem principal');
-        }
-      );
+      this.updateReq(false)
     }
+  }
+  deleteImage(image: string){
+    if(this.productId){
+      let newlist: string[] = []
+      this.newProduct.images?.find(img => {
+        if(image != img){
+          newlist.push(img)
+        }
+      })
+      if(newlist){
+        this.newProduct.images = newlist
+        this.updateReq(true)
+      }  
+    }
+  }
+  updateReq(isDelete : boolean){
+    this._productService.UpdateProduct(this.newProduct).subscribe(
+      () => {
+        if(isDelete){
+          alert('Imagem excluida');
+        } else {
+          alert('Imagem padrão atualizada');
+        }
+      },
+      () => {
+        alert('Erro ao atualizar imagem principal');
+      }
+    );
+  }
+  closeModal(): void {
+    this.dialogRef.close();
+    this._router.navigate(['/products']);
   }
 }

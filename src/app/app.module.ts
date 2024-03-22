@@ -20,10 +20,11 @@ import { LoginModule } from './pages/login/login.module';
 import { LoginClientComponent } from './pages/login-client/login-client.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DialogGalleryComponent } from './components/dialog-gallery/dialog-gallery.component';
-import { MatToolbarModule } from '@angular/material/toolbar'; 
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { DialogPreviewComponent } from './components/dialog-preview/dialog-preview.component'; 
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, LoginClientComponent, HomeComponent, DialogGalleryComponent],
+  declarations: [AppComponent, DashboardComponent, LoginClientComponent, HomeComponent, DialogGalleryComponent, DialogPreviewComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

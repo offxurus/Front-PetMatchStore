@@ -1,0 +1,17 @@
+<section id="product-preview">
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="closeModal()" class="transparent-button">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span>Preview de produtos</span>
+  </mat-toolbar>
+  <div class="product-info" *ngIf="product">
+    <h2>{{ product.name }}</h2>
+    <div *ngFor="let image of product.images"></div>
+      <img *ngIf="product.images" [src]="product.images" alt="Product Image">
+      <p>Avaliação: {{ product.rating }}</p>
+      <p>Preço: {{ product.price }}</p>
+      <p>Quantidade disponível: {{ product.quantity }}</p>
+      <button mat-button disabled>Comprar</button>
+  </div>
+</section>

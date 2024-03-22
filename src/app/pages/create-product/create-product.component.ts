@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogGalleryComponent } from 'src/app/components/dialog-gallery/dialog-gallery.component';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/interfaces/user';
+import { DialogPreviewComponent } from 'src/app/components/dialog-preview/dialog-preview.component';
 
 @Component({
   selector: 'app-create-product',
@@ -44,6 +45,20 @@ export class CreateProductComponent {
     if(productId){
       this.newProduct.id = productId
       const dialogRef = this.dialog.open(DialogGalleryComponent, {
+        width: '80%',
+        height: '80%',
+        data: this.newProduct
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('O modal foi fechado.');
+      });
+    }
+  }
+
+  openPreview(productId : string | undefined = undefined): void {
+    if(productId){
+      this.newProduct.id = productId
+      const dialogRef = this.dialog.open(DialogPreviewComponent, {
         width: '80%',
         height: '80%',
         data: this.newProduct
