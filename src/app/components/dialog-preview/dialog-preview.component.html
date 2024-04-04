@@ -8,7 +8,7 @@
   <div class="product-info" *ngIf="product">
     <h2>{{ product.name }}</h2>
     <div *ngFor="let image of product.images"></div>
-      <img *ngIf="product.images" [src]="product.images" alt="Product Image">
+      <img *ngIf="product.images" [src]="product.images" alt="Product Image" style="max-width: 300px; max-height: 300px;">
       <p>Avaliação: {{ product.rating }}</p>
       <p>Preço: {{ product.price }}</p>
       <p>Quantidade disponível: {{ product.quantity }}</p>

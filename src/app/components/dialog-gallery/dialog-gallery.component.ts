@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Product } from 'src/app/interfaces/products';
 import { ProductsService } from 'src/app/services/products.service';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-dialog-gallery',
@@ -14,6 +15,7 @@ import { ProductsService } from 'src/app/services/products.service';
 export class DialogGalleryComponent implements OnInit {
 
   public productId: string | undefined = '';
+  public currentUser: User | null= { email: '', password: '', name: '', cpf: '', group: '', active: true};
   public newProduct: Product = {name: '', price: 0, quantity: 0, active: true };
 
   constructor(
@@ -31,6 +33,7 @@ export class DialogGalleryComponent implements OnInit {
     }
     this.newProduct =this.data
     this.productId = this.newProduct.id;
+    this.currentUser = this._userService.getCurrentUser();
   }
 
 

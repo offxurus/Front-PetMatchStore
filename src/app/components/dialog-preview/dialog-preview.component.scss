@@ -1,8 +1,30 @@
+@import '../../../assets/styles/variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 #product-preview {
     display: flex;
     flex-wrap: wrap; 
     justify-content: space-around; 
   }
+  ::ng-deep{
+  .mat-dialog-container{
+    width: 100% !important;
+    height: 100% !important;
+    background-color: $footer !important;
+
+    .product-info{
+      h2 {
+        font-size: 20px;
+        color: $light;
+        font-family: Montserrat;
+        font-weight: 900;
+      }
+      p {
+        color: $light;
+      }
+    }
+  }
+}
   
   .image-container {
     width: 300px; 

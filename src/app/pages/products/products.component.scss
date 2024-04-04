@@ -1,7 +1,7 @@
 @import '../../../assets/styles/variables.scss';
 
 .mt-3{
-  margin-top: 16vh !important;
+  margin-top: 20vh !important;
   background-color: $footer !important;
   .card-header{
     padding: 20px;
@@ -60,7 +60,7 @@
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus,
     input:-webkit-autofill:active {
-      -webkit-box-shadow: 0 0 0 30px #17202A inset !important;
+      -webkit-box-shadow: 0 0 0 30px #fffb00 inset !important;
       -webkit-text-fill-color: #E5E8E8 !important;
     }
 
