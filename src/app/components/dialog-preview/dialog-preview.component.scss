@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 #product-preview {
-    display: flex;
     flex-wrap: wrap; 
     justify-content: space-around; 
   }
@@ -50,6 +49,19 @@
     border: none;
     cursor: pointer;
 }
+
+app-carrossel {
+  max-width: 80%; 
+  overflow: hidden;
+
+  .carousel-image {
+    width: 100%;
+    height: auto;
+    max-width: none; 
+    aspect-ratio: 1 / 1;
+  }
+}
+
 
 .transparent-button:hover {
     background-color: rgba(0, 0, 0, 0.1);

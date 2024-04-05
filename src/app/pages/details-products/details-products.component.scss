@@ -1,4 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 
 #details{
@@ -17,4 +18,69 @@
 
     }
 }
+}
+
+#details {
+    padding: 20px;
+}
+
+.details-products {
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.details-products h2 {
+    font-size: 28px; 
+    margin-top: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+}
+
+.details-products p {
+    font-size: 18px; 
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif; 
+    color: #ffffff;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btn-comprar, .btn-adicionar {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-comprar {
+    background-color: #ddd;
+    color: #666;
+}
+
+.btn-adicionar {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-comprar:disabled {
+    background-color: #eee;
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.btn-comprar:hover, .btn-adicionar:hover {
+    filter: brightness(90%);
+}
+
+.app-carrossel img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto; 
 }

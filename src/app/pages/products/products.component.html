@@ -42,7 +42,7 @@
                 <i class="bi bi-pencil" (click)="updateProductItem(product)"></i> <!--alterar -->
               </button>
 
-              <button class="btn btn-outline-info mb-1 me-3 btn-sm" *ngIf="product.active">
+              <button class="btn btn-outline-info mb-1 me-3 btn-sm" *ngIf="product.active && currentUser && currentUser.group != 'estoquista'">
                 <i class="fas fa-eye" (click)="openPreview(product.id)"></i> <!--visualizar -->
               </button>
   

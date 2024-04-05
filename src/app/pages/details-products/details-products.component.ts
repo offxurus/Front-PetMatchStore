@@ -1,15 +1,17 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/interfaces/products';
+
+declare var $: any;
 
 @Component({
   selector: 'app-details-products',
   templateUrl: './details-products.component.html',
   styleUrls: ['./details-products.component.scss']
 })
-export class DetailsProductsComponent implements OnInit, OnDestroy {
+export class DetailsProductsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   currentSlide = 0;
 
@@ -32,6 +34,10 @@ export class DetailsProductsComponent implements OnInit, OnDestroy {
     });
   }
 
+  ngAfterViewInit(): void {
+    $('#carouselExampleControls').carousel();
+  }
+
   getProductDetails(productId: string): void {
     this.productService.getProductById(productId).subscribe(
       (product) => {
@@ -39,7 +45,6 @@ export class DetailsProductsComponent implements OnInit, OnDestroy {
       },
       (error) => {
         console.error('Error fetching product details:', error);
-        // Aqui você pode adicionar lógica para informar ao usuário sobre o erro.
       }
     );
   }

@@ -2,26 +2,18 @@
 
 <section id="details">
     <div *ngIf="product" class="details-products">
+        <!-- Carrossel de Imagens -->
+        <app-carrossel
+        [imagens]="product.images ? product.images : []"
+        ></app-carrossel>
         <h2>{{ product.name }}</h2>
         <p>Descrição: {{ product.description }}</p>
         <p>Preço: {{ product.price }}</p>
         <p>Avaliação: {{ product.rating }}</p>
-        
-        <!-- Carrossel de Imagens -->
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item" *ngFor="let image of product.images; let i = index" [ngClass]="{ 'active': i === 0 }">
-                    <img class="d-block w-100" [src]="image" alt="Product Image">
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="javascript:void(0)" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="javascript:void(0)" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>            
-        </div>   
+
+        <div class="buttons-container">
+            <button class="btn-comprar" [disabled]="true">Comprar</button>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+        </div>
     </div>
 </section>
