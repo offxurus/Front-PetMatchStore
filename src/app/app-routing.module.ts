@@ -7,14 +7,15 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CreateProductComponent } from './pages/create-product/create-product.component';
 import { LoginClientComponent } from './pages/login-client/login-client.component';
 import { HomeComponent } from './pages/home/home.component';
+import { DetailsProductsComponent } from './pages/details-products/details-products.component';
 const routes: Routes = [
   {
-    path: '',
+    path: 'login',
     loadChildren: () =>
       import('./pages/login/login.module').then((mod) => mod.LoginModule),
   },
   {
-    path: 'home',
+    path: '',
     component: HomeComponent
   },
   {
@@ -51,7 +52,11 @@ const routes: Routes = [
         (mod) => mod.CreateProductModule
       ),
     component: CreateProductComponent,
-  }
+  },
+  {
+    path: 'details-products/:id', 
+    component: DetailsProductsComponent
+  },
 ];
 
 @NgModule({

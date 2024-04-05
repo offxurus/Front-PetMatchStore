@@ -1,0 +1,97 @@
+@import '../../../assets/styles/variables.scss';
+
+#product-list {
+    margin-top: 16vh;
+    background-color: $footer;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .product-card {
+    width: 30%;
+    margin-right: 30px;
+    margin-bottom: 20px;
+    background-color: $footer;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+
+  }
+  
+  
+  mat-card {
+    //padding: 10px;
+    min-height: 40vh !important;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    background-color: $light;
+  
+    
+  mat-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 290px;
+    height: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    
+    img {
+        height: 220px;
+        width: 100%;
+        object-fit: contain;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    ::ng-deep{
+        .mat-card-header-text {
+            margin: 0 !important
+        }
+    }
+}
+  
+  mat-card-content {
+    h2 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      color: $title;
+      font-size: 18px;
+    }
+  
+    p {
+      color: $title;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+  }
+  
+  mat-card-footer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  
+    a {
+      background-color: $secondary;
+      text-decoration: none;
+      height: 30px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      padding: 5px;
+      color: #fff;
+      font-size: 15px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+  }
+}
+  

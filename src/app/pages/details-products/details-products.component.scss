@@ -1,0 +1,20 @@
+@import '~bootstrap/scss/bootstrap';
+
+
+#details{
+    margin-top: 40vh;
+    ::ng-deep{
+    .carousel{
+        .carousel-inner{
+            .carousel-item{
+                .d-block{
+                    
+                        width: 300px !important;
+                    
+                }
+            }
+        }
+
+    }
+}
+}

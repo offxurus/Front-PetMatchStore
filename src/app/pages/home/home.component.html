@@ -1,1 +1,21 @@
-<p>home works!</p>
+<app-header-cliente></app-header-cliente>
+
+<section id="product-list">
+  <div class="product-card" *ngFor="let product of products">
+    <mat-card>
+      <mat-card-header>
+        <img [src]="product.image_default" alt="Product Image">
+      </mat-card-header>
+      <mat-card-content>
+        <h2>{{ product.name }}</h2>
+        <p>Descrição: {{ product.description }}</p>
+        <p>Preço: {{ product.price }}</p>
+      </mat-card-content>
+      <mat-card-footer>
+        <a mat-button color="primary"
+          [routerLink]="['details-products/', product.id]"
+          (click)="navigateToDetails(product.id ?? '')">+ Detalhes</a>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</section>

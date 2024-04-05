@@ -10,6 +10,10 @@ import { ProductsGetResponse, Product }      from '../interfaces/products';
 export class ProductsService {
   constructor(private http: HttpClient) {}
 
+  getProductById(productId: string): Observable<Product> {
+    return this.http.get<Product>(`${environment.apiUrl}/products/${productId}`);
+  }
+
   getProduct(cursor: number): Observable<ProductsGetResponse> {
     return new Observable<ProductsGetResponse>(observer => {
         this.http
