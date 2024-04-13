@@ -41,20 +41,29 @@
         font-size: 40px;
       }
 
-      .teste{
-        img{
-          max-width: 200px;
-          max-height: 60px;
+      .login{
+        display: flex;
+        justify-content: end;
+        width: 50%;
+        .teste{
+           margin-right: 20px;
+           width: 100% !important;
+            img{
+            max-width: 230px;
+            max-height: 70px;
+            }
         }
-        margin-left: 55%;
-      }
+        .carrinho{
+           margin-left: 40px;
+        }
+     }
     }
 
     .perfil{
       display: flex;
       align-content: end;
       align-items: center;
-      width: 100%;
+      width: 60%;
       justify-content: end;
       padding-right: 70px;
 
