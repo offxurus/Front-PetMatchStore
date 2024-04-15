@@ -60,10 +60,12 @@ export class DetailsProductsComponent implements OnInit, AfterViewInit, OnDestro
       this.currentSlide = (this.currentSlide + 1) % (this.product.images?.length || 1);
     }
   }
+  
 
   ngOnDestroy(): void {
     if (this.routeSubscription) {
       this.routeSubscription.unsubscribe();
     }
+
   }
 }

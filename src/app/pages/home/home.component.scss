@@ -3,7 +3,7 @@
 
 
 #product-list {
-    margin-top: 20vh;
+    margin-top: 25vh;
     background-color: $footer;
   }
   
@@ -72,13 +72,12 @@
         justify-content: center;
         margin: 0 !important;
         padding: 8px;
+        margin-top: 30px;
       }
       mat-card-footer, a{
-          //width: 300px !important;
-          display: flex;
           text-align: center;
           text-decoration: none;
-          height: 30px;
+          font-weight: bold;
           background-color: $primary;
           color: $dark;
           border-radius: 5px;
