@@ -2,7 +2,7 @@
 
 <div class="container-content">
   <div class="login-title">
-    <span>{{ isUpdating ? 'Atualização de Cadastro' : 'Faça seu cadastro' }}</span>
+    <span>Xdd</span>
   </div>
   <div class="sign-in-description">
     <span>
@@ -26,13 +26,53 @@
       <input [(ngModel)]="userParams.cpf" name="cpf" matInput>
     </mat-form-field>
 
-    <mat-form-field class="group-form" appearance="fill" *ngIf="currentUser.id != this.currentUserId">
-      <mat-label>Grupo</mat-label>
-      <mat-select [(ngModel)]="userParams.group" name="group">
-        <mat-option value="admin">Admin</mat-option>
-        <mat-option value="estoquista">Estoquista</mat-option>
-      </mat-select>
+    <mat-form-field class="birth-date-form" appearance="fill">
+      <mat-label>Data de Nascimento</mat-label>
+      <input [(ngModel)]="userParams.birth_date" name="birthDate" matInput type="date">
+  </mat-form-field>
+
+  <mat-form-field class="gender-form" appearance="fill">
+      <mat-label>Gênero</mat-label>
+      <input [(ngModel)]="userParams.gender" name="gender" matInput>
+  </mat-form-field>
+
+  <div class="delivery-address">
+    <h3>Endereço de Entrega</h3>
+    <mat-form-field appearance="fill">
+        <mat-label>CEP</mat-label>
+        <input [(ngModel)]="userParams.delivery_address.cep" name="deliveryCep" matInput>
     </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Logradouro</mat-label>
+        <input [(ngModel)]="userParams.delivery_address.logradouro" name="deliveryLogradouro" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Número</mat-label>
+        <input [(ngModel)]="userParams.delivery_address.numero" name="deliveryNumero" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Complemento</mat-label>
+        <input [(ngModel)]="userParams.delivery_address.complemento" name="deliveryComplemento" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Bairro</mat-label>
+        <input [(ngModel)]="userParams.delivery_address.bairro" name="deliveryBairro" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Cidade</mat-label>
+        <input [(ngModel)]="userParams.delivery_address.cidade" name="deliveryCidade" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>UF</mat-label>
+        <input [(ngModel)]="userParams.delivery_address.uf" name="deliveryUf" matInput>
+    </mat-form-field>
+</div>
 
     <mat-form-field class="password-form" appearance="fill">
       <mat-label>Enter your password</mat-label>
@@ -44,7 +84,7 @@
 
      <mat-form-field class="password-form" appearance="fill">
       <mat-label>Confirm your password</mat-label>
-      <input [(ngModel)]="userParams.confirmPassword" name="password" matInput [type]="hide ? 'password' : 'text'" (input)="changeConfirm($event)">
+      <input [(ngModel)]="userParams.confirmPassword" name="password" matInput [type]="hide ? 'password' : 'text'">
       <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
