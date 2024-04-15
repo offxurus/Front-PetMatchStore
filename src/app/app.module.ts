@@ -26,9 +26,10 @@ import { HeaderClienteComponent } from './components/header-cliente/header-clien
 import { MatCardModule } from '@angular/material/card';
 import { DetailsProductsComponent } from './pages/details-products/details-products.component'; 
 import { CarrosselComponent } from './components/carrossel/carrossel.component';
+import { SignInClientComponent } from './pages/sign-in-client/sign-in-client.component';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, LoginClientComponent, HomeComponent, DialogGalleryComponent, DialogPreviewComponent, CarrosselComponent, HeaderClienteComponent, DetailsProductsComponent],
+  declarations: [AppComponent, DashboardComponent, LoginClientComponent, HomeComponent, DialogGalleryComponent, DialogPreviewComponent, CarrosselComponent, HeaderClienteComponent, DetailsProductsComponent, SignInClientComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

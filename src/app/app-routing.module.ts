@@ -27,6 +27,10 @@ const routes: Routes = [
     component: LoginClientComponent
   },
   {
+    path: 'sign-in-client',
+    component: SignInComponent
+  },
+  {
     path: 'list-user',
     loadChildren: () =>
       import('./pages/list-user/list-user.module').then((mod) => mod.ListUserModule),

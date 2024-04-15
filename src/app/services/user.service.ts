@@ -3,6 +3,7 @@ import { Injectable }                             from '@angular/core';
 import { Observable }                             from 'rxjs';
 import { environment }                            from 'src/environments/environment';
 import { ListUser, User, UserSignIn}  from '../interfaces/user';
+import { ClientSignIn } from '../interfaces/client';
 @Injectable({
   providedIn: 'root',
 })
@@ -32,7 +33,7 @@ export class UserService {
     })
   }
 
-  userSingIn(userParams: User): Observable<UserSignIn> {
+  userSingIn(userParams: User): Observable<UserSignIn> | Observable<ClientSignIn> {
     return new Observable<UserSignIn>((observer) => {
       this.http
         .post<UserSignIn>(`${environment.apiUrl}/user-sign-in`, userParams)
