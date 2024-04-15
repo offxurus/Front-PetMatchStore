@@ -1,19 +1,33 @@
-<app-header-cliente></app-header-cliente>
+<app-header></app-header>
 
 <section id="details">
     <div *ngIf="product" class="details-products">
         <!-- Carrossel de Imagens -->
+        <div class="gallery">
+            <div class="gallery">
+                <button class="prev"
+                (click)="prevSlide()">
+                    <mat-icon>keyboard_arrow_up</mat-icon>
+                </button>
+                <img *ngFor="let image of product.images" [src]="image" alt="Product Image">
+                <button class="next"
+                (click)="nextSlide()">
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                </button>
+              </div>
+          </div>
         <app-carrossel
         [imagens]="product.images ? product.images : []"
         ></app-carrossel>
-        <h2>{{ product.name }}</h2>
-        <p>Descrição: {{ product.description }}</p>
-        <p>Preço: {{ product.price }}</p>
-        <p>Avaliação: {{ product.rating }}</p>
-
-        <div class="buttons-container">
-            <button class="btn-comprar" [disabled]="true">Comprar</button>
-            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+        <div class="detalhes">
+            <h2>{{ product.name }}</h2>
+            <p>Descrição: {{ product.description }}</p>
+            <p>Preço: {{ product.price }}</p>
+            <p>Avaliação: {{ product.rating }}</p>
+            <div class="buttons-container">
+                <button class="btn-comprar" [disabled]="true">Comprar</button>
+                <button class="btn-adicionar">Adicionar ao Carrinho</button>
+            </div>
         </div>
     </div>
 </section>

@@ -1,21 +1,21 @@
-<app-header-cliente></app-header-cliente>
+<app-header></app-header>
 
 <section id="product-list">
-  <div class="product-card" *ngFor="let product of products">
-    <mat-card>
+  <div class="product-card">
+    <mat-card *ngFor="let product of products">
       <mat-card-header>
         <img [src]="product.image_default" alt="Product Image">
       </mat-card-header>
       <mat-card-content>
-        <h2>{{ product.name }}</h2>
-        <p>Descrição: {{ product.description }}</p>
-        <p>Preço: {{ product.price }}</p>
-      </mat-card-content>
-      <mat-card-footer>
-        <a mat-button color="primary"
+        <h2 class="title">{{ product && product.name && product.name.length > 20 ? product.name.slice(0, 20) + '...' : product.name }}</h2>
+        <p class="desc">{{ product && product.description && product.description.length > 80 ? product.description.slice(0, 80) + '...' : product.description }}</p>
+        <p class="price">Valor: R$ {{ product.price }}</p>
+        <mat-card-footer>
+          <a class="button"
           [routerLink]="['details-products/', product.id]"
           (click)="navigateToDetails(product.id ?? '')">+ Detalhes</a>
-      </mat-card-footer>
+        </mat-card-footer>
+      </mat-card-content>
     </mat-card>
   </div>
 </section>

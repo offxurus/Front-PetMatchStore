@@ -1,97 +1,91 @@
 @import '../../../assets/styles/variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 
 #product-list {
-    margin-top: 16vh;
+    margin-top: 25vh;
     background-color: $footer;
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    justify-content: space-between;
-    padding: 20px;
   }
   
   .product-card {
-    width: 30%;
-    margin-right: 30px;
-    margin-bottom: 20px;
-    background-color: $footer;
-    border-radius: 4px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-
-  }
+    display: grid;
+    grid-template-columns: 350px 350px 350px;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px; /* Espaço entre as colunas */
+    row-gap: 20px; /* Espaço entre as linhas */
+   }
   
-  
+  ::ng-deep{
   mat-card {
-    //padding: 10px;
-    min-height: 40vh !important;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    background-color: $light;
+    max-width: 350px;
+    min-height: 15vh !important;
+    background-color:#A9A9A9!important;
+    box-shadow:  rgb(0, 0, 0) 0px 10px 36px !important;
+    border-radius:30px !important ;
   
-    
-  mat-card-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 290px;
-    height: 100%;
-    margin: 0 !important;
-    padding: 0 !important;
-    
-    img {
-        height: 220px;
+    mat-card-header, mat-card-content{
+      width:100%;
+      min-height: 180px;
+    }
+
+    mat-card-header{
+      background-color: $light;
+      border-radius: 20px;
+      img{
         width: 100%;
+        max-width: 230px;
+        max-height: 200px;
         object-fit: contain;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    mat-card-content{
+      align-items: center;
+      justify-content: center;
+      width: 100% !important;
+      height: 200px !important;
+      margin-bottom: 30px;
+
+      .title{
+        text-align: center;
+        font-family: Montserrat;
+        //height: 60px;
+        font-size: 18px;
+
+      }
+      .desc{
+        text-align: justify;
+      }
+      .price{
+        font-weight: bold;
+        color: $dark !important;
+        font-size: 18px;
+      }
+      ::ng-deep{
+      mat-card-footer{
+        text-align: center;
         display: flex;
         align-items: center;
         justify-content: center;
+        margin: 0 !important;
+        padding: 8px;
+        margin-top: 30px;
+      }
+      mat-card-footer, a{
+          text-align: center;
+          text-decoration: none;
+          font-weight: bold;
+          background-color: $primary;
+          color: $dark;
+          border-radius: 5px;
+      }
     }
-    ::ng-deep{
-        .mat-card-header-text {
-            margin: 0 !important
-        }
-    }
-}
-  
-  mat-card-content {
-    h2 {
-      margin-top: 0;
-      margin-bottom: 8px;
-      color: $title;
-      font-size: 18px;
-    }
-  
-    p {
-      color: $title;
-      font-size: 14px;
-      margin-bottom: 4px;
     }
   }
-  
-  mat-card-footer {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-  
-    a {
-      background-color: $secondary;
-      text-decoration: none;
-      height: 30px;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 80px;
-      padding: 5px;
-      color: #fff;
-      font-size: 15px;
-      border-radius: 10px;
-      margin-bottom: 30px;
-    }
-  }
+   
+    
 }
   

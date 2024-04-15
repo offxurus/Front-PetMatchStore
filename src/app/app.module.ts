@@ -17,19 +17,17 @@ import { SharedModule } from './shared/shared.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { LoginModule } from './pages/login/login.module';
-import { LoginClientComponent } from './pages/login-client/login-client.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DialogGalleryComponent } from './components/dialog-gallery/dialog-gallery.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { DialogPreviewComponent } from './components/dialog-preview/dialog-preview.component';
-import { HeaderClienteComponent } from './components/header-cliente/header-cliente.component';
 import { MatCardModule } from '@angular/material/card';
 import { DetailsProductsComponent } from './pages/details-products/details-products.component'; 
 import { CarrosselComponent } from './components/carrossel/carrossel.component';
-import { SignInClientComponent } from './pages/sign-in-client/sign-in-client.component';
+import { SigninClientComponent } from './pages/signin-client/signin-client.component';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, LoginClientComponent, HomeComponent, DialogGalleryComponent, DialogPreviewComponent, CarrosselComponent, HeaderClienteComponent, DetailsProductsComponent, SignInClientComponent],
+  declarations: [AppComponent, DashboardComponent,  HomeComponent, DialogGalleryComponent, DialogPreviewComponent, CarrosselComponent, DetailsProductsComponent, SigninClientComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

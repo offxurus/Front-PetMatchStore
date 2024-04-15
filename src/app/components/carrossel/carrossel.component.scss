@@ -1,14 +1,19 @@
+@import '../../../assets/styles/variables.scss';
+
+
 .item {
     background-size: cover;
     background-repeat: no-repeat;
-    height: 300px;
+    height: 600px;
     transition: all 0.5s ease-in-out;
+    border-radius: 30px;
   }
   
   .botoes-controle {
     display: flex;
-    gap: 10px;
     justify-content: center;
+    align-items: center;
+    gap: 10px;
     margin-top: 8px;
   }
   
@@ -19,9 +24,10 @@
     cursor: pointer;
     height: 12px;
     width: 12px;
+    display: flex;
   }
   
   .botoes-controle button.ativo {
-    background: #ff0000;
+    background: $primary;
     cursor: default;
   }
