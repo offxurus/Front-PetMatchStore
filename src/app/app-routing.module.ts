@@ -5,9 +5,9 @@ import { SignInComponent }      from './pages/sign-in/sign-in.component';
 import { ListUserComponent } from './pages/list-user/list-user.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CreateProductComponent } from './pages/create-product/create-product.component';
-import { LoginClientComponent } from './pages/login-client/login-client.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DetailsProductsComponent } from './pages/details-products/details-products.component';
+import { SigninClientComponent } from './pages/signin-client/signin-client.component';
 const routes: Routes = [
   {
     path: 'login',
@@ -21,10 +21,6 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent
-  },
-  {
-    path: 'login-client',
-    component: LoginClientComponent
   },
   {
     path: 'list-user',
@@ -56,6 +52,10 @@ const routes: Routes = [
   {
     path: 'details-products/:id', 
     component: DetailsProductsComponent
+  },
+  {
+    path: 'signin-client', 
+    component: SigninClientComponent
   },
 ];
 
