@@ -9,8 +9,8 @@ export interface Client {
     active?: boolean;
     birth_date?: Date;
     gender?: string;
-    billing_address?: string;
-    delivery_address?: string[];
+    billing_address?: ClientAdress;
+    delivery_address?: ClientAdress[];
 }
 
 export interface ClientSignIn {

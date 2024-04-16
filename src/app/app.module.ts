@@ -24,10 +24,12 @@ import { DialogPreviewComponent } from './components/dialog-preview/dialog-previ
 import { MatCardModule } from '@angular/material/card';
 import { DetailsProductsComponent } from './pages/details-products/details-products.component'; 
 import { CarrosselComponent } from './components/carrossel/carrossel.component';
+import { SignInClientComponent } from './pages/sign-in-client/sign-in-client.component';
 import { SigninClientComponent } from './pages/signin-client/signin-client.component';
 
+
 @NgModule({
-  declarations: [AppComponent, DashboardComponent,  HomeComponent, DialogGalleryComponent, DialogPreviewComponent, CarrosselComponent, DetailsProductsComponent, SigninClientComponent],
+  declarations: [AppComponent, DashboardComponent,  HomeComponent, DialogGalleryComponent, DialogPreviewComponent, CarrosselComponent, DetailsProductsComponent, SignInClientComponent, SigninClientComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -8,6 +8,7 @@ import { CreateProductComponent } from './pages/create-product/create-product.co
 import { HomeComponent } from './pages/home/home.component';
 import { DetailsProductsComponent } from './pages/details-products/details-products.component';
 import { SigninClientComponent } from './pages/signin-client/signin-client.component';
+import { SignInClientComponent } from './pages/sign-in-client/sign-in-client.component';
 const routes: Routes = [
   {
     path: 'login',
@@ -24,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'sign-in-client',
-    component: SignInComponent
+    component: SignInClientComponent
   },
   {
     path: 'list-user',
