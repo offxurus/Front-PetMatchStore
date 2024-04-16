@@ -1,0 +1,36 @@
+.container{
+    margin-top: 20vh;
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-content: flex-start;
+
+    .perfil{
+        width: 30%;
+        margin-right: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img{
+            width: 250px;
+            height: auto;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        ::ng-deep{
+            mat-card{
+                .mat-card-header-text{
+                    margin: 0 !important;
+                }
+            }
+        }
+    }
+    .container2{
+        width: 70%;
+    }
+}

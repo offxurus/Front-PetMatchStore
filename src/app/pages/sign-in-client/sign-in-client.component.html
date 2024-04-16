@@ -2,7 +2,7 @@
 
 <div class="container-content">
   <div class="login-title">
-    <span>Xdd</span>
+    <span>Cadastre-se</span>
   </div>
   <div class="sign-in-description">
     <span>
@@ -92,9 +92,8 @@
     </mat-form-field>
   </div>
 
-  <mat-checkbox [(ngModel)]="useSameAddress" (change)="toggleUseSameAddress()">Usar mesmo endereço de faturamento para entrega</mat-checkbox>
-
-
+    <mat-checkbox name="useSameAddress" [(ngModel)]="useSameAddress" (change)="toggleUseSameAddress()">Usar mesmo endereço de faturamento para entrega</mat-checkbox>
+  
 
     <div class="delivery-address" *ngFor="let address of userParams.delivery_address; let i = index">
       <h3>Endereços de Entrega</h3>

@@ -7,8 +7,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CreateProductComponent } from './pages/create-product/create-product.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DetailsProductsComponent } from './pages/details-products/details-products.component';
-import { SigninClientComponent } from './pages/signin-client/signin-client.component';
 import { SignInClientComponent } from './pages/sign-in-client/sign-in-client.component';
+import { ClientLoggedComponent } from './pages/client-logged/client-logged.component';
 const routes: Routes = [
   {
     path: 'login',
@@ -59,9 +59,9 @@ const routes: Routes = [
     component: DetailsProductsComponent
   },
   {
-    path: 'signin-client', 
-    component: SigninClientComponent
-  },
+    path: 'client-logged', 
+    component: ClientLoggedComponent
+  }
 ];
 
 @NgModule({
