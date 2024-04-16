@@ -92,47 +92,52 @@
     </mat-form-field>
   </div>
 
-  <div class="delivery-address" *ngFor="let address of userParams.delivery_address; let i = index">
-    <h3>Endereços de Entrega</h3>
-    <mat-form-field appearance="fill">
-        <mat-label>CEP</mat-label>
-        <input [(ngModel)]="address.cep" name="deliveryCep" matInput>
-    </mat-form-field>
+  <mat-checkbox [(ngModel)]="useSameAddress" (change)="toggleUseSameAddress()">Usar mesmo endereço de faturamento para entrega</mat-checkbox>
 
-    <mat-form-field appearance="fill">
-        <mat-label>Logradouro</mat-label>
-        <input [(ngModel)]="address.logradouro" name="deliveryLogradouro" matInput>
-    </mat-form-field>
 
-    <mat-form-field appearance="fill">
-        <mat-label>Número</mat-label>
-        <input [(ngModel)]="address.numero" name="deliveryNumero" matInput>
-    </mat-form-field>
 
-    <mat-form-field appearance="fill">
-        <mat-label>Complemento</mat-label>
-        <input [(ngModel)]="address.complemento" name="deliveryComplemento" matInput>
-    </mat-form-field>
+    <div class="delivery-address" *ngFor="let address of userParams.delivery_address; let i = index">
+      <h3>Endereços de Entrega</h3>
+      <mat-form-field appearance="fill">
+          <mat-label>CEP</mat-label>
+          <input [(ngModel)]="address.cep" name="deliveryCep" matInput>
+      </mat-form-field>
 
-    <mat-form-field appearance="fill">
-        <mat-label>Bairro</mat-label>
-        <input [(ngModel)]="address.bairro" name="deliveryBairro" matInput>
-    </mat-form-field>
+      <mat-form-field appearance="fill">
+          <mat-label>Logradouro</mat-label>
+          <input [(ngModel)]="address.logradouro" name="deliveryLogradouro" matInput>
+      </mat-form-field>
 
-    <mat-form-field appearance="fill">
-        <mat-label>Cidade</mat-label>
-        <input [(ngModel)]="address.cidade" name="deliveryCidade" matInput>
-    </mat-form-field>
+      <mat-form-field appearance="fill">
+          <mat-label>Número</mat-label>
+          <input [(ngModel)]="address.numero" name="deliveryNumero" matInput>
+      </mat-form-field>
 
-    <mat-form-field appearance="fill">
-        <mat-label>UF</mat-label>
-        <input [(ngModel)]="address.uf" name="deliveryUf" matInput>
-    </mat-form-field>
+      <mat-form-field appearance="fill">
+          <mat-label>Complemento</mat-label>
+          <input [(ngModel)]="address.complemento" name="deliveryComplemento" matInput>
+      </mat-form-field>
 
-    <button type="button" (click)="removeAddress(i)">Remover Endereço</button>
-  </div>
+      <mat-form-field appearance="fill">
+          <mat-label>Bairro</mat-label>
+          <input [(ngModel)]="address.bairro" name="deliveryBairro" matInput>
+      </mat-form-field>
 
-  <button type="button" (click)="addAddress()">Adicionar Endereço</button>
+      <mat-form-field appearance="fill">
+          <mat-label>Cidade</mat-label>
+          <input [(ngModel)]="address.cidade" name="deliveryCidade" matInput>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+          <mat-label>UF</mat-label>
+          <input [(ngModel)]="address.uf" name="deliveryUf" matInput>
+      </mat-form-field>
+
+      <button type="button" (click)="removeAddress(i)">Remover Endereço</button>
+    </div>
+
+  <button *ngIf="(useSameAddress)" type="button" (click)="addAddress()">Adicionar Endereço</button>
+
 
 
 

@@ -14,6 +14,7 @@ import { CepService } from 'src/app/services/cep.service';
 export class SignInClientComponent implements OnInit {
 
   public hide: boolean = true;
+  public useSameAddress: boolean = true;
   public userParams: Client = {
      email: '', password: '', name: '', cpf: '',
      group: 'cliente', active: true, birth_date: new Date(), gender: '',
@@ -45,42 +46,17 @@ export class SignInClientComponent implements OnInit {
     }
   }
 
-  useSameAddress: boolean = false;
-
-  copyBillingAddress(event: any) {
-    if (event.checked) {
-      if (this.userParams && this.userParams.billing_address) {
-        if (this.userParams.delivery_address) {
-          this.userParams.delivery_address.forEach(address => {
-            address.cep = this.userParams.billing_address?.cep;
-            address.logradouro = this.userParams.billing_address?.logradouro;
-            address.numero = this.userParams.billing_address?.numero;
-            address.complemento = this.userParams.billing_address?.complemento;
-            address.bairro = this.userParams.billing_address?.bairro;
-            address.cidade = this.userParams.billing_address?.cidade;
-            address.uf = this.userParams.billing_address?.uf;
-          });
-        }
-      }
+  toggleUseSameAddress(): void {
+    if (this.useSameAddress) {
+      this.userParams.delivery_address = [Object.assign({}, this.userParams.billing_address)];
+    console.log(this.useSameAddress);
     } else {
-      if (this.userParams && this.userParams.delivery_address) {
-        this.userParams.delivery_address.forEach(address => {
-          address.cep = '';
-          address.logradouro = '';
-          address.numero = '';
-          address.complemento = '';
-          address.bairro = '';
-          address.cidade = '';
-          address.uf = '';
-        });
-      }
+      this.userParams.delivery_address = [];
+      console.log(this.useSameAddress);
+      console.log('Checkbox 2!');
     }
   }
-
-  toggleUseSameAddress() {
-    this.useSameAddress = !this.useSameAddress;
-    this.copyBillingAddress({ checked: this.useSameAddress });
-  }
+  
 
   onSubmit() {
     if(this.confirmation) {

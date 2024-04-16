@@ -26,6 +26,7 @@ import { DetailsProductsComponent } from './pages/details-products/details-produ
 import { CarrosselComponent } from './components/carrossel/carrossel.component';
 import { SignInClientComponent } from './pages/sign-in-client/sign-in-client.component';
 import { SigninClientComponent } from './pages/signin-client/signin-client.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { SigninClientComponent } from './pages/signin-client/signin-client.compo
     FormsModule, 
     LoginModule,
     MatToolbarModule, 
-    MatCardModule
+    MatCardModule,
+    MatCheckboxModule
   ],
   providers: [UserService, HttpClient],
   bootstrap: [AppComponent],
