@@ -90,17 +90,27 @@ export class SignInClientComponent implements OnInit {
   consultaCep(cepInput: HTMLInputElement) {
     const cep = cepInput.value;
     this.cepService.buscar(cep).subscribe((dados: any) => {
-      this.populaForm(dados);
+      this.populaFormBilling(dados);
       this.userParams.billing_address = { ...this.userParams.billing_address, ...dados };
     });
   }
-  
 
-  populaForm(dados: any) {
-    const logradouroInput = (document.querySelector('[name="deliveryLogradouro"]') as HTMLInputElement);
-    const bairroInput = (document.querySelector('[name="deliveryBairro"]') as HTMLInputElement);
-    const cidadeInput = (document.querySelector('[name="deliveryCidade"]') as HTMLInputElement); 
-    const ufInput = (document.querySelector('[name="deliveryUf"]') as HTMLInputElement);
+  consultaCepEntrega(cepInput: HTMLInputElement, addressIndex: number) {
+    const cep = cepInput.value;
+    this.cepService.buscar(cep).subscribe((dados: any) => {
+      if (this.userParams.delivery_address && this.userParams.delivery_address.length > addressIndex) {
+        this.populaFormDelivery(dados, addressIndex);
+      } else {
+        console.error("Endereço de entrega não encontrado ou índice inválido.");
+      }
+    });
+  }
+  
+  populaFormBilling(dados: any) {
+    const logradouroInput = (document.querySelector('[name="BillingLogradouro"]') as HTMLInputElement);
+    const bairroInput = (document.querySelector('[name="BillingBairro"]') as HTMLInputElement);
+    const cidadeInput = (document.querySelector('[name="BillingCidade"]') as HTMLInputElement); 
+    const ufInput = (document.querySelector('[name="BillingUf"]') as HTMLInputElement);
   
     if (logradouroInput) {
       logradouroInput.value = dados.logradouro;
@@ -118,7 +128,18 @@ export class SignInClientComponent implements OnInit {
       ufInput.value = dados.uf;
     }
   }
-  
+
+  populaFormDelivery(dados: any, addressIndex: number) {
+    if (this.userParams.delivery_address && this.userParams.delivery_address.length > addressIndex) {
+      const address = this.userParams.delivery_address[addressIndex];
+      address.logradouro = dados.logradouro;
+      address.bairro = dados.bairro;
+      address.cidade = dados.localidade;
+      address.uf = dados.uf;
+    } else {
+      console.error("Endereço de entrega não encontrado ou índice inválido.");
+    }
+  }
   
   addAddress(){
     if(this.userParams.delivery_address)

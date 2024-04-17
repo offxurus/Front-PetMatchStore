@@ -22,23 +22,23 @@
         </mat-expansion-panel-header>
         <mat-form-field>
           <mat-label>Nome</mat-label>
-          <input matInput [(ngModel)]="currentUser.name"> <!-- Vincula ao nome do usuário -->
+          <input matInput [(ngModel)]="currentUser.name">
         </mat-form-field>
         <mat-form-field>
           <mat-label>Data de nascimento: </mat-label>
-          <input matInput type="date" [(ngModel)]="currentUser.birth_date"> <!-- Vincula à data de nascimento do usuário -->
+          <input matInput type="date" [(ngModel)]="currentUser.birth_date">
         </mat-form-field>
         <mat-form-field>
           <mat-label>CPF: </mat-label>
-          <input matInput [(ngModel)]="currentUser.cpf"> <!-- Vincula ao CPF do usuário -->
+          <input matInput [(ngModel)]="currentUser.cpf" readonly class="mat-input-disabled">
         </mat-form-field>
         <mat-form-field>
           <mat-label>Gênero: </mat-label>
-          <input matInput [(ngModel)]="currentUser.gender"> <!-- Vincula ao gênero do usuário -->
+          <input matInput [(ngModel)]="currentUser.gender">
         </mat-form-field>
         <mat-form-field>
           <mat-label>E-mail: </mat-label>
-          <input matInput [(ngModel)]="currentUser.email"> <!-- Vincula ao e-mail do usuário -->
+          <input matInput [(ngModel)]="currentUser.email" readonly class="mat-input-disabled">
         </mat-form-field>
       </mat-expansion-panel>
 
@@ -50,12 +50,6 @@
           </mat-panel-title>
           <button mat-icon-button (click)="toggleEditBillingAddress()">
             <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button (click)="deleteBillingAddress()">
-            <mat-icon>delete</mat-icon>
-          </button>
-          <button mat-icon-button (click)="setAsDefaultBillingAddress()">
-            <mat-icon>star_border</mat-icon>
           </button>
         </mat-expansion-panel-header>
         <div *ngIf="!editBillingMode">
@@ -102,21 +96,26 @@
       </mat-expansion-panel>
 
       <!-- Painel de Endereços de Entrega -->
-      <ng-container *ngFor="let address of currentUser.delivery_address">
+      <div *ngFor="let address of currentUser.delivery_address; let i = index">
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
               Endereço de Entrega
             </mat-panel-title>
-            <button mat-icon-button (click)="toggleEditDeliveryAddress(address)">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button (click)="deleteDeliveryAddress(address)">
-              <mat-icon>delete</mat-icon>
-            </button>
-            <button mat-icon-button (click)="setAsDefaultDeliveryAddress(address)">
-              <mat-icon>star_border</mat-icon>
-            </button>
+            <ng-container *ngIf="!address.isDefault">
+              <button mat-icon-button (click)="toggleEditDeliveryAddress(address)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="deleteDeliveryAddress(i)">
+                <mat-icon>delete</mat-icon>
+              </button>
+              <button mat-icon-button (click)="setAsDefaultDeliveryAddress(address)">
+                <mat-icon>star_border</mat-icon>
+              </button>
+            </ng-container>
+            <ng-container *ngIf="address.isDefault">
+              <span>(Padrão)</span>
+            </ng-container>
           </mat-expansion-panel-header>
           <div *ngIf="!address.editMode">
             <!-- Campos de visualização do endereço de entrega -->
@@ -160,9 +159,7 @@
             </mat-form-field>
           </div>
         </mat-expansion-panel>
-
-      </ng-container>
-      
+      </div>
 
     </mat-accordion>
     <button mat-raised-button color="primary" (click)="addNewDeliveryAddress()">Adicionar Endereço de Entrega</button>

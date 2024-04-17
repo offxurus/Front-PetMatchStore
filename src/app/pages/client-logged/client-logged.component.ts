@@ -6,6 +6,7 @@ import { User } from 'src/app/interfaces/user';
 import { CepService } from 'src/app/services/cep.service';
 import { ClientService } from 'src/app/services/client.service';
 import { UserService } from 'src/app/services/user.service';
+import { ClientAdress } from 'src/app/interfaces/client'
 
 @Component({
   selector: 'app-client-logged',
@@ -53,22 +54,24 @@ export class ClientLoggedComponent implements OnInit {
     this.editBillingMode = !this.editBillingMode;
   }
 
-  deleteBillingAddress() {
-  }
-
-  setAsDefaultBillingAddress() {
-  }
-
-
   toggleEditDeliveryAddress(address: any) {
 
   }
 
-  deleteDeliveryAddress(address: any) {
+  deleteDeliveryAddress(addressIndex: number) {
+    if(addressIndex >= 0 && addressIndex< this.currentUser.delivery_address.length) {
+      this.currentUser.delivery_address.splice(addressIndex, 1);
+    }
   }
 
-  setAsDefaultDeliveryAddress(address: any) {
+  setAsDefaultDeliveryAddress(address: ClientAdress) {
+    this.currentUser.delivery_address.forEach((addr: ClientAdress) => {
+      addr.isDefault = false;
+    });
+    address.isDefault = true;
   }
+  
+  
 
   addNewDeliveryAddress() {
     const newAddress = {
@@ -99,7 +102,8 @@ export class ClientLoggedComponent implements OnInit {
         if (this.currentUser.password == this.oldPassword)
           this.currentUser.password = '';
         this._clientService.updateClient(this.currentUser).subscribe(
-          () => {
+          (client) => {
+            localStorage.setItem('currentUser', JSON.stringify(client));
             this._router.navigate(['/']);
           },
           (error) => {

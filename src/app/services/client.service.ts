@@ -36,6 +36,21 @@ export class ClientService {
         });
       }
 
+      getUser(clientParams: Client): Observable<Client>{
+        return new Observable<Client>((observer)=> {
+          this.http.get<Client>(`${environment.apiUrl}/client/${clientParams.id}`).subscribe(
+            (client) => {
+              observer.next(client);
+              observer.complete();
+            },
+            () => {
+              observer.error('error_get_client');
+              observer.complete();
+            }
+          )
+        })
+      }
+
       updateClient(clientParams: Client): Observable<Client> {
         return new Observable<Client>((observer) => {
           this.http.post<Client>(`${environment.apiUrl}/client/${clientParams.id}`, clientParams, this.httpOptions).subscribe(

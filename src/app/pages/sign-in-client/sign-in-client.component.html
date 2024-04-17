@@ -58,39 +58,39 @@
     <h3>Endereço de Faturamento</h3>
     <mat-form-field appearance="fill">
       <mat-label>CEP</mat-label>
-      <input [(ngModel)]="userParams.billing_address.cep" name="deliveryCep" matInput #cepInput>
+      <input [(ngModel)]="userParams.billing_address.cep" name="BillingCep" matInput #cepInput>
   </mat-form-field>
   
   <button mat-button type="button" (click)="consultaCep(cepInput)">Consultar CEP</button>
 
     <mat-form-field appearance="fill">
         <mat-label>Logradouro</mat-label>
-        <input [(ngModel)]="userParams.billing_address.logradouro" name="deliveryLogradouro" matInput>
+        <input [(ngModel)]="userParams.billing_address.logradouro" name="BillingLogradouro" matInput>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
         <mat-label>Número</mat-label>
-        <input [(ngModel)]="userParams.billing_address.numero" name="deliveryNumero" matInput>
+        <input [(ngModel)]="userParams.billing_address.numero" name="BillingNumero" matInput>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
         <mat-label>Complemento</mat-label>
-        <input [(ngModel)]="userParams.billing_address.complemento" name="deliveryComplemento" matInput>
+        <input [(ngModel)]="userParams.billing_address.complemento" name="BillingComplemento" matInput>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
         <mat-label>Bairro</mat-label>
-        <input [(ngModel)]="userParams.billing_address.bairro" name="deliveryBairro" matInput>
+        <input [(ngModel)]="userParams.billing_address.bairro" name="BillingBairro" matInput>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
         <mat-label>Cidade</mat-label>
-        <input [(ngModel)]="userParams.billing_address.cidade" name="deliveryCidade" matInput>
+        <input [(ngModel)]="userParams.billing_address.cidade" name="BillingCidade" matInput>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
         <mat-label>UF</mat-label>
-        <input [(ngModel)]="userParams.billing_address.uf" name="deliveryUf" matInput>
+        <input [(ngModel)]="userParams.billing_address.uf" name="BillingUf" matInput>
     </mat-form-field>
   </div>
 
@@ -100,10 +100,12 @@
     <ng-container *ngIf="!(useSameAddress)">
       <div class="delivery-address" *ngFor="let address of userParams.delivery_address; let i = index">
         <h3>Endereços de Entrega</h3>
+        <!-- Dentro do ngFor que itera sobre os endereços de entrega -->
         <mat-form-field appearance="fill">
-            <mat-label>CEP</mat-label>
-            <input [(ngModel)]="address.cep" name="deliveryCep" matInput>
+          <mat-label>CEP</mat-label>
+          <input [(ngModel)]="address.cep" name="deliveryCep" matInput #cepInput>
         </mat-form-field>
+        <button mat-button type="button" (click)="consultaCepEntrega(cepInput, i)">Consultar CEP</button>
 
         <mat-form-field appearance="fill">
             <mat-label>Logradouro</mat-label>

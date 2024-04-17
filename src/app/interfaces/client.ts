@@ -28,4 +28,5 @@ export interface ClientSignIn {
     bairro?: string;
     cidade?: string;
     uf?: string;
+    isDefault?: boolean;
   }
