@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogLoginClientComponent } from 'src/app/components/dialog-login-client/dialog-login-client.component';
 
 @Component({
   selector: 'app-login',
@@ -49,23 +48,12 @@ export class LoginComponent implements OnInit {
             } else if (response.group !== 'cliente') {
               this._router.navigate(['/dashboard']);
             } else {
-              this.openDialog();
-              this.showLoading = false;
+              this._router.navigate(['/']);
             }
           }
         },
         () => (this.showLoading = false)
       );
     }
-  }
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogLoginClientComponent, {
-      width: '250px',
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-    });
   }
 }

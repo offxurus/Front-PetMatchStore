@@ -1,120 +1,171 @@
 <app-header></app-header>
 
 <div class="container">
-    <div class="perfil">
-        <mat-card>
-            <mat-card-header>
-                <img src="assets/perfil2.png">
-            </mat-card-header>
-            <mat-card-content>
-                <h1>Nome: </h1>
-            </mat-card-content>
-        </mat-card>
-    </div>
-    <div class="container2">
-          <mat-accordion class="example-headers-align" multi> 
-            <mat-expansion-panel> 
-              <mat-expansion-panel-header> 
-                <mat-panel-title>
-                  Dados pessoais
-                </mat-panel-title> 
-              </mat-expansion-panel-header>
-              <mat-form-field> 
-                <mat-label>Nome</mat-label> 
-                <input matInput> 
-              </mat-form-field>
-              <mat-form-field> 
-                <mat-label>Data de nascimento: </mat-label> 
-                <input matInput type="number" min="1"> 
-              </mat-form-field>
-              <mat-form-field> 
-                <mat-label>CPF: </mat-label> 
-                <input matInput type="number" min="1"> 
-              </mat-form-field>
-              <mat-form-field> 
-                <mat-label>Gênero: </mat-label> 
-                <input matInput> 
-              </mat-form-field>
-              <mat-form-field> 
-                <mat-label>E-mail: </mat-label> 
-                <input matInput> 
-              </mat-form-field>
-            </mat-expansion-panel> 
-            <mat-expansion-panel> 
-              <mat-expansion-panel-header> 
-                <mat-panel-title>
-                  Meus Endereços
-                </mat-panel-title> 
-              </mat-expansion-panel-header>
-              <mat-expansion-panel-header> 
-                <mat-panel-title>
-                    Endereço de entrega
-                </mat-panel-title> 
-            </mat-expansion-panel-header>
-                <mat-form-field> 
-                    <mat-label>CEP </mat-label> 
-                    <input matInput> 
-                </mat-form-field>
-                <mat-form-field> 
-                    <mat-label>Logradouro </mat-label> 
-                    <input matInput> 
-                </mat-form-field>
-                <mat-form-field> 
-                    <mat-label>Bairro </mat-label> 
-                    <input matInput> 
-                </mat-form-field>
-                <mat-form-field> 
-                    <mat-label>Cidade </mat-label> 
-                    <input matInput> 
-                </mat-form-field>
-                <mat-form-field> 
-                    <mat-label>UF </mat-label> 
-                    <input matInput> 
-                </mat-form-field>
-                <mat-form-field> 
-                    <mat-label>Número </mat-label> 
-                    <input matInput> 
-                </mat-form-field>
-                <mat-form-field> 
-                    <mat-label>Complemento </mat-label> 
-                    <input matInput> 
-                </mat-form-field>
-                <mat-expansion-panel> 
-                <mat-expansion-panel-header> 
-                    <mat-panel-title>
-                        Endereço de Faturamento
-                    </mat-panel-title> 
-                </mat-expansion-panel-header>
-                    <mat-form-field> 
-                        <mat-label>CEP </mat-label> 
-                        <input matInput> 
-                    </mat-form-field>
-                    <mat-form-field> 
-                        <mat-label>Logradouro </mat-label> 
-                        <input matInput> 
-                    </mat-form-field>
-                    <mat-form-field> 
-                        <mat-label>Bairro </mat-label> 
-                        <input matInput> 
-                    </mat-form-field>
-                    <mat-form-field> 
-                        <mat-label>Cidade </mat-label> 
-                        <input matInput> 
-                    </mat-form-field>
-                    <mat-form-field> 
-                        <mat-label>UF </mat-label> 
-                        <input matInput> 
-                    </mat-form-field>
-                    <mat-form-field> 
-                        <mat-label>Número </mat-label> 
-                        <input matInput> 
-                    </mat-form-field>
-                    <mat-form-field> 
-                        <mat-label>Complemento </mat-label> 
-                        <input matInput> 
-                    </mat-form-field>
-            </mat-expansion-panel> 
-            </mat-expansion-panel>
-          </mat-accordion>
-    </div>
+  <div class="perfil">
+    <mat-card>
+      <mat-card-header>
+        <img src="assets/perfil2.png">
+      </mat-card-header>
+      <mat-card-content>
+        <h1>Nome: {{ currentUser.name }}</h1> <!-- Exibe o nome do usuário -->
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="container2">
+    <mat-accordion class="example-headers-align" multi>
+      <!-- Painel de Dados Pessoais -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Dados pessoais
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-form-field>
+          <mat-label>Nome</mat-label>
+          <input matInput [(ngModel)]="currentUser.name"> <!-- Vincula ao nome do usuário -->
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Data de nascimento: </mat-label>
+          <input matInput type="date" [(ngModel)]="currentUser.birth_date"> <!-- Vincula à data de nascimento do usuário -->
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>CPF: </mat-label>
+          <input matInput [(ngModel)]="currentUser.cpf"> <!-- Vincula ao CPF do usuário -->
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Gênero: </mat-label>
+          <input matInput [(ngModel)]="currentUser.gender"> <!-- Vincula ao gênero do usuário -->
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>E-mail: </mat-label>
+          <input matInput [(ngModel)]="currentUser.email"> <!-- Vincula ao e-mail do usuário -->
+        </mat-form-field>
+      </mat-expansion-panel>
+
+      <!-- Painel de Endereço de Faturamento -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Endereço de Faturamento
+          </mat-panel-title>
+          <button mat-icon-button (click)="toggleEditBillingAddress()">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="deleteBillingAddress()">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-icon-button (click)="setAsDefaultBillingAddress()">
+            <mat-icon>star_border</mat-icon>
+          </button>
+        </mat-expansion-panel-header>
+        <div *ngIf="!editBillingMode">
+          <!-- Campos de visualização do endereço de faturamento -->
+          <p>CEP: {{ currentUser.billing_address.cep }}</p>
+          <p>Logradouro: {{ currentUser.billing_address.logradouro }}</p>
+          <p>Bairro: {{ currentUser.billing_address.bairro }}</p>
+          <p>Cidade: {{ currentUser.billing_address.cidade }}</p>
+          <p>UF: {{ currentUser.billing_address.uf }}</p>
+          <p>Número: {{ currentUser.billing_address.numero }}</p>
+          <p>Complemento: {{ currentUser.billing_address.complemento }}</p>
+        </div>
+        <div *ngIf="editBillingMode">
+          <!-- Campos de edição do endereço de faturamento -->
+          <mat-form-field>
+            <mat-label>CEP </mat-label>
+            <input matInput [(ngModel)]="currentUser.billing_address.cep" placeholder="CEP">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Logradouro </mat-label>
+            <input matInput [(ngModel)]="currentUser.billing_address.logradouro" placeholder="logradouro">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Bairro </mat-label>
+            <input matInput [(ngModel)]="currentUser.billing_address.bairro" placeholder="bairro">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Cidade </mat-label>
+            <input matInput [(ngModel)]="currentUser.billing_address.cidade" placeholder="cidade">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>UF </mat-label>
+            <input matInput [(ngModel)]="currentUser.billing_address.uf" placeholder="uf">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Número </mat-label>
+            <input matInput [(ngModel)]="currentUser.billing_address.numero" placeholder="numero">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Complemento </mat-label>
+            <input matInput [(ngModel)]="currentUser.billing_address.complemento" placeholder="complemento">
+          </mat-form-field>
+        </div>
+      </mat-expansion-panel>
+
+      <!-- Painel de Endereços de Entrega -->
+      <ng-container *ngFor="let address of currentUser.delivery_address">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Endereço de Entrega
+            </mat-panel-title>
+            <button mat-icon-button (click)="toggleEditDeliveryAddress(address)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="deleteDeliveryAddress(address)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-icon-button (click)="setAsDefaultDeliveryAddress(address)">
+              <mat-icon>star_border</mat-icon>
+            </button>
+          </mat-expansion-panel-header>
+          <div *ngIf="!address.editMode">
+            <!-- Campos de visualização do endereço de entrega -->
+            <p>CEP: {{ address.cep }}</p>
+            <p>Logradouro: {{ address.logradouro }}</p>
+            <p>Bairro: {{ address.bairro }}</p>
+            <p>Cidade: {{ address.cidade }}</p>
+            <p>UF: {{ address.uf }}</p>
+            <p>Número: {{ address.numero }}</p>
+            <p>Complemento: {{ address.complemento }}</p>
+          </div>
+          <div *ngIf="address.editMode">
+            <!-- Campos de edição do endereço de entrega -->
+            <mat-form-field>
+              <mat-label>CEP </mat-label>
+              <input matInput [(ngModel)]="address.cep" placeholder="CEP">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Logradouro </mat-label>
+              <input matInput [(ngModel)]="address.logradouro" placeholder="logradouro">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Bairro </mat-label>
+              <input matInput [(ngModel)]="address.bairro" placeholder="bairro">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Cidade </mat-label>
+              <input matInput [(ngModel)]="address.cidade" placeholder="cidade">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>UF </mat-label>
+              <input matInput [(ngModel)]="address.uf" placeholder="uf">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Número </mat-label>
+              <input matInput [(ngModel)]="address.numero" placeholder="numero">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Complemento </mat-label>
+              <input matInput [(ngModel)]="address.complemento" placeholder="complemento">
+            </mat-form-field>
+          </div>
+        </mat-expansion-panel>
+
+      </ng-container>
+      
+
+    </mat-accordion>
+    <button mat-raised-button color="primary" (click)="addNewDeliveryAddress()">Adicionar Endereço de Entrega</button>
+  </div>
+  <button (click)="onSubmit()">Salvar alterações</button>
 </div>

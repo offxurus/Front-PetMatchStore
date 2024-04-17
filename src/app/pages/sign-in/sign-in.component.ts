@@ -62,11 +62,11 @@ export class SignInComponent implements OnInit {
   }
 
   changeConfirm(event: any) {
-    if(event.target.value){
-    const confirmPassword = event.target.value;
-    this.confirmation = (this.userParams.password === confirmPassword);
+    if(event.target.value) {
+      const confirmPassword = event.target.value;
+      this.confirmation = (this.userParams.password === confirmPassword);
     }
-    else{
+    else {
       this.confirmation = false;
     }
   }

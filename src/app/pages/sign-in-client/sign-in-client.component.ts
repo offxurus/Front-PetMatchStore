@@ -49,37 +49,31 @@ export class SignInClientComponent implements OnInit {
   toggleUseSameAddress(): void {
     if (this.useSameAddress) {
       this.userParams.delivery_address = [Object.assign({}, this.userParams.billing_address)];
-    console.log(this.useSameAddress);
+    console.log('Checkbox 1!');
     } else {
       this.userParams.delivery_address = [];
-      console.log(this.useSameAddress);
       console.log('Checkbox 2!');
+    }
+  }
+
+  changeConfirm(event: any) {
+    if(event.target.value) {
+      const confirmPassword = event.target.value;
+      this.confirmation = (this.userParams.password === confirmPassword);
+    }
+    else {
+      this.confirmation = false;
     }
   }
   
 
   onSubmit() {
     if(this.confirmation) {
-      this.showLoading = true;
-      if (this.isUpdating) {
-        if(this.userParams.password == this.oldPassword)
-          this.userParams.password = '';
-        this._clientService.updateClient(this.userParams).subscribe(
-          () => {
-            this.showLoading = false;
-            this._router.navigate(['/dashboard']);
-          },
-          (error) => {
-            this.showLoading = false;
-            console.error('Erro ao atualizar usuário:', error);
-          }
-        );
-      } else {
         this._clientService.createClient(this.userParams).subscribe(
           (response) => {
             this.showLoading = false;
             if (response.id)
-              this._router.navigate(['/dashboard'], { state: { id: response.id } });
+              this._router.navigate(['/login'], { state: { id: response.id } });
             else
               alert('Usuário não encontrado');
           },
@@ -88,7 +82,6 @@ export class SignInClientComponent implements OnInit {
             console.error('Erro ao criar usuário:', error);
           }
         );
-      }
     } else {
       alert('Erro ao logar: Senhas são diferentes')
     }
