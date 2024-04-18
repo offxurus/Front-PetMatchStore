@@ -28,10 +28,11 @@ import { SignInClientComponent } from './pages/sign-in-client/sign-in-client.com
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ClientLoggedComponent } from './pages/client-logged/client-logged.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { DialogLogoutComponent } from './components/dialog-logout/dialog-logout.component';
 
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent,  HomeComponent, DialogGalleryComponent, DialogPreviewComponent, CarrosselComponent, DetailsProductsComponent, SignInClientComponent, ClientLoggedComponent],
+  declarations: [AppComponent, DashboardComponent,  HomeComponent, DialogGalleryComponent, DialogPreviewComponent, CarrosselComponent, DetailsProductsComponent, SignInClientComponent, ClientLoggedComponent, DialogLogoutComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

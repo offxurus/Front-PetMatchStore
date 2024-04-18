@@ -50,13 +50,11 @@
           <mat-panel-title>
             Endereço de Faturamento
           </mat-panel-title>
-          <button mat-icon-button (click)="toggleEditBillingAddress()">
-            <mat-icon>edit</mat-icon>
-          </button>
         </mat-expansion-panel-header>
-        <div *ngIf="!editBillingMode">
+        <div *ngIf="!editBillingMode; else editBillingModeTemplate">
           <!-- Campos de visualização do endereço de faturamento -->
-          <p>CEP: {{ currentUser.billing_address.cep }}
+          <!-- Exibir os detalhes do endereço -->
+          <p>CEP: {{ currentUser.billing_address.cep }}</p>
           <p>Logradouro: {{ currentUser.billing_address.logradouro }}</p>
           <p>Bairro: {{ currentUser.billing_address.bairro }}</p>
           <p>Cidade: {{ currentUser.billing_address.cidade }}</p>
@@ -64,7 +62,7 @@
           <p>Número: {{ currentUser.billing_address.numero }}</p>
           <p>Complemento: {{ currentUser.billing_address.complemento }}</p>
         </div>
-        <div *ngIf="editBillingMode">
+        <ng-template #editBillingModeTemplate>
           <!-- Campos de edição do endereço de faturamento -->
           <mat-form-field>
             <mat-label>CEP </mat-label>
@@ -94,9 +92,15 @@
             <mat-label>Complemento </mat-label>
             <input matInput [(ngModel)]="currentUser.billing_address.complemento" placeholder="complemento">
           </mat-form-field>
-        </div>
+          <!-- Botão para salvar as alterações -->
+          <button mat-raised-button color="primary" (click)="toggleEditBillingAddress()">Salvar</button>
+        </ng-template>
+        <button mat-icon-button *ngIf="!editBillingMode" (click)="toggleEditBillingAddress()">
+          <mat-icon>edit</mat-icon>
+        </button>
       </mat-expansion-panel>
    
+
 
       <!-- Painel de Endereços de Entrega -->
       <div *ngFor="let address of currentUser.delivery_address; let i = index">
@@ -105,23 +109,11 @@
             <mat-panel-title>
               Endereço de Entrega
             </mat-panel-title>
-            <ng-container *ngIf="!address.isDefault">
-              <button mat-icon-button (click)="toggleEditDeliveryAddress(address)">
-                <mat-icon>edit</mat-icon>
-              </button>
-              <button mat-icon-button (click)="deleteDeliveryAddress(i)">
-                <mat-icon>delete</mat-icon>
-              </button>
-              <button mat-icon-button (click)="setAsDefaultDeliveryAddress(address)">
-                <mat-icon>star_border</mat-icon>
-              </button>
-            </ng-container>
-            <ng-container *ngIf="address.isDefault">
-              <span>(Padrão)</span>
-            </ng-container>
           </mat-expansion-panel-header>
-          <div *ngIf="!address.editMode">
+          <!-- Conteúdo do painel -->
+          <div *ngIf="!address.editMode; else editDeliveryModeTemplate">
             <!-- Campos de visualização do endereço de entrega -->
+            <!-- Exibir os detalhes do endereço -->
             <p>CEP: {{ address.cep }}</p>
             <p>Logradouro: {{ address.logradouro }}</p>
             <p>Bairro: {{ address.bairro }}</p>
@@ -130,7 +122,8 @@
             <p>Número: {{ address.numero }}</p>
             <p>Complemento: {{ address.complemento }}</p>
           </div>
-          <div *ngIf="address.editMode">
+          <!-- Template para o modo de edição -->
+          <ng-template #editDeliveryModeTemplate>
             <!-- Campos de edição do endereço de entrega -->
             <mat-form-field>
               <mat-label>CEP </mat-label>
@@ -160,10 +153,32 @@
               <mat-label>Complemento </mat-label>
               <input matInput [(ngModel)]="address.complemento" placeholder="complemento">
             </mat-form-field>
-          </div>
+          </ng-template>
+          <!-- Botão de edição -->
+          <ng-container *ngIf="!address.isDefault && !address.editMode">
+            <button mat-icon-button (click)="toggleEditDeliveryAddress(address)">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </ng-container>
+          <!-- Botão para salvar as alterações -->
+          <button mat-raised-button color="primary" *ngIf="address.editMode"
+            (click)="toggleEditDeliveryAddress(address)">Salvar</button>
+          <!-- Botões de exclusão e definir como padrão -->
+          <ng-container *ngIf="!address.isDefault">
+            <button mat-icon-button (click)="deleteDeliveryAddress(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </ng-container>
+          <ng-container *ngIf="!address.isDefault && !address.editMode">
+            <button mat-icon-button (click)="setAsDefaultDeliveryAddress(address)">
+              <mat-icon>star_border</mat-icon>
+            </button>
+          </ng-container>
+          <span *ngIf="address.isDefault">(ENDEREÇO PADRÃO)</span>
         </mat-expansion-panel>
       </div>
-
+      <!-- Botão para adicionar novo endereço de entrega -->
+      <button mat-raised-button color="primary" (click)="addNewDeliveryAddress()">Adicionar Endereço de Entrega</button>
     </mat-accordion>
     </div>
     <div class="buttons">

@@ -6,7 +6,7 @@ import { User } from 'src/app/interfaces/user';
 import { CepService } from 'src/app/services/cep.service';
 import { ClientService } from 'src/app/services/client.service';
 import { UserService } from 'src/app/services/user.service';
-import { ClientAdress } from 'src/app/interfaces/client'
+import { ClientAddress } from 'src/app/interfaces/client'
 
 @Component({
   selector: 'app-client-logged',
@@ -33,6 +33,7 @@ export class ClientLoggedComponent implements OnInit {
   billingAddress: any;
   public confirmation: boolean = true;
   public oldPassword: string = '';
+  newDeliveryAddress: any;
 
   constructor(
     private _userService: UserService,
@@ -55,7 +56,7 @@ export class ClientLoggedComponent implements OnInit {
   }
 
   toggleEditDeliveryAddress(address: any) {
-
+    address.editMode = !address.editMode;
   }
 
   deleteDeliveryAddress(addressIndex: number) {
@@ -64,15 +65,21 @@ export class ClientLoggedComponent implements OnInit {
     }
   }
 
-  setAsDefaultDeliveryAddress(address: ClientAdress) {
-    this.currentUser.delivery_address.forEach((addr: ClientAdress) => {
+  setAsDefaultDeliveryAddress(address: ClientAddress) {
+    this.currentUser.delivery_address.forEach((addr: ClientAddress) => {
       addr.isDefault = false;
     });
     address.isDefault = true;
   }
-  
-  
 
+  saveChanges(address: any){
+    address.editMode = false;
+  }
+
+  toggleEditMode(address: any) {
+    address.editMode = !address.editMode;
+  }
+  
   addNewDeliveryAddress() {
     const newAddress = {
       cep: '',
@@ -97,10 +104,22 @@ export class ClientLoggedComponent implements OnInit {
     }
   }
 
+  // Verifique se um endereço está preenchido se tiver irá setar o editMode para false depois
+  addressIsFilled(address: any): boolean {
+    return address.cep || address.logradouro || address.bairro || address.cidade || address.uf || address.numero || address.complemento;
+  }
+
   onSubmit() {
     if (this.confirmation) {
         if (this.currentUser.password == this.oldPassword)
           this.currentUser.password = '';
+        //Aqui defino o editMode para false, assim apenas novos endereços podem ser editados direto
+        this.currentUser.delivery_address.forEach((address: any) => {
+          if (this.addressIsFilled(address)) {
+            address.editMode = false;
+          }
+        });
+        //Atualiza cliente
         this._clientService.updateClient(this.currentUser).subscribe(
           (client) => {
             localStorage.setItem('currentUser', JSON.stringify(client));
