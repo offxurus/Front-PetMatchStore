@@ -112,4 +112,8 @@ export class ClientLoggedComponent implements OnInit {
         );
     }
   }
+
+  get isClientGroup(): boolean {
+    return this.currentUser?.group === 'cliente';
+  }
 }

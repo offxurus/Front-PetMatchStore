@@ -1,16 +1,19 @@
 <header id="main-header" class="site-header">
   <section id="grid-menu">
     <div class="logo">
-      <a routerLink="/dashboard" aria-label="Logo">
+      <a  routerLink="/dashboard" aria-label="Logo">
         <img src="./assets/pet.png" >
       </a>
       <h1>PETMATCH STORE</h1>
       <div class="perfil">
         <ng-container *ngIf="currentUser; else showLoginButton" class="welcome-logout">
-          <button (click)="logout()">Logout</button>
+          <img src="assets/perfil.png">
           <div class="content-perfil">
             <span>{{currentUser.name}}</span>
-            <img src="assets/perfil.png">
+            <div class="span">
+              <a routerLink="/client-logged">Minha conta | </a>
+              <a class="span2" (click)="logout()">Sair</a>
+          </div>
           </div>
         </ng-container>
       </div>

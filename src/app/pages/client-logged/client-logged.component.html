@@ -1,20 +1,16 @@
 <app-header></app-header>
 
+<div class="container-title">
+  <img src="assets/icon-perf.png">
+  <h1>Meus dados</h1>
+</div>
 <div class="container">
   <div class="perfil">
-    <mat-card>
-      <mat-card-header>
-        <img src="assets/perfil2.png">
-      </mat-card-header>
-      <mat-card-content>
-        <h1>Nome: {{ currentUser.name }}</h1> <!-- Exibe o nome do usuário -->
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <div class="container2">
-    <mat-accordion class="example-headers-align" multi>
-      <!-- Painel de Dados Pessoais -->
-      <mat-expansion-panel>
+    <img src="assets/editar.png">
+    <h1>Dados básicos</h1>
+     <!-- Painel de Dados Pessoais -->
+    <div class="painel-dados">
+      <mat-expansion-panel  [expanded]="true">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Dados pessoais
@@ -41,7 +37,13 @@
           <input matInput [(ngModel)]="currentUser.email" readonly class="mat-input-disabled">
         </mat-form-field>
       </mat-expansion-panel>
-
+    </div>
+  </div>
+  <div class="container2">
+    <div class="painel-enderecos">
+      <img src="assets/pin.png">
+      <h1>Endereços</h1>
+    <mat-accordion class="example-headers-align" multi>
       <!-- Painel de Endereço de Faturamento -->
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -54,7 +56,7 @@
         </mat-expansion-panel-header>
         <div *ngIf="!editBillingMode">
           <!-- Campos de visualização do endereço de faturamento -->
-          <p>CEP: {{ currentUser.billing_address.cep }}</p>
+          <p>CEP: {{ currentUser.billing_address.cep }}
           <p>Logradouro: {{ currentUser.billing_address.logradouro }}</p>
           <p>Bairro: {{ currentUser.billing_address.bairro }}</p>
           <p>Cidade: {{ currentUser.billing_address.cidade }}</p>
@@ -94,6 +96,7 @@
           </mat-form-field>
         </div>
       </mat-expansion-panel>
+   
 
       <!-- Painel de Endereços de Entrega -->
       <div *ngFor="let address of currentUser.delivery_address; let i = index">
@@ -162,7 +165,10 @@
       </div>
 
     </mat-accordion>
-    <button mat-raised-button color="primary" (click)="addNewDeliveryAddress()">Adicionar Endereço de Entrega</button>
+    </div>
+    <div class="buttons">
+      <button (click)="onSubmit()">Salvar alterações</button>
+      <button mat-raised-button color="primary" (click)="addNewDeliveryAddress()">Adicionar Endereço de Entrega</button>
+    </div>
   </div>
-  <button (click)="onSubmit()">Salvar alterações</button>
 </div>
