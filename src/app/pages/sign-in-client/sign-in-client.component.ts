@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { ClientService } from 'src/app/services/client.service';
 import { Client } from 'src/app/interfaces/client';
 import { CepService } from 'src/app/services/cep.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-in-client',
@@ -67,7 +67,11 @@ export class SignInClientComponent implements OnInit {
   }
   
 
-  onSubmit() {
+  onSubmit(form: NgForm) {
+  if(form.invalid){
+    alert("Formulário invalido")
+    return
+  }
     if(this.confirmation) {
         this._clientService.createClient(this.userParams).subscribe(
           (response) => {
@@ -95,13 +99,11 @@ export class SignInClientComponent implements OnInit {
     });
   }
 
-  consultaCepEntrega(cepInput: HTMLInputElement, addressIndex: number) {
-    const cep = cepInput.value;
+  consultaCepEntrega(cep: string, index: number) {
     this.cepService.buscar(cep).subscribe((dados: any) => {
-      if (this.userParams.delivery_address && this.userParams.delivery_address.length > addressIndex) {
-        this.populaFormDelivery(dados, addressIndex);
-      } else {
-        console.error("Endereço de entrega não encontrado ou índice inválido.");
+      if(this.userParams.delivery_address){
+        this.userParams.delivery_address[index] = dados
+        this.userParams.delivery_address[index].cidade = dados.localidade
       }
     });
   }
@@ -126,18 +128,6 @@ export class SignInClientComponent implements OnInit {
   
     if (ufInput) {
       ufInput.value = dados.uf;
-    }
-  }
-
-  populaFormDelivery(dados: any, addressIndex: number) {
-    if (this.userParams.delivery_address && this.userParams.delivery_address.length > addressIndex) {
-      const address = this.userParams.delivery_address[addressIndex];
-      address.logradouro = dados.logradouro;
-      address.bairro = dados.bairro;
-      address.cidade = dados.localidade;
-      address.uf = dados.uf;
-    } else {
-      console.error("Endereço de entrega não encontrado ou índice inválido.");
     }
   }
   

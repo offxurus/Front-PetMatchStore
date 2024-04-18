@@ -34,10 +34,9 @@
         width: 70%;
     }
     .mat-input-disabled {
-        color: #555; /* Cor do texto mais escura para indicar que é somente leitura */
-        background-color: #f4f4f4; /* Cor de fundo mais clara para indicar que não pode ser editado */
-        cursor: not-allowed; /* Cursor indicando que não pode ser editado */
-      }      
-    
+        color: #555;
+        background-color: #f4f4f4; 
+        cursor: not-allowed; 
+      }  
 }
   
