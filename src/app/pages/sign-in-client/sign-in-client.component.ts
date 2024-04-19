@@ -16,9 +16,9 @@ export class SignInClientComponent implements OnInit {
   public hide: boolean = true;
   public useSameAddress: boolean = false;
   public userParams: Client = {
-     email: '', password: '', name: '', cpf: '',
-     group: 'cliente', active: true, birth_date: new Date(), gender: '',
-     billing_address: {
+    email: '', password: '', name: '', cpf: '',
+    group: 'cliente', active: true, birth_date: new Date(), gender: '',
+    billing_address: {
       cep: '',
       logradouro: '',
       numero: '',
@@ -26,12 +26,13 @@ export class SignInClientComponent implements OnInit {
       bairro: '',
       cidade: '',
       uf: ''
-    }, delivery_address: []};
+    }, delivery_address: []
+  };
   public isUpdating: boolean = false;
-  public confirmation:boolean = true;
+  public confirmation: boolean = true;
   public oldPassword: string = '';
   public showLoading: boolean = false;
-  
+
 
   constructor(
     private _userService: UserService,
@@ -41,7 +42,7 @@ export class SignInClientComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if(this._userService.getCurrentUser()){
+    if (this._userService.getCurrentUser()) {
       this._router.navigate(['/dashboard']);
     }
   }
@@ -49,7 +50,7 @@ export class SignInClientComponent implements OnInit {
   toggleUseSameAddress(): void {
     if (this.useSameAddress) {
       this.userParams.delivery_address = [Object.assign({}, this.userParams.billing_address)];
-    console.log('Checkbox 1!');
+      console.log('Checkbox 1!');
     } else {
       this.userParams.delivery_address = [];
       console.log('Checkbox 2!');
@@ -57,7 +58,7 @@ export class SignInClientComponent implements OnInit {
   }
 
   changeConfirm(event: any) {
-    if(event.target.value) {
+    if (event.target.value) {
       const confirmPassword = event.target.value;
       this.confirmation = (this.userParams.password === confirmPassword);
     }
@@ -65,27 +66,33 @@ export class SignInClientComponent implements OnInit {
       this.confirmation = false;
     }
   }
-  
+
 
   onSubmit(form: NgForm) {
-  if(form.invalid){
-    alert("Formulário invalido")
-    return
-  }
-    if(this.confirmation) {
-        this._clientService.createClient(this.userParams).subscribe(
-          (response) => {
-            this.showLoading = false;
-            if (response.id)
-              this._router.navigate(['/login'], { state: { id: response.id } });
-            else
-              alert('Usuário não encontrado');
-          },
-          (error) => {
-            this.showLoading = false;
-            console.error('Erro ao criar usuário:', error);
-          }
-        );
+    if (form.invalid) {
+      alert("Formulário invalido")
+      return
+    }
+    if (this.confirmation) {
+      if (this.userParams.delivery_address) {
+        this.userParams.delivery_address.forEach((address) => {
+          address.active = true;
+        });
+      }
+      this._clientService.createClient(this.userParams).subscribe(
+        (response) => {
+          this.showLoading = false;
+          if (response.id)
+            this._router.navigate(['/login'], { state: { id: response.id } });
+          else
+            alert('Usuário não encontrado');
+        },
+        (error) => {
+          console.log(error)
+          this.showLoading = false;
+          alert('Erro ao criar usuário: ' + error.error.message);
+        }
+      );
     } else {
       alert('Erro ao logar: Senhas são diferentes')
     }
@@ -101,50 +108,50 @@ export class SignInClientComponent implements OnInit {
 
   consultaCepEntrega(cep: string, index: number) {
     this.cepService.buscar(cep).subscribe((dados: any) => {
-      if(this.userParams.delivery_address){
+      if (this.userParams.delivery_address) {
         this.userParams.delivery_address[index] = dados
         this.userParams.delivery_address[index].cidade = dados.localidade
       }
     });
   }
-  
+
   populaFormBilling(dados: any) {
     const logradouroInput = (document.querySelector('[name="BillingLogradouro"]') as HTMLInputElement);
     const bairroInput = (document.querySelector('[name="BillingBairro"]') as HTMLInputElement);
-    const cidadeInput = (document.querySelector('[name="BillingCidade"]') as HTMLInputElement); 
+    const cidadeInput = (document.querySelector('[name="BillingCidade"]') as HTMLInputElement);
     const ufInput = (document.querySelector('[name="BillingUf"]') as HTMLInputElement);
-  
+
     if (logradouroInput) {
       logradouroInput.value = dados.logradouro;
     }
-  
+
     if (bairroInput) {
       bairroInput.value = dados.bairro;
     }
-  
+
     if (cidadeInput) {
       cidadeInput.value = dados.localidade;
     }
-  
+
     if (ufInput) {
       ufInput.value = dados.uf;
     }
   }
-  
-  addAddress(){
-    if(this.userParams.delivery_address)
+
+  addAddress() {
+    if (this.userParams.delivery_address)
       this.userParams.delivery_address.push({
         cep: '',
-        logradouro:'',
+        logradouro: '',
         numero: '',
         complemento: '',
         bairro: '',
         cidade: '',
-        uf: ''
+        uf: '',
       });
   }
 
-  removeAddress(index: number){
+  removeAddress(index: number) {
     this.userParams.delivery_address?.splice(index, 1);
   }
 }

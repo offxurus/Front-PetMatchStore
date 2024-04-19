@@ -131,4 +131,19 @@
         /* Cursor indicando que não pode ser editado */
     }
 
+    .inactive-address {
+        opacity: 0.5;
+        background-color: #ccc; 
+        position: relative;
+      }
+      
+      .inactive-address::after {
+        content: "INATIVO";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: red;
+        font-weight: bold; 
+      }
 }

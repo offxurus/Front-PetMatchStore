@@ -28,8 +28,8 @@ export class ClientService {
               observer.next(user);
               observer.complete();
             },
-            () => {
-              observer.error('error_on_create_client');
+            (error) => {
+              observer.error(error);
               observer.complete();
             }
           );

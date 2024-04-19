@@ -29,4 +29,6 @@ export interface ClientSignIn {
     cidade?: string;
     uf?: string;
     isDefault?: boolean;
+    new_address?: boolean;
+    active?: boolean;
   }

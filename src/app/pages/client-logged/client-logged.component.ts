@@ -51,6 +51,16 @@ export class ClientLoggedComponent implements OnInit {
     this.billingAddress = { ...this.currentUser.billing_address };
   }
 
+  consultaCepEntrega(cep: string, index: number) {
+    this.cepService.buscar(cep).subscribe((dados: any) => {
+      if (this.currentUser.delivery_address) {
+        this.currentUser.delivery_address[index] = dados
+        this.currentUser.delivery_address[index].cidade = dados.localidade
+        console.log("aqui",this.currentUser.delivery_address[index])
+      }
+    });
+  }
+
   toggleEditBillingAddress() {
     this.editBillingMode = !this.editBillingMode;
   }
@@ -72,6 +82,11 @@ export class ClientLoggedComponent implements OnInit {
     address.isDefault = true;
   }
 
+  hasMultipleActiveAddresses(): boolean{
+    const activateAddress = this.currentUser.delivery_address.filter((addr: ClientAddress) => addr.active);
+    return activateAddress.length >1;
+  }
+
   saveChanges(address: any){
     address.editMode = false;
   }
@@ -89,9 +104,21 @@ export class ClientLoggedComponent implements OnInit {
       uf: '',
       numero: '',
       complemento: '',
-      editMode: true
+      editMode: true,
+      new_address: true,
+      active: true
     };
     this.currentUser.delivery_address.push(newAddress);
+    console.log(this.currentUser.delivery_address)
+  }
+
+  inactivateAddress(address: any){
+    address.active = false;
+  }
+
+  // Método para ativar um endereço
+  activateAddress(address: any) {
+    address.active = true;
   }
 
   changeConfirm(event: any) {
