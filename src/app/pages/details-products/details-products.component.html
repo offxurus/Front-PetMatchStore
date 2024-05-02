@@ -1,6 +1,10 @@
 <app-header></app-header>
 
 <section id="details">
+    <!-- Adicione a div para a notificação -->
+    <div *ngIf="showNotification" class="notification">
+        Produto adicionado ao carrinho!
+    </div>
     <div *ngIf="product" class="details-products">
         <!-- Carrossel de Imagens -->
         <div class="gallery">
@@ -25,8 +29,8 @@
             <p>Preço: {{ product.price }}</p>
             <p>Avaliação: {{ product.rating }}</p>
             <div class="buttons-container">
-                <button class="btn-comprar" [disabled]="true">Comprar</button>
-                <button class="btn-adicionar">Adicionar ao Carrinho</button>
+                <button class="btn-comprar" (click)="comprar()">Comprar</button>
+                <button class="btn-adicionar" (click)="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
             </div>
         </div>
     </div>

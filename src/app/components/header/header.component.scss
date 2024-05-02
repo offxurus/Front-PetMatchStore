@@ -1,6 +1,8 @@
 @import '../../../assets/styles/variables.scss';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+$shopping-cart-red: #DF0000;
+
 :root {
   --background-color: $header;
 }
@@ -52,9 +54,6 @@
             max-width: 230px;
             max-height: 70px;
             }
-        }
-        .carrinho{
-           margin-left: 40px;
         }
      }
     }
@@ -112,5 +111,8 @@
         cursor: pointer;
       }
     }
+  }
+  .red-cart {
+    cursor: pointer;
   }
 }

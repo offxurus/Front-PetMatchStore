@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <header id="main-header" class="site-header">
   <section id="grid-menu">
     <div class="logo">
@@ -26,13 +28,15 @@
       <div>
         <ng-template #showLoginButton>
           <a routerLink="/login" class="teste">
-            <img src="./assets/entre.png" aria-label="img-perfil"> 
-          </a>
-          <a class="teste carrinho" routerLink="/">
-            <img src="./assets/carrinho-de-compras.png" aria-label="img-perfil"> 
+            <img src="./assets/entre.png" aria-label="img-perfil">
           </a>
         </ng-template>
       </div>
+      <span class="fa-stack fa-2x has-badge" id="cartIcon" (click)="goToShoppingCart()">
+        <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+        <i class="fa fa-shopping-cart fa-stack-2x red-cart"></i>
+      </span>
+      <span class="badge" id="cartItemCount">{{ cartItemCount }}</span>
     </div>
   </section>
 </header>
