@@ -21,9 +21,11 @@ export class ShoppingCartComponent implements OnInit {
   subtotal: number = 0;
   cep: string = '';
   freteSelecionado: number | null = null;
+  defaultFrete: boolean = false;
   showNotification: boolean = false;
 
   public userGroup: string = '';
+  public defaultAddress: any = {};
   public currentUser: any = {
     email: '', password: '', name: '', cpf: '',
     group: 'cliente', active: true, birth_date: new Date(), gender: '',
@@ -54,13 +56,16 @@ export class ShoppingCartComponent implements OnInit {
     this.cartItems = this.cartService.getCarrinho();
     this.calcularTotal();
     this.subtotal = this.cartService.calcularTotal();
+    this.selecionarFrete(13.33);
 
 
     if(this.currentUser){
-      const defaultAddress = this.currentUser.delivery_address.find((address: ClientAddress) => address.active === true);
-      const firstAddress = defaultAddress || this.currentUser.delivery_address[0];
-  
-      console.log(firstAddress);
+      this.defaultAddress = this.currentUser.delivery_address.find((address: ClientAddress) => address.isDefault === true);
+      if(!this.defaultAddress && this.currentUser.delivery_address.length>=0){
+        this.defaultAddress = this.currentUser.delivery_address[0]
+      }
+
+      console.log(this.defaultAddress);
     }
 
   }
@@ -101,10 +106,13 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   calcularFrete(): void {
-    const valoresFrete = [7.24, 13.55, 33.3];
+    this.defaultFrete = true;
+    const valoresFrete = [7.24, 13.55, 33.35];
     const indiceAleatorio = Math.floor(Math.random() * valoresFrete.length);
     this.selecionarFrete(valoresFrete[indiceAleatorio]);
   }
+
+
   finalizarPedido(): void {
     if (this._userService.getCurrentUser()) {
       this._router.navigate(['/']);
