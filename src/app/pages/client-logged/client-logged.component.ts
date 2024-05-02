@@ -54,8 +54,10 @@ export class ClientLoggedComponent implements OnInit {
   consultaCepEntrega(cep: string, index: number) {
     this.cepService.buscar(cep).subscribe((dados: any) => {
       if (this.currentUser.delivery_address) {
-        this.currentUser.delivery_address[index] = dados
         this.currentUser.delivery_address[index].cidade = dados.localidade
+        this.currentUser.delivery_address[index].bairro = dados.bairro
+        this.currentUser.delivery_address[index].logradouro= dados.logradouro
+        this.currentUser.delivery_address[index].uf = dados.uf
         console.log("aqui",this.currentUser.delivery_address[index])
       }
     });
