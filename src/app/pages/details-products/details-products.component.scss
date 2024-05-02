@@ -92,19 +92,13 @@
 }
 
 .btn-comprar {
-    background-color: #ddd;
-    color: #666;
+    background-color: #ff6600;
+    color: #fff;
 }
 
 .btn-adicionar {
     background-color: #007bff;
     color: #fff;
-}
-
-.btn-comprar:disabled {
-    background-color: #eee;
-    color: #ccc;
-    cursor: not-allowed;
 }
 
 .btn-comprar:hover, .btn-adicionar:hover {

@@ -29,10 +29,11 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ClientLoggedComponent } from './pages/client-logged/client-logged.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { DialogLogoutComponent } from './components/dialog-logout/dialog-logout.component';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent,  HomeComponent, DialogGalleryComponent, DialogPreviewComponent, CarrosselComponent, DetailsProductsComponent, SignInClientComponent, ClientLoggedComponent, DialogLogoutComponent],
+  declarations: [AppComponent, DashboardComponent,  HomeComponent, DialogGalleryComponent, DialogPreviewComponent, CarrosselComponent, DetailsProductsComponent, SignInClientComponent, ClientLoggedComponent, DialogLogoutComponent, ShoppingCartComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

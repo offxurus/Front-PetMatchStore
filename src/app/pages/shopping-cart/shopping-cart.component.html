@@ -1,0 +1,101 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
+
+<app-header></app-header>
+
+<body>
+  <main>
+    <div class="page-title">Seu Carrinho</div>
+    <div class="content">
+      <section>
+        <table>
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Preço</th>
+              <th>Quantidade</th>
+              <th>Total</th>
+              <th>-</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of cartItems">
+              <td>
+                <div class="product">
+                  <img [src]="item.images" alt="" style="width: 100px; height: 100px;" />
+                  <div class="info">
+                    <div class="name">{{ item.name }}</div>
+                  </div>
+                </div>
+              </td>
+              <td>{{ item.price | currency }}</td>
+              <td>
+                <div class="qty">
+                  <button (click)="diminuirQuantidade(item)">
+                    <i class="bi bi-dash"></i> <!-- Ícone de menos -->
+                  </button>
+                  <span>{{ item.quantity }}</span>
+                  <button (click)="aumentarQuantidade(item)">
+                    <i class="bi bi-plus"></i> <!-- Ícone de mais -->
+                  </button>
+                </div>
+              </td>
+              <td>{{ item.price * item.quantity | currency }}</td>
+              <td>
+                <button (click)="removerDoCarrinho(item)" class="btn-remove">
+                  🗑️
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <aside>
+        <div class="box">
+          <header>Resumo da compra</header>
+          <div class="info">
+            <div><span>Sub-total</span><span>{{ subtotal | currency }}</span></div>
+          </div>
+        </div>
+        <div class="box" *ngIf="!currentUser">
+          <header>Adicionar Frete</header>
+          <div class="info">
+            <div class="frete">
+              <label>
+                <input type="radio" name="freteOption" value="10" (click)="selecionarFrete(10)"> Frete Rápido (R$10)
+              </label>
+              <br>
+              <label>
+                <input type="radio" name="freteOption" value="5" (click)="selecionarFrete(5)"> Frete Padrão (R$5)
+              </label>
+              <br>
+              <label>
+                <input type="radio" name="freteOption" value="0" (click)="selecionarFrete(0)"> Frete Grátis
+              </label>
+            </div>
+          </div>
+        </div>
+        <!--Cliente logado-->
+        <div class="box" *ngIf="currentUser">
+          <header>Adicionar Frete</header>
+          <div class="info">
+            <div class="frete">
+              <input type="text" placeholder="Digite seu CEP" [(ngModel)]="cep">
+              <button (click)="calcularFrete()">OK</button>
+              <div *ngIf="freteSelecionado !== null">
+                Frete: R${{ freteSelecionado }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer>
+          <div><span>Total da compra</span><span>{{ total | currency }}</span></div>
+        </footer>
+        <button (click)="finalizarPedido()">Finalizar Pedido</button>
+        <!-- Adicione a div para a notificação -->
+        <div *ngIf="showNotification" class="notification">
+          Você deve se cadastrar para continuar!
+        </div>
+      </aside>
+    </div>
+  </main>
+</body>

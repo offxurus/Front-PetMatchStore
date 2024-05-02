@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit, AfterViewInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/interfaces/products';
+import { CartService } from 'src/app/services/cart.service';
 
 declare var $: any;
 
@@ -17,10 +18,13 @@ export class DetailsProductsComponent implements OnInit, AfterViewInit, OnDestro
 
   public product: Product | undefined;
   private routeSubscription: Subscription | undefined;
+  showNotification: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductsService
+    private productService: ProductsService,
+    private cartService: CartService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -58,6 +62,23 @@ export class DetailsProductsComponent implements OnInit, AfterViewInit, OnDestro
   nextSlide(): void {
     if (this.product) {
       this.currentSlide = (this.currentSlide + 1) % (this.product.images?.length || 1);
+    }
+  }
+
+  comprar(): void {
+    if (this.product) {
+      this.cartService.adicionarAoCarrinho(this.product);
+      this._router.navigate(['/shopping-cart']);
+    }
+  }
+
+  adicionarAoCarrinho(): void {
+    if (this.product) {
+      this.cartService.adicionarAoCarrinho(this.product);
+      this.showNotification = true;
+      setTimeout(() => {
+        this.showNotification = false;
+      }, 3000);
     }
   }
   
