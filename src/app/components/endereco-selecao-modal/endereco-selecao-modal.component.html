@@ -1,0 +1,18 @@
+<div class="modal fade" id="enderecoModal" tabindex="-1" aria-labelledby="enderecoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="enderecoModalLabel">Seus Endereços</h5>
+        <button mat-icon-button (click)="closeModal()"  class="close-button">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Conteúdo do modal -->
+        <div *ngFor="let endereco of currentUser.delivery_address" class="endereco-box">
+          {{ endereco.logradouro }}, {{ endereco.numero }} - {{ endereco.bairro }}, {{ endereco.cidade }} - {{ endereco.uf }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

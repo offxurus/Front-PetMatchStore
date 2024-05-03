@@ -46,7 +46,9 @@ export class ClientLoggedComponent implements OnInit {
     if (!this._userService.getCurrentUser()) {
       this._router.navigate(['/']);
     }
-    this.currentUser = this._userService.getCurrentUser();
+    if(this._userService.getCurrentUser()){
+      this.currentUser = this._userService.getCurrentUser();
+    }
     console.log(this.currentUser);
     this.billingAddress = { ...this.currentUser.billing_address };
   }

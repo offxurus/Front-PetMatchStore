@@ -1,0 +1,58 @@
+.modal-content {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+  background-color: #f8f9fa;
+  border-bottom: none;
+}
+
+.modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+.endereco-box {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+.close-button {
+  border: none;
+  border-radius: 50%; 
+  width: 40px; 
+  height: 40px; 
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  cursor: pointer;
+  transition: background-color 0.3s; 
+  position: absolute; 
+  top: 10px;
+  right: 10px; 
+  z-index: 9999; 
+}
+
+.close-button:hover {
+  background-color: #ffd700; 
+}
+
+/* Estilos para o ícone */
+mat-icon {
+  font-size: 24px; 
+  color: black;
+}
+.modal-title {
+  font-size: 20px; /* Tamanho da fonte */
+  font-weight: bold; /* Peso da fonte (negrito) */
+}
+

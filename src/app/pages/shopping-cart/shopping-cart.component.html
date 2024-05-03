@@ -61,15 +61,15 @@
           <div class="info">
             <div class="frete">
               <label>
-                <input type="radio" name="freteOption" value="10" (click)="selecionarFrete(10)"> Frete Rápido (R$10)
+                <input type="radio" name="freteOption" value="34.18" (click)="selecionarFrete(34.18)"> Correios - SEDEX (R$34,18)
               </label>
               <br>
               <label>
-                <input type="radio" name="freteOption" value="5" (click)="selecionarFrete(5)"> Frete Padrão (R$5)
+                <input type="radio" name="freteOption" value="38.13" (click)="selecionarFrete(38.13)"> Correios - PAC (R$38,13)
               </label>
               <br>
               <label>
-                <input type="radio" name="freteOption" value="0" (click)="selecionarFrete(0)"> Frete Grátis
+                <input type="radio" name="freteOption" value="20.15" (click)="selecionarFrete(20.15)"> JadLog (R$20,15)
               </label>
             </div>
           </div>
@@ -84,21 +84,50 @@
               <p>Cidade: {{ defaultAddress.cidade }}</p>
               <p>UF: {{ defaultAddress.uf }}</p>
               <div *ngIf="defaultFrete === false">
-                Frete para o CEP padrão: R${{ freteSelecionado }}
+                <div class="frete">
+                  <label>
+                    <input type="radio" name="freteOption" value="40.11" (click)="selecionarFrete(40.11)"> Correios - SEDEX (R$40,11)
+                  </label>
+                  <br>
+                  <label>
+                    <input type="radio" name="freteOption" value="58.15" (click)="selecionarFrete(58.15)"> Correios - PAC (R$58,15)
+                  </label>
+                  <br>
+                  <label>
+                    <input type="radio" name="freteOption" value="27.19" (click)="selecionarFrete(27.19)"> JadLog (R$27,19)
+                  </label>
+                </div>
               </div>
+              <button (click)="openModal()">Selecionar outro endereço</button>
             </div>
-
-
-            <div class="consultar-cep">
-              <input type="text" placeholder="Digite seu CEP" [(ngModel)]="cep">
-              <button (click)="calcularFrete()">OK</button>
-              <div *ngIf="freteSelecionado !== null && defaultFrete === true">
-                Frete: R${{ freteSelecionado }}
-              </div>
-            </div>
-
           </div>
         </div>
+
+        <button (click)="mostrarConsultaNovoFrete()">Calcular Novo Frete</button>
+
+        <div class="box" *ngIf="mostrarNovoFrete">
+          <header>Consultar Novo Frete</header>
+          <div class="info">
+            <div class="consultar-cep">
+              <input type="text" placeholder="Digite seu CEP" [(ngModel)]="cep">
+              <button (click)="buscarOpcoesFrete()">OK</button>
+            </div>
+            <div *ngIf="mostrarOpcoesFrete" class="box">
+              <header>Opções de Frete</header>
+              <div class="info">
+                <div class="frete">
+                  <p>Opções de frete disponíveis:</p>
+                  <ul>
+                    <li *ngFor="let opcao of opcoesFrete">
+                      {{ opcao.nome }} ({{ opcao.valor | currency }})
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         
         <footer>
           <div><span>Total da compra</span><span>{{ total | currency }}</span></div>

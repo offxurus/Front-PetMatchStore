@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
+import { EnderecoSelecaoModalComponent } from 'src/app/components/endereco-selecao-modal/endereco-selecao-modal.component';
 import { ClientAddress } from 'src/app/interfaces/client';
 import { Product } from 'src/app/interfaces/products';
 import { User } from 'src/app/interfaces/user';
 import { CartService } from 'src/app/services/cart.service';
 import { ClientService } from 'src/app/services/client.service';
 import { UserService } from 'src/app/services/user.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -23,6 +25,9 @@ export class ShoppingCartComponent implements OnInit {
   freteSelecionado: number | null = null;
   defaultFrete: boolean = false;
   showNotification: boolean = false;
+  mostrarNovoFrete: boolean = false;
+  opcoesFrete: any[] = [];
+  mostrarOpcoesFrete: boolean = false;
 
   public userGroup: string = '';
   public defaultAddress: any = {};
@@ -45,7 +50,8 @@ export class ShoppingCartComponent implements OnInit {
     private cartService: CartService,
     private _userService: UserService,
     private _router: Router,
-    private _clientService: ClientService
+    private _clientService: ClientService,
+    private dialog: MatDialog
   ) { 
     
   }
@@ -54,10 +60,8 @@ export class ShoppingCartComponent implements OnInit {
     this.currentUser = this._userService.getCurrentUser();
     console.log(this.currentUser)
     this.cartItems = this.cartService.getCarrinho();
-    this.calcularTotal();
     this.subtotal = this.cartService.calcularTotal();
-    this.selecionarFrete(13.33);
-
+    this.calcularTotalComFrete();
 
     if(this.currentUser){
       this.defaultAddress = this.currentUser.delivery_address.find((address: ClientAddress) => address.isDefault === true);
@@ -67,11 +71,29 @@ export class ShoppingCartComponent implements OnInit {
 
       console.log(this.defaultAddress);
     }
-
   }
 
-  calcularTotal(): void {
-    this.total = this.cartService.calcularTotal();
+  openModal(): void {
+    const dialogRef = this.dialog.open(EnderecoSelecaoModalComponent, {
+      width: '600px' // Defina a largura do modal conforme necessário
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // Lógica a ser executada após o fechamento do modal (se necessário)
+    });
+  }
+
+
+  calcularTotalComFrete(): void {
+    if (this.freteSelecionado !== null) {
+      this.total = this.subtotal + this.freteSelecionado;
+    } else{
+      this.total = this.subtotal;
+    }
+  }
+
+  mostrarConsultaNovoFrete() {
+    this.mostrarNovoFrete = true;
   }
 
   selecionarFrete(valor: number): void {
@@ -79,37 +101,34 @@ export class ShoppingCartComponent implements OnInit {
     this.calcularTotalComFrete();
   }
 
-  calcularTotalComFrete(): void {
-    if (this.freteSelecionado !== null) {
-      this.total = this.subtotal + this.freteSelecionado;
-    }
+  buscarOpcoesFrete() {
+    this.opcoesFrete = [
+      { nome: 'Correios - SEDEX', valor: 34.18 },
+      { nome: 'Correios - PAC', valor: 38.13 },
+      { nome: 'JadLog', valor: 20.15 }
+    ];
+    
+    this.mostrarOpcoesFrete = true;
   }
 
   removerDoCarrinho(produto: Product): void {
     this.cartService.removerDoCarrinho(produto);
     this.cartItems = this.cartService.getCarrinho();
-    this.calcularTotal();
+    this.calcularTotalComFrete();
   }
 
   diminuirQuantidade(item: Product): void {
     if (item.quantity > 1) {
       item.quantity--;
       this.cartService.atualizarCarrinho();
-      this.calcularTotal();
+      this.calcularTotalComFrete();
     }
   }
 
   aumentarQuantidade(item: Product): void {
     item.quantity++;
     this.cartService.atualizarCarrinho();
-    this.calcularTotal();
-  }
-
-  calcularFrete(): void {
-    this.defaultFrete = true;
-    const valoresFrete = [7.24, 13.55, 33.35];
-    const indiceAleatorio = Math.floor(Math.random() * valoresFrete.length);
-    this.selecionarFrete(valoresFrete[indiceAleatorio]);
+    this.calcularTotalComFrete();
   }
 
 

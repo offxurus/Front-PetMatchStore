@@ -24,7 +24,9 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.currentUser = this.userService.getCurrentUser();
+    if(this.userService.getCurrentUser()){
+      this.currentUser = this.userService.getCurrentUser();
+    }
     this.countItemCart();
   }
 
