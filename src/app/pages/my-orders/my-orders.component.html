@@ -1,0 +1,16 @@
+<app-header></app-header>
+
+<div *ngIf="pedidos" class="meus-pedidos">
+    <h2 class="titulo">Meus Pedidos</h2>
+    <ul>
+      <li *ngFor="let pedido of pedidos" class="pedido">
+        <p class="pedido-info">ID do Pedido: {{ pedido.id }}</p>
+        <p class="pedido-info">Data do Pedido: {{ pedido.dateOrder }}</p>
+        <p class="pedido-info">Total: {{ pedido.total.toFixed(2) }}</p>
+        <p class="pedido-info">Status: {{ pedido.statusOrder }}</p>
+      </li>
+    </ul>
+</div>
+<div *ngIf="!pedidos" class="nenhum-pedido">
+    <p>Nenhum pedido encontrado.</p>
+</div>

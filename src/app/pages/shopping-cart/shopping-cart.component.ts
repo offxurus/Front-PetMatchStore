@@ -9,6 +9,8 @@ import { CartService } from 'src/app/services/cart.service';
 import { ClientService } from 'src/app/services/client.service';
 import { UserService } from 'src/app/services/user.service';
 import { MatDialog } from '@angular/material/dialog';
+import { AddressService } from 'src/app/services/select-address.service';
+import { Order } from 'src/app/interfaces/order';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -16,7 +18,6 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent implements OnInit {
-
 
   cartItems: Product[] = [];
   total: number = 0;
@@ -27,9 +28,11 @@ export class ShoppingCartComponent implements OnInit {
   showNotification: boolean = false;
   mostrarNovoFrete: boolean = false;
   opcoesFrete: any[] = [];
+  opcoesFreteCEP: any[] = [];
   mostrarOpcoesFrete: boolean = false;
 
   public userGroup: string = '';
+  public order: any = {}
   public defaultAddress: any = {};
   public currentUser: any = {
     email: '', password: '', name: '', cpf: '',
@@ -51,17 +54,23 @@ export class ShoppingCartComponent implements OnInit {
     private _userService: UserService,
     private _router: Router,
     private _clientService: ClientService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private addressService: AddressService
   ) { 
     
   }
 
   ngOnInit(): void {
     this.currentUser = this._userService.getCurrentUser();
-    console.log(this.currentUser)
     this.cartItems = this.cartService.getCarrinho();
     this.subtotal = this.cartService.calcularTotal();
+    console.log(this.subtotal)
+    this.buscarOpcoesFrete()
     this.calcularTotalComFrete();
+    this.addressService.selectedAddress$.subscribe(address => {
+      this.defaultAddress = address;
+      this.buscarOpcoesFrete();
+    });
 
     if(this.currentUser){
       this.defaultAddress = this.currentUser.delivery_address.find((address: ClientAddress) => address.isDefault === true);
@@ -75,11 +84,10 @@ export class ShoppingCartComponent implements OnInit {
 
   openModal(): void {
     const dialogRef = this.dialog.open(EnderecoSelecaoModalComponent, {
-      width: '600px' // Defina a largura do modal conforme necessário
+      width: '600px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // Lógica a ser executada após o fechamento do modal (se necessário)
     });
   }
 
@@ -103,12 +111,26 @@ export class ShoppingCartComponent implements OnInit {
 
   buscarOpcoesFrete() {
     this.opcoesFrete = [
-      { nome: 'Correios - SEDEX', valor: 34.18 },
-      { nome: 'Correios - PAC', valor: 38.13 },
-      { nome: 'JadLog', valor: 20.15 }
+      { nome: 'Correios - SEDEX', valor: parseFloat((Math.random() * (100 - 20) + 20).toFixed(2)) },
+      { nome: 'Correios - PAC', valor: parseFloat((Math.random() * (100 - 20) + 20).toFixed(2)) },
+      { nome: 'JadLog', valor: parseFloat((Math.random() * (100 - 20) + 20).toFixed(2)) }
     ];
-    
+  
     this.mostrarOpcoesFrete = true;
+  }
+
+  CalcularFrete() {
+    if(this.cep){
+      this.opcoesFreteCEP = [
+        { nome: 'Correios - SEDEX', valor: parseFloat((Math.random() * (100 - 20) + 20).toFixed(2)) },
+        { nome: 'Correios - PAC', valor: parseFloat((Math.random() * (100 - 20) + 20).toFixed(2)) },
+        { nome: 'JadLog', valor: parseFloat((Math.random() * (100 - 20) + 20).toFixed(2)) }
+      ];
+    
+      this.mostrarOpcoesFrete = true;
+    }  else{
+      alert("Preencha um cep para calcular o valor")
+    }
   }
 
   removerDoCarrinho(produto: Product): void {
@@ -121,6 +143,7 @@ export class ShoppingCartComponent implements OnInit {
     if (item.quantity > 1) {
       item.quantity--;
       this.cartService.atualizarCarrinho();
+      this.subtotal = this.cartService.calcularTotal();
       this.calcularTotalComFrete();
     }
   }
@@ -128,13 +151,25 @@ export class ShoppingCartComponent implements OnInit {
   aumentarQuantidade(item: Product): void {
     item.quantity++;
     this.cartService.atualizarCarrinho();
+    this.subtotal = this.cartService.calcularTotal();
     this.calcularTotalComFrete();
   }
 
 
-  finalizarPedido(): void {
+  finalizarPedido() {
+    const selectedOption = document.querySelector('input[name="freteOption"]:checked');
+    if (!selectedOption) {
+      alert('Por favor, selecione uma opção de frete.');
+      return;
+    }
     if (this._userService.getCurrentUser()) {
-      this._router.navigate(['/']);
+      this.order.cartItems = this.cartItems;
+      this.order.subtotal = this.subtotal;
+      this.order.total = this.total;
+      this.order.currentUser = this.currentUser;
+      this.order.defaultAddress = this.defaultAddress;
+      this.order.freteSelecionado = this.freteSelecionado;
+      this._router.navigate(['/order-payment'], { state: { order: this.order } });
     } else {
       this.showNotification = true;
       setTimeout(() => {
@@ -143,4 +178,4 @@ export class ShoppingCartComponent implements OnInit {
       }, 3000);
     }
   }
-}
+}  

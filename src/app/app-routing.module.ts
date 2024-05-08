@@ -10,6 +10,8 @@ import { DetailsProductsComponent } from './pages/details-products/details-produ
 import { SignInClientComponent } from './pages/sign-in-client/sign-in-client.component';
 import { ClientLoggedComponent } from './pages/client-logged/client-logged.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
+import { OrderPaymentComponent } from './pages/order-payment/order-payment.component';
+import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
 const routes: Routes = [
   {
     path: 'login',
@@ -66,6 +68,14 @@ const routes: Routes = [
   {
     path: 'shopping-cart', 
     component: ShoppingCartComponent
+  },
+  {
+    path: 'order-payment', 
+    component: OrderPaymentComponent
+  },
+  {
+    path: 'my-orders', 
+    component: MyOrdersComponent
   }
 ];
 

@@ -1,0 +1,103 @@
+    .payment-section {
+    background-color: #f9f9f9;
+    padding: 50px 0;
+  }
+
+  .payment-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .payment-left {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .payment-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .payment-header-icon {
+    font-size: 24px;
+    margin-right: 10px;
+    color: #4CAF50; /* Cor do ícone do cabeçalho */
+  }
+
+  .payment-header-title {
+    font-size: 20px;
+    color: #333; /* Cor do título do cabeçalho */
+  }
+
+  .payment-content {
+    margin-bottom: 20px;
+  }
+
+  .payment-item {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+
+  .payment-item-name {
+    font-weight: bold;
+    color: #333; /* Cor do nome do item */
+  }
+
+  .payment-item-price,
+  .payment-item-quantity,
+  .payment-item-total {
+    color: #777; /* Cor dos detalhes do item */
+  }
+
+  .payment-summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .payment-summary-name {
+    font-weight: bold;
+    color: #333; /* Cor do nome do resumo do item */
+  }
+
+  .payment-right {
+    flex: 1;
+    padding: 20px;
+  }
+
+  .payment-form {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .payment-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #333; /* Cor do título do formulário de pagamento */
+  }
+
+  .payment-form-submit-button {
+    background-color: #4CAF50; /* Cor do botão de envio */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+  }
+
+  .payment-form-submit-button:hover {
+    background-color: #45a049; /* Cor do botão de envio ao passar o mouse */
+  }

@@ -31,10 +31,14 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { DialogLogoutComponent } from './components/dialog-logout/dialog-logout.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { EnderecoSelecaoModalComponent } from './components/endereco-selecao-modal/endereco-selecao-modal.component';
+import { OrderPaymentComponent } from './pages/order-payment/order-payment.component';
+import { CheckoutModalComponent } from './components/checkout-modal/checkout-modal.component';
+import { SuccessMessageModalComponent } from './components/sucess-message-modal/sucess-message-modal.component';
+import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
 
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent,  HomeComponent, DialogGalleryComponent, DialogPreviewComponent, CarrosselComponent, DetailsProductsComponent, SignInClientComponent, ClientLoggedComponent, DialogLogoutComponent, ShoppingCartComponent, EnderecoSelecaoModalComponent],
+  declarations: [AppComponent, DashboardComponent,  HomeComponent, DialogGalleryComponent, DialogPreviewComponent, CarrosselComponent, DetailsProductsComponent, SignInClientComponent, ClientLoggedComponent, DialogLogoutComponent, ShoppingCartComponent, EnderecoSelecaoModalComponent, OrderPaymentComponent, CheckoutModalComponent, SuccessMessageModalComponent, MyOrdersComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

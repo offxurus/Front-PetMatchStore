@@ -26,7 +26,7 @@
         <div class="detalhes">
             <h2>{{ product.name }}</h2>
             <p>Descrição: {{ product.description }}</p>
-            <p>Preço: {{ product.price }}</p>
+            <p>Preço: {{ product.price | currency:'BRL' }}</p>
             <p>Avaliação: {{ product.rating }}</p>
             <div class="buttons-container">
                 <button class="btn-comprar" (click)="comprar()">Comprar</button>

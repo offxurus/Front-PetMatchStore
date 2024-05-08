@@ -86,15 +86,15 @@
               <div *ngIf="defaultFrete === false">
                 <div class="frete">
                   <label>
-                    <input type="radio" name="freteOption" value="40.11" (click)="selecionarFrete(40.11)"> Correios - SEDEX (R$40,11)
+                    <input type="radio" name="freteOption" (click)="selecionarFrete(this.opcoesFrete[0].valor)" required> Correios - SEDEX (R${{this.opcoesFrete[0].valor}})
                   </label>
                   <br>
                   <label>
-                    <input type="radio" name="freteOption" value="58.15" (click)="selecionarFrete(58.15)"> Correios - PAC (R$58,15)
+                    <input type="radio" name="freteOption" (click)="selecionarFrete(this.opcoesFrete[1].valor)"> Correios - PAC (R${{this.opcoesFrete[1].valor}})
                   </label>
                   <br>
                   <label>
-                    <input type="radio" name="freteOption" value="27.19" (click)="selecionarFrete(27.19)"> JadLog (R$27,19)
+                    <input type="radio" name="freteOption" (click)="selecionarFrete(this.opcoesFrete[2].valor)"> JadLog (R${{this.opcoesFrete[2].valor}})
                   </label>
                 </div>
               </div>
@@ -110,7 +110,7 @@
           <div class="info">
             <div class="consultar-cep">
               <input type="text" placeholder="Digite seu CEP" [(ngModel)]="cep">
-              <button (click)="buscarOpcoesFrete()">OK</button>
+              <button (click)="CalcularFrete()">OK</button>
             </div>
             <div *ngIf="mostrarOpcoesFrete" class="box">
               <header>Opções de Frete</header>
@@ -118,7 +118,7 @@
                 <div class="frete">
                   <p>Opções de frete disponíveis:</p>
                   <ul>
-                    <li *ngFor="let opcao of opcoesFrete">
+                    <li *ngFor="let opcao of opcoesFreteCEP">
                       {{ opcao.nome }} ({{ opcao.valor | currency }})
                     </li>
                   </ul>

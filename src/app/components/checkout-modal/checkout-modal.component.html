@@ -1,0 +1,68 @@
+<body>
+    <section class="payment-section">
+        <div class="container">
+            <div class="payment-wrapper">
+                <div class="payment-left">
+                    <div class="payment-header">
+                        <div class="payment-header-icon"><i class="ri-flashlight-fill"></i></div>
+                        <div class="payment-header-title">Resumo do Pedido</div>
+                    </div>
+                    <div class="payment-content">
+                        <div class="payment-body">                     
+                            <!-- Listagem dos produtos -->
+                            <div *ngFor="let item of order.cartItems" class="payment-item">
+                                <div class="payment-item-info">
+                                    <div class="payment-item-name">{{ item.name }}</div>
+                                    <div class="payment-item-price">Valor Unitário: {{ item.price | currency }}</div>
+                                    <div class="payment-item-quantity">Quantidade: {{ item.quantity }}</div>
+                                </div>
+                                <div class="payment-item-total">Total: {{ (item.price * item.quantity) | currency }}</div>
+                            </div>
+                            <!-- Frete -->
+                            <div class="payment-summary-item">
+                                <div class="payment-summary-name">Frete</div>
+                                <div class="payment-summary-price">{{ order.freteSelecionado| currency }}</div>
+                            </div>
+                            <!-- Total geral -->
+                            <div class="payment-summary-item payment-summary-total">
+                                <div class="payment-summary-name">Total Geral</div>
+                                <div class="payment-summary-price">{{ order.total| currency }}</div>
+                            </div>
+                            <!-- Endereço de entrega -->
+                            <div class="payment-summary-item">
+                                <div class="payment-summary-name">Endereço de Entrega</div>
+                                <div class="payment-summary-address">{{ order.defaultAddress?.logradouro}} - {{order.defaultAddress?.numero}}</div>
+                                <div class="payment-summary-address">{{ order.defaultAddress?.bairro}}</div>
+                                <div class="payment-summary-address">{{ order.defaultAddress?.cidade}}</div>
+                                <div class="payment-summary-address">{{ order.defaultAddress?.complemento}}</div>
+                                <div class="payment-summary-address">{{ order.defaultAddress?.cep}}</div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="payment-right">
+                    <form action="" class="payment-form">
+                        <h1 class="payment-title">Detalhes do Pagamento</h1>
+                        <div class="payment-summary-item">
+                            <div class="payment-summary-name">Forma de Pagamento</div>
+                            <div class="payment-summary-method">
+                                {{order.is_bolet ? 'Boleto' : 'Cartão de crédito'}}
+                            </div>
+                            <div>Pago o total de R${{(order.total).toFixed(2)}}</div>
+                            <div *ngIf="order && order.installmentValue !== undefined && !order.is_bolet">
+                                Parcelado em {{ order.installments }}x de {{ order.installmentValue.toFixed(2) }}
+                            </div>                            
+                        </div>
+                        <button type="submit" class="payment-form-submit-button" (click)="onSubmit()">
+                            <i class="ri-wallet-line"></i> Concluir Compra
+                        </button>                        
+                        <button type="button" class="payment-form-submit-button" (click)="closeModal()">
+                            <i class="ri-arrow-left-line"></i> Voltar
+                          </button>                          
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
