@@ -9,15 +9,7 @@
         <!-- Carrossel de Imagens -->
         <div class="gallery">
             <div class="gallery">
-                <button class="prev"
-                (click)="prevSlide()">
-                    <mat-icon>keyboard_arrow_up</mat-icon>
-                </button>
                 <img *ngFor="let image of product.images" [src]="image" alt="Product Image">
-                <button class="next"
-                (click)="nextSlide()">
-                    <mat-icon>keyboard_arrow_down</mat-icon>
-                </button>
               </div>
           </div>
         <app-carrossel
@@ -27,7 +19,7 @@
             <h2>{{ product.name }}</h2>
             <p>Descrição: {{ product.description }}</p>
             <p>Preço: {{ product.price | currency:'BRL' }}</p>
-            <p>Avaliação: {{ product.rating }}</p>
+            <p>Avaliação: {{ getStarRating() }}</p>
             <div class="buttons-container">
                 <button class="btn-comprar" (click)="comprar()">Comprar</button>
                 <button class="btn-adicionar" (click)="adicionarAoCarrinho()">Adicionar ao Carrinho</button>

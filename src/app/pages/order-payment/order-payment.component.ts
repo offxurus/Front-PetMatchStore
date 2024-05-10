@@ -51,17 +51,48 @@ export class OrderPaymentComponent implements OnInit {
       alert('Por favor, selecione uma opção de pagamento.');
       return;
     }
-    if (this._userService.getCurrentUser()) {
-      const stateData = { order: this.order };
-      this.modalService.openModal(CheckoutModalComponent, {
-        width: '80%',
-        height: '80%',
-        data: stateData
-      });
+  
+    if (this.order.is_bolet) {
+      const nameInput = document.getElementById('name') as HTMLInputElement;
+      const emailInput = document.getElementById('email') as HTMLInputElement;
+  
+      if (!nameInput.value.trim() || !emailInput.value.trim()) {
+        alert('Por favor, preencha todos os campos obrigatórios.');
+        return;
+      }
+  
+      if (!this.validateEmail(emailInput.value.trim())) {
+        alert('Por favor, insira um e-mail válido.');
+        return;
+      }
     } else {
+      const cardNumberInput = document.getElementById('card-number') as HTMLInputElement;
+      const expiryDateInput = document.getElementById('expiry-date') as HTMLInputElement;
+      const cvvInput = document.getElementById('cvv') as HTMLInputElement;
+  
+      if (cardNumberInput.value.trim().length !== 16 || !expiryDateInput.value.trim() || !cvvInput.value.trim()) {
+        alert('Por favor, preencha todos os campos obrigatórios corretamente.');
+        return;
+      }
+    }
+  
+    if (!this._userService.getCurrentUser()) {
       setTimeout(() => {
         this._router.navigate(['/login']);
       }, 3000);
+      return;
     }
+  
+    const stateData = { order: this.order };
+    this.modalService.openModal(CheckoutModalComponent, {
+      width: '80%',
+      height: '80%',
+      data: stateData
+    });
   }
+  
+  validateEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }  
 }

@@ -16,7 +16,7 @@ export class DetailsProductsComponent implements OnInit, AfterViewInit, OnDestro
 
   currentSlide = 0;
 
-  public product: Product | undefined;
+  public product: Product | any;
   private routeSubscription: Subscription | undefined;
   showNotification: boolean = false;
 
@@ -53,18 +53,6 @@ export class DetailsProductsComponent implements OnInit, AfterViewInit, OnDestro
     );
   }
 
-  prevSlide(): void {
-    if (this.product) {
-      this.currentSlide = (this.currentSlide - 1 + (this.product.images?.length || 0)) % (this.product.images?.length || 1);
-    }
-  }
-
-  nextSlide(): void {
-    if (this.product) {
-      this.currentSlide = (this.currentSlide + 1) % (this.product.images?.length || 1);
-    }
-  }
-
   comprar(): void {
     if (this.product) {
       this.cartService.adicionarAoCarrinho(this.product);
@@ -80,6 +68,25 @@ export class DetailsProductsComponent implements OnInit, AfterViewInit, OnDestro
         this.showNotification = false;
       }, 3000);
     }
+  }
+
+  getStarRating(): string {
+    const fullStars = Math.floor(this.product?.rating);
+    const halfStars = Math.ceil(this.product?.rating - fullStars);
+    const emptyStars = 5 - fullStars - halfStars;
+
+    let starRating = '';
+    for (let i = 0; i < fullStars; i++) {
+      starRating += '★';
+    }
+    for (let i = 0; i < halfStars; i++) {
+      starRating += '½';
+    }
+    for (let i = 0; i < emptyStars; i++) {
+      starRating += '☆';
+    }
+
+    return starRating;
   }
   
 

@@ -155,12 +155,6 @@
                 <input matInput [(ngModel)]="address.complemento" placeholder="complemento">
               </mat-form-field>
             </ng-template>
-            <!-- Botão de edição -->
-            <ng-container *ngIf="!address.isDefault && !address.editMode && address.active">
-              <button mat-icon-button (click)="toggleEditDeliveryAddress(address)">
-                <mat-icon>edit</mat-icon>
-              </button>
-            </ng-container>
             <!-- Botão para salvar as alterações -->
             <button mat-raised-button color="primary" *ngIf="address.editMode"
               (click)="toggleEditDeliveryAddress(address)">Salvar</button>
