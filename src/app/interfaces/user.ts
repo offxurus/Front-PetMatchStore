@@ -14,6 +14,7 @@ export interface User {
   cpf?: string;
   group?: string;
   active?: boolean;
+  gender?: string;
 }
 export interface ListUser {
   users: Array<User>;

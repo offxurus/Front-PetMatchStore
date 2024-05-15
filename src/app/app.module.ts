@@ -35,6 +35,7 @@ import { OrderPaymentComponent } from './pages/order-payment/order-payment.compo
 import { CheckoutModalComponent } from './components/checkout-modal/checkout-modal.component';
 import { SuccessMessageModalComponent } from './components/sucess-message-modal/sucess-message-modal.component';
 import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
     MatToolbarModule, 
     MatCardModule,
     MatCheckboxModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatMenuModule
   ],
   providers: [UserService, HttpClient],
   bootstrap: [AppComponent],

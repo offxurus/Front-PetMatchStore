@@ -19,7 +19,7 @@ $shopping-cart-red: #DF0000;
   min-height: 140px !important;
   overflow: hidden;
   z-index: 99;
-  background-color:#ffde59;
+  background-color: #ffde59;
 
   #grid-menu {
     min-height: 140px;
@@ -29,7 +29,7 @@ $shopping-cart-red: #DF0000;
       max-height: 130px;
     }
 
-    .logo{
+    .logo {
       display: flex;
       flex-direction: row;
       align-content: center;
@@ -43,65 +43,119 @@ $shopping-cart-red: #DF0000;
         font-size: 40px;
       }
 
-      .login{
+      .login {
         display: flex;
         justify-content: end;
         width: 50%;
-        .teste{
-           margin-right: 20px;
-           width: 100% !important;
-            img{
+
+        .teste {
+          margin-right: 20px;
+          width: 100% !important;
+
+          img {
             max-width: 230px;
             max-height: 70px;
-            }
+          }
         }
-     }
+      }
     }
 
-    .perfil{
+    .perfil {
       display: flex;
       align-content: end;
       align-items: center;
-      width: 60%;
+      width: 50%;
       justify-content: end;
       padding-right: 70px;
 
 
-      .content-perfil{
+      .content-perfil {
+        width: 30%;
+        border-radius: 5px;
+        padding: 10px;
         display: flex;
-        flex-direction: column;
-        align-content: flex-start;
+        flex-direction: row;
+        align-content: center;
         justify-content: center;
         align-items: flex-start;
-        font-size: 20px;
-        color: $dark;
+        font-size: 18px;
+        color: $light;
         font-family: Montserrat;
         font-weight: 900;
+        background-color: $secondary;
 
-       
+        img {
+          margin-left: 0;
+          padding-left: 0;
+        }
 
-        a{
+        .menu {
+          .info-menu {
+            span {
+              display: flex;
+              align-content: center;
+              justify-content: flex-start;
+              align-items: center;
+            }
+          }
+
+          .menu-opcoes {
+            position: absolute;
+            ::ng-deep {
+              mat-menu {
+                position: absolute !important;
+                background-color: transparent;
+              }
+              mat-menu-item{
+                background-color:rgb(17, 17, 17);
+              }
+            }
+
+            span {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              align-content: center;
+              font-size: 15px !important;
+              font-weight: normal !important;
+
+            }
+
+            img {
+              width: 25px;
+              height: 25px;
+            }
+          }
+        }
+
+
+        a {
+          display: flex;
+          align-content: center;
+          justify-content: center;
+          align-items: center;
           font-family: Arial, Helvetica, sans-serif !important;
           font-weight: normal !important;
           font-size: 16px;
-          text-decoration:dashed;
+          text-decoration: dashed;
           cursor: pointer;
           color: $dark;
 
-          .span2{
+
+          .span2 {
             margin-left: 10px;
           }
         }
       }
 
-      img{
+      img {
         width: 50px;
         height: auto;
         margin-right: 10px;
       }
-     
 
-      button{
+
+      button {
         margin-right: 20px;
         width: 70px;
         height: 25px;
@@ -112,6 +166,7 @@ $shopping-cart-red: #DF0000;
       }
     }
   }
+
   .red-cart {
     cursor: pointer;
   }

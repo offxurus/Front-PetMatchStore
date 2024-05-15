@@ -16,12 +16,25 @@
       <h1>PETMATCH STORE</h1>
       <div class="perfil">
         <ng-container *ngIf="currentUser; else showLoginButton" class="welcome-logout">
-          <button (click)="openConfirmationDialog()">Logout</button>
           <div class="content-perfil">
-            <span>{{currentUser.name}}</span>
-            <a [routerLink]="['/client-logged']" aria-label="Logo">
-              <img src="assets/perfil.png">
+            <a aria-label="Logo">
+              <img *ngIf="currentUser && currentUser.gender === 'Feminino'" src="assets/mulher.png">
+              <img *ngIf="currentUser && currentUser.gender === 'Masculino'" src="assets/homem.png">
             </a>
+            <div class="menu">
+              <div class="info-menu">
+                <span>{{currentUser.name}}</span>
+              </div>
+            <div class="menu-opcoes"> 
+              <span mat-button [matMenuTriggerFor]="menu" class="menu"> Opções <img src="assets/seta-para-baixo.png"> </span>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item
+                  [routerLink]="['/client-logged']">Minha conta</button>
+                  <button mat-menu-item 
+                  (click)="openConfirmationDialog()">Sair</button>
+                </mat-menu>
+              </div>
+          </div>
           </div>
         </ng-container>
       </div>
