@@ -8,6 +8,7 @@
         <p class="pedido-info">Data do Pedido: {{ pedido.dateOrder }}</p>
         <p class="pedido-info">Total: {{ pedido.total.toFixed(2) }}</p>
         <p class="pedido-info">Status: {{ pedido.statusOrder }}</p>
+        <button mat-raised-button color="primary" (click)="verDetalhes(pedido.id)">Mais Detalhes</button>
       </li>
     </ul>
 </div>

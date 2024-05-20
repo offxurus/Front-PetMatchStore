@@ -12,6 +12,8 @@ import { ClientLoggedComponent } from './pages/client-logged/client-logged.compo
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { OrderPaymentComponent } from './pages/order-payment/order-payment.component';
 import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
+import { OrderDetailsComponent } from './pages/order-details/order-details.component';
+import { ListOrdersComponent } from './pages/list-orders/list-orders.component';
 const routes: Routes = [
   {
     path: 'login',
@@ -76,6 +78,14 @@ const routes: Routes = [
   {
     path: 'my-orders', 
     component: MyOrdersComponent
+  },
+  {
+    path: 'orders/:id', 
+    component: OrderDetailsComponent
+  },
+  {
+    path: 'orders', 
+    component: ListOrdersComponent
   }
 ];
 

@@ -9,6 +9,10 @@
         class="produtos" (click)="listProducts()">
             Lista de produtos
         </button>
+        <button *ngIf="userGroup === 'estoquista'"
+        class="produtos" (click)="listOrders()">
+            Ver Todos os Pedidos
+        </button>
         <a 
         *ngIf="userGroup === 'admin'"
         class="usuarios" routerLink="/list-user">

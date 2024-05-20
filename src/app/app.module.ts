@@ -36,10 +36,12 @@ import { CheckoutModalComponent } from './components/checkout-modal/checkout-mod
 import { SuccessMessageModalComponent } from './components/sucess-message-modal/sucess-message-modal.component';
 import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { OrderDetailsComponent } from './pages/order-details/order-details.component';
+import { ListOrdersComponent } from './pages/list-orders/list-orders.component';
 
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent,  HomeComponent, DialogGalleryComponent, DialogPreviewComponent, CarrosselComponent, DetailsProductsComponent, SignInClientComponent, ClientLoggedComponent, DialogLogoutComponent, ShoppingCartComponent, EnderecoSelecaoModalComponent, OrderPaymentComponent, CheckoutModalComponent, SuccessMessageModalComponent, MyOrdersComponent],
+  declarations: [AppComponent, DashboardComponent,  HomeComponent, DialogGalleryComponent, DialogPreviewComponent, CarrosselComponent, DetailsProductsComponent, SignInClientComponent, ClientLoggedComponent, DialogLogoutComponent, ShoppingCartComponent, EnderecoSelecaoModalComponent, OrderPaymentComponent, CheckoutModalComponent, SuccessMessageModalComponent, MyOrdersComponent, OrderDetailsComponent, ListOrdersComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,0 +1,24 @@
+<app-header></app-header>
+
+<div class="order-details" *ngIf="pedido">
+    <h2>Detalhes do Pedido</h2>
+    <p>ID do Pedido: {{ pedido.id }}</p>
+    <p>Data do Pedido: {{ pedido.dateOrder }}</p>
+    <p>Total: {{ pedido.total.toFixed(2) }}</p>
+    <p>Status: {{ pedido.statusOrder }}</p>
+    <p>Frete: {{ pedido.freteSelecionado.toFixed(2) }}</p>
+    <h3>Produtos</h3>
+    <ul>
+      <li *ngFor="let produto of pedido.products_order">
+        {{ produto.name }} - Quantidade: {{ produto.quantity }} - Preço: {{ produto.price.toFixed(2) }}
+      </li>
+    </ul>
+    <h3>Endereço de Entrega</h3>
+    <p>{{ pedido.defaultAddress.logradouro }}, {{ pedido.defaultAddress.numero }} - {{ pedido.defaultAddress.bairro }}, {{ pedido.defaultAddress.cidade }} - {{ pedido.defaultAddress.uf }}</p>
+    <h3>Forma de Pagamento</h3>
+    <p *ngIf="pedido.is_bolet">Pago por Boleto Bancário</p>
+    <p *ngIf="!pedido.is_bolet">Pago por Cartão de crédito em {{ pedido.installments }} parcelas de R$ {{ (pedido.total / pedido.installments).toFixed(2) }}</p>
+</div>
+<div class="loading" *ngIf="!pedido">
+    <p>Carregando detalhes do pedido...</p>
+</div>

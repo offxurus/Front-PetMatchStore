@@ -41,11 +41,11 @@
                     <form action="" class="payment-form">
                         <h1 class="payment-title">Payment Details</h1>
                         <div class="payment-method">
-                            <input type="radio" name="payment-method" id="method-1" (click)="isBolet()" checked>
+                            <input type="radio" name="payment-method" id="method-1" (click)="isBolet(false)" checked>
                             <label for="method-1" class="payment-method-item">
                                 <img src="./assets/mastercard.png" alt="">
                             </label>
-                            <input type="radio" name="payment-method" id="method-2" (click)="isBolet()">
+                            <input type="radio" name="payment-method" id="method-2" (click)="isBolet(false)">
                             <label for="method-2" class="payment-method-item">
                                 <img src="./assets/visa.png" alt="">
                             </label>

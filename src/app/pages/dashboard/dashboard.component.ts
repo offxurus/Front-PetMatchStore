@@ -32,4 +32,7 @@ export class DashboardComponent implements OnInit {
   listProducts(){
     this._router.navigate(['/products'], {state: {user: this.currentUser}});
   }
+  listOrders(){
+    this._router.navigate(['/orders'], {state: {user: this.currentUser}});
+  }
 }

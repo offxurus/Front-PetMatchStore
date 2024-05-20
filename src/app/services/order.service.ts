@@ -12,6 +12,7 @@ export class OrderService {
 
     getOrder(orderId?: string): Observable<ListOrder> {
         let URL = `${environment.apiUrl}/orders/${orderId}`
+
         if(!orderId)
           URL = `${environment.apiUrl}/orders`
         return new Observable<ListOrder>(observer => {

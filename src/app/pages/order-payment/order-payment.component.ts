@@ -40,11 +40,10 @@ export class OrderPaymentComponent implements OnInit {
     }
   }
 
-  isBolet(valor: boolean = false) {
-    this.order.is_bolet = valor;
+  isBolet(isBolet: boolean): void {
+    this.order.is_bolet = isBolet;
   }
-
-
+  
   finalizarPedido1() {
     const selectedOption = document.querySelector('input[name="payment-method"]:checked');
     if (!selectedOption) {

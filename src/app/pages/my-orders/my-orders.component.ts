@@ -38,4 +38,11 @@ export class MyOrdersComponent implements OnInit {
     });
   }
 
+  verDetalhes(pedidoId: string | undefined): void {
+    if (pedidoId) {
+      this._router.navigate(['/orders', pedidoId]);
+    } else {
+      console.error('Pedido ID está undefined');
+    }
+  }
 }
