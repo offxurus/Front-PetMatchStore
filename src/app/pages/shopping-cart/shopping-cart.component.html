@@ -6,7 +6,7 @@
   <main>
     <div class="page-title">Seu Carrinho</div>
     <div class="content">
-      <section>
+      <section class="tabela-itens-produtos">
         <table>
           <thead>
             <tr>
@@ -14,20 +14,20 @@
               <th>Preço</th>
               <th>Quantidade</th>
               <th>Total</th>
-              <th>-</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let item of cartItems">
               <td>
                 <div class="product">
-                  <img [src]="item.images" alt="" style="width: 100px; height: 100px;" />
+                  <img [src]="item.images?.[0]" alt="" style="width: 100px; height: 100px;" />
                   <div class="info">
                     <div class="name">{{ item.name }}</div>
                   </div>
                 </div>
               </td>
-              <td>{{ item.price | currency }}</td>
+              <td>{{ item.price | currency:'BRL' }}</td>
               <td>
                 <div class="qty">
                   <button (click)="diminuirQuantidade(item)">
@@ -39,7 +39,7 @@
                   </button>
                 </div>
               </td>
-              <td>{{ item.price * item.quantity | currency }}</td>
+              <td>{{ item.price * item.quantity | currency:'BRL' }}</td>
               <td>
                 <button (click)="removerDoCarrinho(item)" class="btn-remove">
                   🗑️
@@ -53,25 +53,7 @@
         <div class="box">
           <header>Resumo da compra</header>
           <div class="info">
-            <div><span>Sub-total</span><span>{{ subtotal | currency }}</span></div>
-          </div>
-        </div>
-        <div class="box" *ngIf="!currentUser">
-          <header>Adicionar Frete</header>
-          <div class="info">
-            <div class="frete">
-              <label>
-                <input type="radio" name="freteOption" value="34.18" (click)="selecionarFrete(34.18)"> Correios - SEDEX (R$34,18)
-              </label>
-              <br>
-              <label>
-                <input type="radio" name="freteOption" value="38.13" (click)="selecionarFrete(38.13)"> Correios - PAC (R$38,13)
-              </label>
-              <br>
-              <label>
-                <input type="radio" name="freteOption" value="20.15" (click)="selecionarFrete(20.15)"> JadLog (R$20,15)
-              </label>
-            </div>
+            <div><span>Sub-total</span><span>{{ subtotal | currency:'BRL' }}</span></div>
           </div>
         </div>
         <!--Cliente logado-->
@@ -109,7 +91,7 @@
           <header>Consultar Novo Frete</header>
           <div class="info">
             <div class="consultar-cep">
-              <input type="text" placeholder="Digite seu CEP" [(ngModel)]="cep">
+              <input class="input-cep" type="text" placeholder="Digite seu CEP (8 dígitos)" [(ngModel)]="cep" pattern="[0-9]{8}" maxlength="8">
               <button (click)="CalcularFrete()">OK</button>
             </div>
             <div *ngIf="mostrarOpcoesFrete" class="box">
@@ -119,7 +101,7 @@
                   <p>Opções de frete disponíveis:</p>
                   <ul>
                     <li *ngFor="let opcao of opcoesFreteCEP">
-                      {{ opcao.nome }} ({{ opcao.valor | currency }})
+                      {{ opcao.nome }} ({{ opcao.valor | currency:'BRL' }})
                     </li>
                   </ul>
                 </div>
@@ -130,7 +112,7 @@
         
         
         <footer>
-          <div><span>Total da compra</span><span>{{ total | currency }}</span></div>
+          <div><span>Total da compra</span><span>{{ total | currency:'BRL' }}</span></div>
         </footer>
         <button (click)="finalizarPedido()">Finalizar Pedido</button>
         <!-- Adicione a div para a notificação -->

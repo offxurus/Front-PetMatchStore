@@ -8,8 +8,9 @@ $font-family-bold: "Montsearrat-bold";
 Color Palettes
 -----------------------------------------------*/
 :root {
-  --primary-background: #ffde59;
-  --secondary-background: #5271ff;
+  --primary-background: #48c3c5;
+  --secondary-background: #ffde59;
+  --terciary-background: #DCEAEE;
   --footer-background: #424242;
   --header-background: #ffde59;
   --second_footer: #030101;
@@ -26,6 +27,7 @@ Color Editable
 -----------------------------------------------*/
 $primary: var(--primary-background);
 $secondary: var(--secondary-background);
+$terciary: var(--terciary-background);
 $button: var(--buttom-background);
 $footer: var(--footer-background);
 $header: var(--header-background);

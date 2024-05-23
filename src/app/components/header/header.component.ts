@@ -1,10 +1,9 @@
-import { Component, Inject, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/interfaces/user';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogLogoutComponent } from '../dialog-logout/dialog-logout.component';
-import { ClientService } from 'src/app/services/client.service';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -24,20 +23,23 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if(this.userService.getCurrentUser()){
+    if (this.userService.getCurrentUser()) {
       this.currentUser = this.userService.getCurrentUser();
     }
     this.countItemCart();
+    // Subscribe to cart updates
+    this.cartService.getCartUpdates().subscribe(count => {
+      this.cartItemCount = count;
+    });
   }
 
-  countItemCart(){
-    this.cartItemCount = this.cartService.getCarrinho().length;
+  countItemCart() {
+    this.cartItemCount = this.cartService.getCarrinho().reduce((total, item) => total + item.quantity, 0);
   }
 
   logout(): void {
     this.userService.logout();
     this.currentUser = null;
-
     this.router.navigate(['/']);
   }
 
@@ -45,7 +47,6 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/shopping-cart']);
   }
 
-  
   openConfirmationDialog(): void {
     const dialogRef = this.dialog.open(DialogLogoutComponent, {
       width: '250px'
