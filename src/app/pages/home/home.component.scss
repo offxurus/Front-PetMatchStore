@@ -4,7 +4,7 @@
 
 #product-list {
     margin-top: 25vh;
-    background-color: $footer;
+    background-color: #ececec;
   }
   
   .product-card {
@@ -12,16 +12,16 @@
     grid-template-columns: 350px 350px 350px;
     align-items: center;
     justify-content: center;
-    column-gap: 20px; /* Espaço entre as colunas */
-    row-gap: 20px; /* Espaço entre as linhas */
+    column-gap: 20px;
+    row-gap: 20px; 
    }
   
   ::ng-deep{
   mat-card {
     max-width: 350px;
     min-height: 15vh !important;
-    background-color:#A9A9A9!important;
-    box-shadow:  rgb(0, 0, 0) 0px 10px 36px !important;
+    background-color:#DCEAEE!important;
+    box-shadow: 0 4px 8px 0 #48c3c5, 0 6px 20px 0 rgba(72, 195, 197, 0.19) !important;
     border-radius:30px !important ;
   
     mat-card-header, mat-card-content{
@@ -52,7 +52,6 @@
       .title{
         text-align: center;
         font-family: Montserrat;
-        //height: 60px;
         font-size: 18px;
 
       }
@@ -79,7 +78,7 @@
           text-decoration: none;
           font-weight: bold;
           background-color: $primary;
-          color: $dark;
+          color: $light;
           border-radius: 5px;
       }
     }

@@ -38,10 +38,11 @@ import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { OrderDetailsComponent } from './pages/order-details/order-details.component';
 import { ListOrdersComponent } from './pages/list-orders/list-orders.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent,  HomeComponent, DialogGalleryComponent, DialogPreviewComponent, CarrosselComponent, DetailsProductsComponent, SignInClientComponent, ClientLoggedComponent, DialogLogoutComponent, ShoppingCartComponent, EnderecoSelecaoModalComponent, OrderPaymentComponent, CheckoutModalComponent, SuccessMessageModalComponent, MyOrdersComponent, OrderDetailsComponent, ListOrdersComponent],
+  declarations: [AppComponent, DashboardComponent,  HomeComponent, DialogGalleryComponent, DialogPreviewComponent, CarrosselComponent, DetailsProductsComponent, SignInClientComponent, ClientLoggedComponent, DialogLogoutComponent, ShoppingCartComponent, EnderecoSelecaoModalComponent, OrderPaymentComponent, CheckoutModalComponent, SuccessMessageModalComponent, MyOrdersComponent, OrderDetailsComponent, ListOrdersComponent, SidenavComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

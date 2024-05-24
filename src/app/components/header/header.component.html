@@ -5,15 +5,15 @@
     <div class="logo">
       <ng-container *ngIf="currentUser && currentUser.group === 'cliente'; else redirectToDashboard">
         <a [routerLink]="['/']" aria-label="Logo">
-          <img src="./assets/pet.png">
+          <img src="./assets/fav.png">
         </a>
       </ng-container>
       <ng-template #redirectToDashboard>
         <a [routerLink]="['/dashboard']" aria-label="Logo">
-          <img src="./assets/pet.png">
+          <img src="./assets/fav.png">
         </a>
       </ng-template>
-      <h1>PETMATCH STORE</h1>
+      <h1>PETMATCH</h1>
       <div class="perfil">
         <ng-container *ngIf="currentUser; else showLoginButton" class="welcome-logout">
           <div class="content-perfil">
@@ -26,32 +26,26 @@
                 <span>{{currentUser.name}}</span>
               </div>
             <div class="menu-opcoes"> 
-              <span mat-button [matMenuTriggerFor]="menu" class="menu"> Opções <img src="assets/seta-para-baixo.png"> </span>
-                <mat-menu #menu="matMenu">
-                  <button mat-menu-item
-                  [routerLink]="['/client-logged']">Minha conta</button>
-                  <button mat-menu-item
-                  [routerLink]="['/my-orders']">Meus Pedidos</button>
-                  <button mat-menu-item 
-                  (click)="openConfirmationDialog()">Sair</button>
-                </mat-menu>
-              </div>
+              <a routerLink="/client-logged">Minha Conta | </a>
+              <a (click)="openConfirmationDialog()">sair</a>
+            </div>
           </div>
           </div>
         </ng-container>
       </div>
       <div>
         <ng-template #showLoginButton>
-          <a routerLink="/login" class="teste">
-            <img src="./assets/entre.png" aria-label="img-perfil">
-          </a>
+          <div class="content-perfil menu-opcoes deslog"> 
+            <a class="fa fa-user" id="userIcon"></a>
+            <a routerLink="/login">Fazer login | </a>
+            <a class="esp" routerLink="/sign-in-client">cadastre-se</a>
+          </div>
         </ng-template>
       </div>
-      <span class="fa-stack fa-2x has-badge" id="cartIcon" (click)="goToShoppingCart()">
-        <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
-        <i class="fa fa-shopping-cart fa-stack-2x red-cart"></i>
+      <span class="fa fa-shopping-cart" id="cartIcon" (click)="goToShoppingCart()">
+        <span class="cart-badge" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
       </span>
-      <span class="badge" id="cartItemCount">{{ cartItemCount }}</span>
+      <!--<span class="badge" id="cartItemCount">{{ cartItemCount }}</span>-->
     </div>
   </section>
 </header>
