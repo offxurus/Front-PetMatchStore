@@ -48,5 +48,19 @@ export class OrderService {
             );
         });
     }
+    UpdateOrder(order: Order): Observable<Order> {
+      return new Observable<Order>((observer) => {
+      this.http.post<Order>(`${environment.apiUrl}/orders/${order.id}`, order).subscribe(
+        (order) => {
+          observer.next(order);
+          observer.complete();
+        },
+        (error) => {
+          observer.error(error);
+          observer.complete();
+        }
+        );
+      });
+    }
 }
 

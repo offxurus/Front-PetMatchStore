@@ -27,4 +27,15 @@ export class ListOrdersComponent implements OnInit {
       }
     );
   }
+
+  toggleOrderStatus(order: Order) {
+    this.orderService.UpdateOrder(order).subscribe(
+      () => {
+        this.router.navigate(['/orders'])
+      },
+      () => {
+        alert('Erro ao atualizar pedido');
+      }
+    );
+  }
 }
