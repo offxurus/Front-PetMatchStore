@@ -63,6 +63,7 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = this._userService.getCurrentUser();
     this.cartItems = this.cartService.getCarrinho();
+    console.log("cart",this.cartItems)
     this.subtotal = this.cartService.calcularTotal();
     console.log(this.subtotal)
     this.buscarOpcoesFrete()
