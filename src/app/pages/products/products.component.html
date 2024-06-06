@@ -9,11 +9,10 @@
         <h4>Produtos</h4>
         <button type="button" class="btn btn-primary mt-2 mt-md-0" routerLink="/create-product"><i class="fas fa-plus"></i> Novo Produto</button>
     </div>
-      <div style="flex: 1; display: flex; justify-content: center;">
-          <input #searchBox id="search-box" class="form-control" style="width: 300px;" (input)="search(searchBox.value)" placeholder="Pesquisar">
-          <mat-icon style="border-radius: 5px; width: 40px; height: 40px; background-color: #5271ff; margin-left: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center;"
-          tabindex="0">search</mat-icon>
-      </div>
+    <div style="flex: 1; display: flex; justify-content: center;">
+        <input #searchBox id="search-box" class="form-control" style="width: 300px;" (input)="search(searchBox.value)" placeholder="Pesquisar">
+        <mat-icon class="search-icon" tabindex="0">search</mat-icon>
+    </div>
   </div>
 
   <div class="card-body">
@@ -37,20 +36,18 @@
           <td class="border-right">{{ product.active ? 'Ativo' : 'Desativado' }}</td>
           <td>
             <span class="d-flex align-items-center">
-              
-              <button class="btn btn-outline-warning mb-1 me-3 btn-sm" *ngIf="product.active">
-                <i class="bi bi-pencil" (click)="updateProductItem(product)"></i> <!--alterar -->
+              <button class="btn btn-warning btn-sm me-3 full-width" *ngIf="product.active" (click)="updateProductItem(product)">
+                <i class="bi bi-pencil"></i> Alterar
               </button>
 
-              <button class="btn btn-outline-info mb-1 me-3 btn-sm" *ngIf="product.active && currentUser && currentUser.group != 'estoquista'">
-                <i class="fas fa-eye" (click)="openPreview(product.id)"></i> <!--visualizar -->
+              <button class="btn btn-success btn-sm me-3 full-width" *ngIf="product.active && currentUser && currentUser.group != 'estoquista'" (click)="openPreview(product.id)">
+                <i class="fas fa-eye"></i> Visualizar
               </button>
   
               <div class="form-check form-switch" *ngIf="currentUser && currentUser.group != 'estoquista'">
                 <input class="form-check-input" type="checkbox" id="activeSwitch{{product.id}}" [checked]="product.active" (change)="activeProduct(product.active, product)">
                 <label class="form-check-label" for="activeSwitch{{product.id}}">{{ product.active ? 'Ativo' : 'Inativo' }}</label>
               </div>
-  
             </span>
           </td>
         </tr>
@@ -58,13 +55,11 @@
     </table>
 
     <div class="text-center">
-      <button class="btn btn-primary" (click)="getProducts()">
-        Ver mais
-      </button>
+      <button class="botao" (click)="getProducts()">Ver mais</button>
     </div>
-  
+
     <ng-template #loading>
       <span>Carregando...</span>
     </ng-template>
   </div>
-  
+</div>

@@ -1,35 +1,79 @@
+.order-list-container {
+  position: relative;
+}
+
 .order-list {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .order-item {
-    padding: 10px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 10px;
-  }
-  
-  .order-item p {
-    margin: 5px 0;
-  }
-  
-  .order-item button {
-    margin-top: 10px;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .order-item button:hover {
-    background-color: #0056b3;
-  }
-  
+  max-width: 800px;
+  margin: 17vh auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-item {
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.order-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-header {
+  margin-bottom: 10px;
+}
+
+.order-id,
+.order-date {
+  font-weight: bold;
+  color: #333;
+}
+
+.order-body {
+  display: flex;
+  align-items: center;
+}
+
+.order-total {
+  margin-right: 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.order-item select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.order-item button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.order-item button:hover {
+  background-color: #0056b3;
+}
+
+.image-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.image-container img {
+  margin-right: -40px;
+  margin-top: -10px;
+  height: auto;
+}

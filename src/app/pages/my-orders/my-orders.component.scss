@@ -1,25 +1,107 @@
 .meus-pedidos {
   margin-top: 16vh;
-  background-color: #f9f9f9;
+  background-color: #fff;
   border: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .titulo {
   color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  margin-top:30px
 }
 
 .pedido {
   border-bottom: 1px solid #ccc;
   padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.pedido-info {
-  margin: 5px 0;
+.pedido-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pedido-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.pedido-id {
+  font-weight: bold;
+}
+
+.pedido-data {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.pedido-status {
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1); 
+}
+
+.status-rejeitado {
+  background-color: #dc3545;
+}
+
+.status-entregue {
+  background-color: #28a745;
+}
+
+.status-outros {
+  background-color: #ffc107;
+}
+
+.pedido-total {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+button {
+  align-self: flex-end;
+  margin-top: 10px;
 }
 
 .nenhum-pedido {
   color: #900;
   font-style: italic;
+  text-align: center;
+  margin-top: 20px;
 }
+
+button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-size: 1em;
+  font-weight: bold;
+  color: #fff;
+  background-color: #48c3c5; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05); 
+}
+
+button:active {
+  background-color: #004085; 
+  transform: scale(1);
+}
+

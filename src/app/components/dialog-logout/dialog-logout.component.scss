@@ -1,0 +1,40 @@
+h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: #000000;
+  }
+  
+  p {
+    font-size: 16px;
+    margin-bottom: 24px;
+    color: #666;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+  
+  button[mat-button] {
+    min-width: 100px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  button[mat-button][color="primary"] {
+    background-color: #1976d2;
+    color: white;
+  }
+  
+  button[mat-button][color="warn"] {
+    background-color: #d32f2f;
+    color: white;
+  }
+  
+  button[mat-button][color="primary"]:hover,
+  button[mat-button][color="warn"]:hover {
+    opacity: 0.8;
+  }
+  

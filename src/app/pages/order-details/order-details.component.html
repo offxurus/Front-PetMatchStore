@@ -1,24 +1,71 @@
 <app-header></app-header>
 
-<div class="order-details" *ngIf="pedido">
-    <h2>Detalhes do Pedido</h2>
-    <p>ID do Pedido: {{ pedido.id }}</p>
-    <p>Data do Pedido: {{ pedido.dateOrder }}</p>
-    <p>Total: {{ pedido.total.toFixed(2) }}</p>
-    <p>Status: {{ pedido.statusOrder }}</p>
-    <p>Frete: {{ pedido.freteSelecionado.toFixed(2) }}</p>
+<div class="order-details-wrapper" *ngIf="pedido">
+  <div class="order-details-main">
+    <div class="order-header">
+      <h2>Detalhes do Pedido</h2>
+      <p class="order-id">Pedido: {{ pedido.id }}</p>
+      <p class="order-date">Data do Pedido: {{ pedido.dateOrder | date: 'dd/MM/yyyy' }}</p>
+    </div>
+
     <h3>Produtos</h3>
-    <ul>
-      <li *ngFor="let produto of pedido.products_order">
-        {{ produto.name }} - Quantidade: {{ produto.quantity }} - Preço: {{ produto.price.toFixed(2) }}
+    <ul class="product-list">
+      <li *ngFor="let produto of pedido.products_order" class="product-item">
+        <img *ngIf="produto.images && produto.images.length > 0" [src]="produto.images[0]" alt="Imagem do Produto" width="100" height="100">
+        <span class="product-name">{{ produto.name }}</span>
+        <span class="product-quantity">Quantidade: {{ produto.quantity }}</span>
+        <span class="product-price">Preço: R$ {{ produto.price.toFixed(2) }}</span>
       </li>
     </ul>
+
     <h3>Endereço de Entrega</h3>
-    <p>{{ pedido.defaultAddress.logradouro }}, {{ pedido.defaultAddress.numero }} - {{ pedido.defaultAddress.bairro }}, {{ pedido.defaultAddress.cidade }} - {{ pedido.defaultAddress.uf }}</p>
+    <p class="delivery-address">{{ pedido.defaultAddress.logradouro }}, {{ pedido.defaultAddress.numero }} - {{
+      pedido.defaultAddress.bairro }}, {{ pedido.defaultAddress.cidade }} - {{ pedido.defaultAddress.uf }}</p>
+
+    <h3>Status do Pedido</h3>
+    <div class="status-bar">
+      <div class="status-item" [class.active]="pedido.statusOrder === 'Aguardando pagamento'">Pedido recebido</div>
+      <div class="status-item" [class.active]="pedido.statusOrder === 'Pagamento com sucesso'">Pagamento aprovado</div>
+      <div class="status-item" [class.active]="pedido.statusOrder === 'Aguardando retirada'">Enviado para a
+        transportadora</div>
+      <div class="status-item" [class.active]="pedido.statusOrder === 'Em transito'">Mercadoria em trânsito</div>
+      <div class="status-item" [class.active]="pedido.statusOrder === 'Entregue'">Pedido entregue</div>
+    </div>
+  </div>
+
+  <div class="order-details-payment">
+    <h3>Resumo do Pagamento</h3>
+    <div class="payment-summary">
+      <div class="summary-row">
+        <span class="label">Frete:</span>
+        <span class="value">R$ {{ pedido.freteSelecionado.toFixed(2) }}</span>
+      </div>
+      <div class="summary-row total">
+        <span class="label">Total do pedido:</span>
+        <span class="value">R$ {{ pedido.total.toFixed(2) }}</span>
+      </div>
+    </div>
+
     <h3>Forma de Pagamento</h3>
-    <p *ngIf="pedido.is_bolet">Pago por Boleto Bancário</p>
-    <p *ngIf="!pedido.is_bolet">Pago por Cartão de crédito em {{ pedido.installments }} parcelas de R$ {{ (pedido.total / pedido.installments).toFixed(2) }}</p>
+    <div class="payment-method">
+      <img *ngIf="pedido.is_bolet" src="./assets/fatura.png" alt="Boleto Bancário" class="payment-icon">
+      <div *ngIf="pedido.is_bolet">
+        <p>Boleto Bancário</p>
+        <p>O boleto bancário foi enviado ao seu e-mail</p>
+      </div>
+    </div>
+    <div class="payment-method" *ngIf="!pedido.is_bolet">
+      <img src="./assets/cartao-de-credito.png" alt="Cartão de Crédito" class="payment-icon">
+      <div>
+        <p>Cartão de crédito</p>
+        <p>{{ pedido.installments }}x de R$ {{ (pedido.total / pedido.installments).toFixed(2) }}</p>
+      </div>
+    </div>
+
+    <button class="back-to-orders-btn" (click)="returnOrders()">Voltar aos meus pedidos</button>
+  </div>
 </div>
+
 <div class="loading" *ngIf="!pedido">
-    <p>Carregando detalhes do pedido...</p>
+  <p>Carregando detalhes do pedido...</p>
 </div>

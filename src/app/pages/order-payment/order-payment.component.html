@@ -16,12 +16,12 @@
                                     <div class="payment-item-name">{{ item.name }}</div>
                                     <div class="payment-item-quantity">Quantidade: {{ item.quantity }}</div>
                                 </div>
-                                <div class="payment-item-total">Total: {{ item.price * item.quantity | currency }}</div>
+                                <div class="payment-item-total">Total: {{ item.price * item.quantity | currency:'BRL'  }}</div>
                             </div>
                             <div class="payment-summary">
                                 <div class="payment-summary-item">
                                     <div class="payment-summary-name">Subtotal</div>
-                                    <div class="payment-summary-price">{{ order.subtotal | currency }}</div>
+                                    <div class="payment-summary-price">{{ order.subtotal | currency:'BRL'  }}</div>
                                 </div>
                                 <div class="payment-summary-item">
                                     <div class="payment-summary-name">Frete</div>
@@ -30,7 +30,7 @@
                                 <div class="payment-summary-divider"></div>
                                 <div class="payment-summary-item payment-summary-total">
                                     <div class="payment-summary-name">Total</div>
-                                    <div class="payment-summary-price">{{ order.total | currency }}</div>
+                                    <div class="payment-summary-price">{{ order.total | currency:'BRL' }}</div>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
 
                 <div class="payment-right">
                     <form action="" class="payment-form">
-                        <h1 class="payment-title">Payment Details</h1>
+                        <h1 class="payment-title">Informações de pagamento</h1>
                         <div class="payment-method">
                             <input type="radio" name="payment-method" id="method-1" (click)="isBolet(false)" checked>
                             <label for="method-1" class="payment-method-item">

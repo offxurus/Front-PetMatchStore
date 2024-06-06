@@ -29,6 +29,25 @@ export class DialogPreviewComponent implements OnInit {
     }
   }
 
+  getStarRating(): string {
+    const fullStars = Math.floor(this.product.rating || 0);
+    const halfStars = Math.ceil((this.product.rating || 0) - fullStars);    
+    const emptyStars = 5 - fullStars - halfStars;
+
+    let starRating = '';
+    for (let i = 0; i < fullStars; i++) {
+      starRating += '★';
+    }
+    for (let i = 0; i < halfStars; i++) {
+      starRating += '½';
+    }
+    for (let i = 0; i < emptyStars; i++) {
+      starRating += '☆';
+    }
+
+    return starRating;
+  }
+
   closeModal(): void {
     this.dialogRef.close();
   }

@@ -2,17 +2,16 @@
 
 .main {
     margin-top: 17vh !important;
-    background-color: $footer !important;
-    height: 100%!important;
+    background-color: #f8f9fa !important;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.table td,
-.table th {
-    border: 2px solid $primary;
-    vertical-align: top;
-    padding: 0.75rem;
+.card-header {
+    background-color: #5271ff;
     color: white;
-    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    padding: 20px;
 }
 
 h4 {
@@ -20,16 +19,61 @@ h4 {
 }
 
 .card {
-    border: 0px!important;
+    border: none !important;
+    border-radius: 10px;
 }
+
 .table {
     width: 100%;
     border-collapse: collapse;
-  }
+}
 
 .table thead th {
-    border-top: 1px solid #FFEB3B!important;
+    border-top: none !important;
+    border-bottom: 2px solid #dee2e6;
+    background-color: #f1f1f1;
+    font-weight: bold;
 }
+
+.table td, .table th {
+    border: none;
+    padding: 15px;
+    vertical-align: middle;
+    color: #333;
+}
+
 .border-right {
-    border-right: 1px solid #ddd;
+    border-right: 1px solid #dee2e6;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.search-icon {
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    background-color: #5271ff;
+    margin-left: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.btn-light {
+    background-color: white;
+    color: #5271ff;
+    border: 1px solid #5271ff;
+}
+
+.btn-light:hover {
+    background-color: #5271ff;
+    color: white;
+}
+
+.form-control {
+    border-radius: 5px;
 }

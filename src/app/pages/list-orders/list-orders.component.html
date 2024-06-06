@@ -1,23 +1,35 @@
-<div class="order-list" *ngIf="orders.length > 0">
-  <h2>Lista de Pedidos</h2>
-  <ul>
-    <li *ngFor="let order of orders" class="order-item">
-      <div>
-        <p>ID do Pedido: {{ order.id }}</p>
-        <p>Data do Pedido: {{ order.dateOrder }}</p>
-        <p>Total: {{ order.total.toFixed(2) }}</p>
-        <select [(ngModel)]="order.statusOrder" name="statusOrder" (change)="toggleOrderStatus(order)">
-          <option value="pending_payment">aguardando pagamento</option>
-          <option value="payment_rejected">Pagamento rejeitado</option>
-          <option value="payment_success">Pagamento com sucesso</option>
-          <option value="pending_pickup">Aguardando retirada</option>
-          <option value="in_transit">Em transito</option>
-          <option value="delivered">Entregue</option>
-        </select>
-      </div>
-    </li>
-  </ul>
+<app-header></app-header>
+
+<div class="order-list-container">
+  <div class="order-list">
+    <h2>Lista de Pedidos</h2>
+    <ul>
+      <li *ngFor="let order of orders" class="order-item">
+        <div class="order-info">
+          <div class="order-header">
+            <p class="order-id">Pedido: {{ order.id }}</p>
+            <p class="order-date">Data do Pedido: {{ order.dateOrder | date: 'dd/MM/yyyy' }}</p>
+          </div>
+          <div class="order-body">
+            <p class="order-total">{{ order.total.toFixed(2) | currency:'BRL' }}</p>
+            <select [(ngModel)]="order.statusOrder" name="statusOrder" (change)="toggleOrderStatus(order)">
+              <option value="Aguardando pagamento">Aguardando pagamento</option>
+              <option value="Pagamento rejeitado">Pagamento rejeitado</option>
+              <option value="Pagamento com sucesso">Pagamento com sucesso</option>
+              <option value="Aguardando retirada">Aguardando retirada</option>
+              <option value="Em trânsito">Em trânsito</option>
+              <option value="Entregue">Entregue</option>
+            </select>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="image-container">
+    <img src="./assets/cachorro-fofin.png" alt="Descrição da imagem">
+  </div>
 </div>
+
 <div *ngIf="orders.length === 0">
   <p>Nenhum pedido encontrado.</p>
 </div>

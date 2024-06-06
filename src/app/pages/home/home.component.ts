@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   public product: Product | null = null; 
-
+  public number: number = 0;
   public products: Product[] = [];
 
   constructor(private productService: ProductsService,
@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
   getProducts(): void {
     this.productService.getProduct(0).subscribe(response => {
       this.products = response.products;
+      this.number = response.cursor;
       if (this.products.length > 0) {
         this.product = this.products[0];
       }
@@ -36,5 +37,10 @@ export class HomeComponent implements OnInit {
   navigateToDetails(productId: string): void {
     this.router.navigate(['/details-products', productId]);
   }
-
+  moreProducts(){
+    this.productService.getProduct(this.number).subscribe(response => {
+      this.products = this.products.concat(response.products);
+      this.number = response.cursor;
+    });
+  }
 }

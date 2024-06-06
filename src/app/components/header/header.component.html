@@ -25,11 +25,11 @@
               <div class="info-menu">
                 <span>{{currentUser.name}}</span>
               </div>
-            <div class="menu-opcoes"> 
-              <a routerLink="/client-logged">Minha Conta | </a>
-              <a (click)="openConfirmationDialog()">sair</a>
+              <div class="menu-opcoes"> 
+                <a *ngIf="currentUser.group === 'cliente'" routerLink="/client-logged">Minha Conta | </a>
+                <a (click)="openConfirmationDialog()">sair</a>
+              </div>
             </div>
-          </div>
           </div>
         </ng-container>
       </div>
@@ -42,10 +42,9 @@
           </div>
         </ng-template>
       </div>
-      <span class="fa fa-shopping-cart" id="cartIcon" (click)="goToShoppingCart()">
+      <span *ngIf="currentUser && currentUser.group === 'cliente'" class="fa fa-shopping-cart" id="cartIcon" (click)="goToShoppingCart()" >
         <span class="cart-badge" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
       </span>
-      <!--<span class="badge" id="cartItemCount">{{ cartItemCount }}</span>-->
     </div>
   </section>
 </header>

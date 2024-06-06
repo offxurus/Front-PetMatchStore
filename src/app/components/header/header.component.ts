@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit {
 
   openConfirmationDialog(): void {
     const dialogRef = this.dialog.open(DialogLogoutComponent, {
-      width: '250px'
+      width: '400px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

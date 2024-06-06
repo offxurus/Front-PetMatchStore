@@ -1,18 +1,22 @@
 #gallery {
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: space-around; 
-  }
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  background-color: #ffffff;
+}
   
-  .image-container {
-    width: 300px; 
-    margin: 10px; 
-    text-align: center; 
-  }
+.image-container {
+  width: 300px; 
+  margin: 10px; 
+  text-align: center; 
+  display: flex;
+  flex-direction: column; 
+}
   
   .image-container img {
     max-width: 100%; 
-    height: auto; 
+    height: auto;
+    margin-bottom: 10px;
   }
   
   .image-buttons {
@@ -34,4 +38,11 @@
 }
 .spacer {
   flex: 1;
+}
+.mat-toolbar{
+  display: flex;
+  justify-content: space-between;
+}
+.input{
+  display: flex;
 }

@@ -16,7 +16,7 @@
         </mat-form-field>
 
         <mat-form-field class="password-form" appearance="fill">
-          <mat-label>Enter your password</mat-label>
+          <mat-label>Escreva sua senha</mat-label>
           <input [value]="userParams.password" (change)="changePassword($event)" matInput [type]="hide ? 'password' : 'text'">
           <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -24,7 +24,7 @@
         </mat-form-field>
       </form>
       <div class="login-button">
-        <button (click)="loginIn()"> Login in </button>
+        <button (click)="loginIn()"> Entrar</button>
       </div>
       <div class="spinner">
         <mat-spinner [diameter]=50 *ngIf="showLoading"></mat-spinner>

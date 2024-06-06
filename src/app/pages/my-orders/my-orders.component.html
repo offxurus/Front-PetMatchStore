@@ -1,17 +1,27 @@
 <app-header></app-header>
 
 <div *ngIf="pedidos" class="meus-pedidos">
-    <h2 class="titulo">Meus Pedidos</h2>
-    <ul>
-      <li *ngFor="let pedido of pedidos" class="pedido">
-        <p class="pedido-info">ID do Pedido: {{ pedido.id }}</p>
-        <p class="pedido-info">Data do Pedido: {{ pedido.dateOrder }}</p>
-        <p class="pedido-info">Total: {{ pedido.total.toFixed(2) }}</p>
-        <p class="pedido-info">Status: {{ pedido.statusOrder }}</p>
-        <button mat-raised-button color="primary" (click)="verDetalhes(pedido.id)">Mais Detalhes</button>
-      </li>
-    </ul>
+  <h2 class="titulo">Meus Pedidos</h2>
+  <ul>
+    <li *ngFor="let pedido of pedidos" class="pedido">
+      <div class="pedido-header">
+        <p class="pedido-id">Pedido: {{ pedido.id }}</p>
+        <p class="pedido-data">{{ pedido.dateOrder | date: 'dd/MM/yyyy' }}</p>
+      </div>
+      <div class="pedido-body">
+        <p class="pedido-status" [ngClass]="{
+             'status-rejeitado': pedido.statusOrder === 'Pagamento rejeitado',
+             'status-entregue': pedido.statusOrder === 'Entregue',
+             'status-outros': pedido.statusOrder !== 'Pagamento rejeitado' && pedido.statusOrder !== 'Entregue'
+           }">
+          {{ pedido.statusOrder }}
+        </p>
+        <p class="pedido-total">{{ pedido.total.toFixed(2) | currency:'BRL' }}</p>
+      </div>
+      <button mat-raised-button color="primary" (click)="verDetalhes(pedido.id)">Ver Detalhes</button>
+    </li>
+  </ul>
 </div>
 <div *ngIf="!pedidos" class="nenhum-pedido">
-    <p>Nenhum pedido encontrado.</p>
+  <p>Nenhum pedido encontrado.</p>
 </div>

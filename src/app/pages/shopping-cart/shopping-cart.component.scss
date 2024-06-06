@@ -186,9 +186,17 @@ aside {
         }
       }
       > div .frete{
+        display: block;
+        align-items: flex-start;
+      }
+      .frete {
         display: flex;
-        justify-content: center;
-        align-items: center;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .frete p {
+        display: block;
+        margin: 5px 0;
       }
       button {
         color: $secondary;
@@ -240,6 +248,23 @@ aside {
       color: $light;
     }
   }
+  .frete-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .address-info {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .frete-options {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
   .notification {
     background-color: #ffcccc;
     color: #ff0000;

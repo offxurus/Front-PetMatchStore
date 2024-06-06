@@ -158,11 +158,6 @@ export class ShoppingCartComponent implements OnInit {
 
 
   finalizarPedido() {
-    const selectedOption = document.querySelector('input[name="freteOption"]:checked');
-    if (!selectedOption) {
-      alert('Por favor, selecione uma opção de frete.');
-      return;
-    }
     if (this._userService.getCurrentUser()) {
       this.order.cartItems = this.cartItems;
       this.order.subtotal = this.subtotal;

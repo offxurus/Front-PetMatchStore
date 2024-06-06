@@ -60,30 +60,30 @@
         <div class="box" *ngIf="currentUser">
           <header>Adicionar Frete</header>
           <div class="info">
-            <div class="frete">
-              <p>Logradouro: {{ defaultAddress.logradouro }}</p>
-              <p>Bairro: {{ defaultAddress.bairro }}</p>
-              <p>Cidade: {{ defaultAddress.cidade }}</p>
-              <p>UF: {{ defaultAddress.uf }}</p>
-              <div *ngIf="defaultFrete === false">
-                <div class="frete">
-                  <label>
-                    <input type="radio" name="freteOption" (click)="selecionarFrete(this.opcoesFrete[0].valor)" required> Correios - SEDEX (R${{this.opcoesFrete[0].valor}})
-                  </label>
-                  <br>
-                  <label>
-                    <input type="radio" name="freteOption" (click)="selecionarFrete(this.opcoesFrete[1].valor)"> Correios - PAC (R${{this.opcoesFrete[1].valor}})
-                  </label>
-                  <br>
-                  <label>
-                    <input type="radio" name="freteOption" (click)="selecionarFrete(this.opcoesFrete[2].valor)"> JadLog (R${{this.opcoesFrete[2].valor}})
-                  </label>
-                </div>
+            <div class="frete-container">
+              <div class="address-info">
+                <p>{{ defaultAddress.logradouro }}, {{ defaultAddress.numero}}</p>
+                <p>{{ defaultAddress.cidade }} {{ defaultAddress.uf }}</p>
+                <button (click)="openModal()">Selecionar outro endereço</button>
               </div>
-              <button (click)="openModal()">Selecionar outro endereço</button>
+              <div class="frete-options">
+                <label>
+                  <input type="radio" name="freteOption" (click)="selecionarFrete(this.opcoesFrete[0].valor)" required> Correios - SEDEX (R${{this.opcoesFrete[0].valor}})
+                </label>
+                <br>
+                <label>
+                  <input type="radio" name="freteOption" (click)="selecionarFrete(this.opcoesFrete[1].valor)"> Correios - PAC (R${{this.opcoesFrete[1].valor}})
+                </label>
+                <br>
+                <label>
+                  <input type="radio" name="freteOption" (click)="selecionarFrete(this.opcoesFrete[2].valor)"> JadLog (R${{this.opcoesFrete[2].valor}})
+                </label>
+              </div>
             </div>
           </div>
         </div>
+        
+
 
         <button (click)="mostrarConsultaNovoFrete()">Calcular Novo Frete</button>
 
@@ -91,7 +91,8 @@
           <header>Consultar Novo Frete</header>
           <div class="info">
             <div class="consultar-cep">
-              <input class="input-cep" type="text" placeholder="Digite seu CEP (8 dígitos)" [(ngModel)]="cep" pattern="[0-9]{8}" maxlength="8">
+              <input class="input-cep" type="text" placeholder="Digite seu CEP (8 dígitos)" [(ngModel)]="cep"
+                pattern="[0-9]{8}" maxlength="8">
               <button (click)="CalcularFrete()">OK</button>
             </div>
             <div *ngIf="mostrarOpcoesFrete" class="box">
@@ -109,8 +110,8 @@
             </div>
           </div>
         </div>
-        
-        
+
+
         <footer>
           <div><span>Total da compra</span><span>{{ total | currency:'BRL' }}</span></div>
         </footer>

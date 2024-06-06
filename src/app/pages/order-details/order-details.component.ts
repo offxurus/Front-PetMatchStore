@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OrderService } from 'src/app/services/order.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -13,6 +13,7 @@ export class OrderDetailsComponent implements OnInit {
   pedido: any;
 
   constructor(
+    private _router: Router,
     private route: ActivatedRoute,
     private orderService: OrderService
   ) { }
@@ -27,5 +28,8 @@ export class OrderDetailsComponent implements OnInit {
     } else {
       console.error('Pedido ID está null');
     }
+  }
+  returnOrders(): void {
+      this._router.navigate(['/my-orders']);
   }
 }

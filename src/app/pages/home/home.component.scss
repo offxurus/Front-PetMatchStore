@@ -5,6 +5,28 @@
 #product-list {
     margin-top: 25vh;
     background-color: #ececec;
+    position: relative;
+    padding-bottom: 60px;
+  }
+
+  .botao.ver-mais {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .botao.ver-mais:hover {
+    background-color: #0056b3;
   }
   
   .product-card {
