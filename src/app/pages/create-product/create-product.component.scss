@@ -10,7 +10,8 @@
     overflow-y: hidden;
   
     .box{
-        box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 36px;
+        box-shadow: 0 4px 8px 0 #48c3c5, 0 6px 20px 0 rgba(72, 195, 197, 0.19) !important;
+        background-color: $terciary;
         width: 80%;
         margin-top: 10vh;
         border-radius: 20px;
@@ -25,7 +26,7 @@
         .title{
             font-family: Montserrat;
             font-weight: 900;
-            color: $light;
+            color: $primary;
             font-size: 27px;
             text-transform: uppercase;
             text-align: center;
@@ -46,7 +47,7 @@
                 label{
                     font-family: Montserrat;
                     font-weight: 700;
-                    color: $light;
+                    color: $primary;
                     font-size: 18px;
                     text-transform: uppercase;
                     text-align: center;
@@ -68,7 +69,7 @@
                     border-radius: 5px;
                     margin-bottom: 8px;
                     border-color: $trans;
-                    background-color: $dark;
+                    background-color: $primary;
                     color: $light;
                 }
 
@@ -88,11 +89,12 @@
         align-items: center;
         justify-content: center;
         margin-top: 10px;
+          padding: 20px;
           height: 30px;
           font-size: 16px;
           text-transform: uppercase;
           text-transform: bold;
-          color: $dark;
+          color: $light;
           text-align: center;
           cursor: pointer;
           min-width: 150px;

@@ -11,7 +11,9 @@
           Já possui uma conta? <a class="sign-in" routerLink="/login">faça seu login</a>
         </span>
       </div>
+      <div class="dados-pessoais">
       <form class="example-form" #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <div class="dados-pessoais">
         <mat-form-field appearance="fill">
           <mat-label>Name</mat-label>
           <input [(ngModel)]="userParams.name" name="name" matInput required pattern="\b\w{3,}\b(?:\s+\b\w{3,}\b)+">
@@ -49,8 +51,10 @@
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
         </mat-form-field>
+      </div>
 
         <!-- AQUI COMEÇA O ENDERECO DE FATURAMENTO -->
+        <div class="enderecos">
         <div class="billing-address" *ngIf="userParams.billing_address">
           <h3>Endereço de Faturamento</h3>
           <div class="address-fields">
@@ -58,7 +62,7 @@
               <mat-label>CEP</mat-label>
               <input [(ngModel)]="userParams.billing_address.cep" name="BillingCep" matInput #cepInput>
             </mat-form-field>
-            <button mat-button type="button" (click)="consultaCep(cepInput)">Consultar CEP</button>
+            <button class="cep" mat-button type="button" (click)="consultaCep(cepInput)">Consultar CEP</button>
           </div>
           <div class="address-fields">
             <mat-form-field appearance="fill">
@@ -90,11 +94,22 @@
               <input [(ngModel)]="userParams.billing_address.uf" name="BillingUf" matInput>
             </mat-form-field>
           </div>
+          <div class="buttons">
+            <button mat-button *ngIf="!(useSameAddress)" type="button" class="add-address" (click)="addAddress()">Adicionar
+              Endereço</button>
+  
+              <mat-checkbox name="useSameAddress" [(ngModel)]="useSameAddress" (change)="toggleUseSameAddress()">Usar mesmo
+                endereço de faturamento para entrega</mat-checkbox>
+  
+                <div class="login-button">
+                  <button type="submit">{{ isUpdating ? 'Update' : 'Sign up' }}</button>
+                  <div class="spinner">
+                    <mat-spinner [diameter]="50" *ngIf="showLoading"></mat-spinner>
+                  </div>
+                </div>
+          </div>
         </div>
         <!-- AQUI TERMINA O ENDERECO DE FATURAMENTO -->
-
-        <mat-checkbox name="useSameAddress" [(ngModel)]="useSameAddress" (change)="toggleUseSameAddress()">Usar mesmo
-          endereço de faturamento para entrega</mat-checkbox>
 
         <ng-container *ngIf="!(useSameAddress)">
           <div class="address-section" *ngFor="let address of userParams.delivery_address; let i = index">
@@ -139,16 +154,8 @@
             <button mat-button type="button" class="remove-address" (click)="removeAddress(i)">Remover Endereço</button>
           </div>
         </ng-container>
-
-        <button mat-button *ngIf="!(useSameAddress)" type="button" class="add-address" (click)="addAddress()">Adicionar
-          Endereço</button>
-
-        <div class="login-button">
-          <button type="submit">{{ isUpdating ? 'Update' : 'Sign up' }}</button>
-          <div class="spinner">
-            <mat-spinner [diameter]="50" *ngIf="showLoading"></mat-spinner>
-          </div>
-        </div>
+      </div>
+        
       </form>
     </div>
   </div>

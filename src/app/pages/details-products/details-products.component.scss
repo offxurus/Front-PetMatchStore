@@ -1,8 +1,16 @@
 @import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import '../../../assets/styles/variables.scss';
 
 #details {
     margin-top: 20vh;
+    padding: 40px;
+    .box{
+        box-shadow: 0 4px 8px 0 #48c3c5, 0 6px 20px 0 rgba(72, 195, 197, 0.19) !important;
+        border-radius: 5px;
+        background-color: $terciary;
+    }
+    
     .notification {
         position: fixed;
         top: 50%;
@@ -39,21 +47,18 @@
         animation: fadeInOut 4s ease;
     }
     .details-products {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-content: center;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: 1fr 2fr 3fr;
+        gap: 20px;
         align-items: center;
         width: 100% !important;
-        padding: 40px;
+        padding: 30px;
+        padding-top: 0px !important;
+        border-radius: 5px;
 
         ::ng-deep{
             .gallery{
                 margin-top: 10vh;
-                display: flex;
-                flex-direction: column;
-                flex-wrap: nowrap;
                 align-items: center;
                 justify-content: center;
                 width: 20%;
@@ -72,7 +77,6 @@
         }
 
         app-carrossel{
-            width: 40% !important;
             margin-top: 10vh;
             ::ng-deep{
             .item{
@@ -88,9 +92,9 @@
             }
         }
         .detalhes{
-            width: 40% !important;
             padding: 40px;
-            box-shadow:  rgb(0, 0, 0) 0px 10px 36px !important;
+            background-color: $primary;
+            box-shadow: 0 4px 8px 0 #48c3c5, 0 6px 20px 0 rgba(72, 195, 197, 0.19) !important;
         }
     }
 }
@@ -127,12 +131,12 @@
 }
 
 .btn-comprar {
-    background-color: #ff6600;
+    background-color: $secondary;
     color: #fff;
 }
 
 .btn-adicionar {
-    background-color: #007bff;
+    background-color: $success;
     color: #fff;
 }
 

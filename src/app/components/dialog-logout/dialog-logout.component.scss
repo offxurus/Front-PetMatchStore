@@ -1,3 +1,11 @@
+@import '../../../assets/styles/variables.scss';
+
+
+::ng-deep{
+mat-dialog-container{
+  background-color: $terciary !important;
+}
+}
 h2 {
     font-size: 24px;
     margin-bottom: 16px;
@@ -24,13 +32,15 @@ h2 {
   }
   
   button[mat-button][color="primary"] {
-    background-color: #1976d2;
+    background-color: $success;
     color: white;
+    border-color: $success !important;
   }
   
   button[mat-button][color="warn"] {
-    background-color: #d32f2f;
+    background-color: $secondary;
     color: white;
+    border-color: $secondary;
   }
   
   button[mat-button][color="primary"]:hover,

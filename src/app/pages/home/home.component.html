@@ -17,5 +17,5 @@
       </mat-card-content>
     </mat-card>
   </div>
-  <button class="botao ver-mais" (click)="moreProducts()">Ver Mais</button>
+  <button *ngIf="products" class="botao ver-mais" (click)="moreProducts()">Ver Mais</button>
 </section>

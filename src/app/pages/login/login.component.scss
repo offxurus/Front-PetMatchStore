@@ -10,15 +10,16 @@
   overflow-y: hidden;
 
   .box {
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 36px;
+    box-shadow: 0 4px 8px 0 #48c3c5, 0 6px 20px 0 rgba(72, 195, 197, 0.19);
     width: 50%;
     margin-top: 3vh;
     border-radius: 20px;
+    background-color: $terciary;
 
     .login-title {
       font-family: Montserrat;
       font-weight: 900;
-      color: $light;
+      color: $primary;
       font-size: 40px;
       text-transform: uppercase;
       text-align: center;
@@ -32,7 +33,7 @@
       margin: 40px 0px 60px 0px;
       font-size: 20px;
       text-align: center;
-      color: #E5E8E8;
+      color: $light;
 
       .cad {
         color: $primary;
@@ -54,9 +55,22 @@
       border-radius: 10px;
       min-width: 380px;
       padding: 0 10px; 
+      box-shadow: 0 4px 8px 0 #48c3c5, 0 6px 20px 0 rgba(72, 195, 197, 0.19);
 
+      ::ng-deep{
+        .mat-form-field-underline{
+          display: none;
+        }
+        .mat-form-field-flex{
+          background-color: $terciary;
+        }
+        .mat-form-field-infix{
+          padding: 0 !important;
+          
+        }
+      }
       mat-label {
-        color: #666;
+        color: $primary;
       }
 
       input {
@@ -67,12 +81,11 @@
       input:-webkit-autofill:hover,
       input:-webkit-autofill:focus,
       input:-webkit-autofill:active {
-        -webkit-box-shadow: 0 0 0 30px white inset !important; 
         -webkit-text-fill-color: #333 !important;
       }
 
       .mat-form-field-label-wrapper {
-        background-color: white;
+        background-color: $primary;
         color: #666;
       }
 

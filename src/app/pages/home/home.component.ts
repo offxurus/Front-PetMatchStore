@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from 'src/app/services/products.service';
-import { Product } from 'src/app/interfaces/products';
 import { Router } from '@angular/router';
+import { Product } from 'src/app/interfaces/products';
+import { ProductsService } from 'src/app/services/products.service';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  public product: Product | null = null; 
+  public product: Product | null = null;
   public number: number = 0;
   public products: Product[] = [];
 

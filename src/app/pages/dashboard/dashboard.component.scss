@@ -7,17 +7,27 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: $terciary;
+    box-shadow: 0 4px 8px 0 #48c3c5, 0 6px 20px 0 rgba(72, 195, 197, 0.19) !important;
+    border-radius: 5px;
+    padding: 30px;
 
     .container-title{
         font-family: Montserrat;
         font-weight: 900;
         color: $light;
-        font-size: 40px;
-        text-transform: uppercase;
         text-align: center;
         min-height: 60px;
         display: flex;
         align-items: center;
+        h1{
+            padding-top: 40px;
+            padding-bottom: 20px;
+            color: $primary;
+            font-size: 40px;
+            font-weight: 900;
+            text-transform: uppercase;
+            }
     }
 
     
@@ -27,7 +37,8 @@
             width: 100%;
         .produtos, .usuarios{
             width: 100%;
-            background-color: $secondary;
+            background-color: $primary;
+            border: none;
             text-decoration: none;
             cursor: pointer;
             min-height: 60px;

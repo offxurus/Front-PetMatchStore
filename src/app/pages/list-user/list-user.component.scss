@@ -4,11 +4,11 @@
     margin-top: 17vh !important;
     background-color: #f8f9fa !important;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px 0 #48c3c5, 0 6px 20px 0 rgba(72, 195, 197, 0.19) !important;
 }
 
 .card-header {
-    background-color: #5271ff;
+    background-color: $primary !important;
     color: white;
     border-radius: 10px 10px 0 0;
     padding: 20px;
@@ -30,20 +30,21 @@ h4 {
 
 .table thead th {
     border-top: none !important;
-    border-bottom: 2px solid #dee2e6;
-    background-color: #f1f1f1;
+    border-bottom: 2px solid $primary;
+    background-color: $terciary;
     font-weight: bold;
+    color: $primary;
 }
 
 .table td, .table th {
     border: none;
     padding: 15px;
     vertical-align: middle;
-    color: #333;
+    color: $primary;
 }
 
 .border-right {
-    border-right: 1px solid #dee2e6;
+    border-right: 1px solid $primary !important;
 }
 
 .table-hover tbody tr:hover {
@@ -54,7 +55,7 @@ h4 {
     border-radius: 5px;
     width: 40px;
     height: 40px;
-    background-color: #5271ff;
+    background-color: $secondary;
     margin-left: 10px;
     cursor: pointer;
     display: flex;
@@ -63,17 +64,28 @@ h4 {
     color: white;
 }
 
+.search-icon:hover{
+    background-color: $terciary;
+    color: $primary;
+}
+
+
 .btn-light {
-    background-color: white;
-    color: #5271ff;
-    border: 1px solid #5271ff;
+    background-color: $terciary;
+    color: $primary;
+    border: 1px solid $primary;
 }
 
 .btn-light:hover {
-    background-color: #5271ff;
+    background-color: $primary;
     color: white;
 }
 
 .form-control {
     border-radius: 5px;
+}
+::ng-deep{
+.table thead{
+    background-color: $terciary !important;
+}
 }

@@ -1,10 +1,14 @@
+@import '../../../assets/styles/variables.scss';
+
 #gallery {
   display: flex;
   flex-wrap: wrap; 
   justify-content: center;
   background-color: #ffffff;
 }
-
+.mat-toolbar{
+  background-color: $secondary !important;
+}
 .image-container {
   width: 300px; 
   margin: 10px; 
@@ -63,8 +67,8 @@
 }
 
 .transparent-button {
-  background-color: #007BFF; 
-  color: white;
+  background-color: $primary; 
+  color: $light;
   border: none;
   border-radius: 5px;
   padding: 10px 15px; 
@@ -74,20 +78,23 @@
 }
 
 .transparent-button:hover {
-  background-color: #0056b3; 
+  background-color: $terciary;
+  border-color: $terciary; 
 }
 
 .save-button {
-  background-color: #28a745; 
+  background-color: $success; 
   color: white; 
   border-radius: 5px; 
   padding: 10px 15px; 
+  border-color: $success;
   cursor: pointer;
   transition: background-color 0.3s; 
 }
 
 .save-button:hover {
   background-color: #218838;
+  border-color: #218838;
 }
 
 .mat-toolbar {
