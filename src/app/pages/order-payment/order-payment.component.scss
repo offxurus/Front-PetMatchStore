@@ -248,8 +248,9 @@ input:checked + .payment-method-item::before {
 }
 .payment-form-group {
     position: relative;
-    margin-bottom: 16px;
+    margin-bottom: 1.5em;
 }
+
 .payment-form-control {
     outline: transparent;
     border: 1px solid var(--gray-200);
@@ -273,8 +274,10 @@ input:checked + .payment-method-item::before {
 }
 .payment-form-control:focus + .payment-form-label,
 .payment-form-control:not(:placeholder-shown) + .payment-form-label {
-    top: 30%;
-    font-size: 12px;
+    top: -1.5em;
+    left: 0;
+    font-size: 0.75em;
+    color: #007bff;
 }
 .payment-form-label-required::after {
     content: ' *';

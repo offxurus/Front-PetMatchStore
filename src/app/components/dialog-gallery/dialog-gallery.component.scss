@@ -4,7 +4,7 @@
   justify-content: center;
   background-color: #ffffff;
 }
-  
+
 .image-container {
   width: 300px; 
   margin: 10px; 
@@ -12,37 +12,94 @@
   display: flex;
   flex-direction: column; 
 }
-  
-  .image-container img {
-    max-width: 100%; 
-    height: auto;
-    margin-bottom: 10px;
-  }
-  
-  .image-buttons {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .selected mat-icon {
-    color: yellow;
-  }
-  .transparent-button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+
+.image-container img {
+  max-width: 100%; 
+  height: auto;
+  margin-bottom: 10px;
 }
 
-.transparent-button:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-}
-.spacer {
-  flex: 1;
-}
-.mat-toolbar{
+.image-buttons {
   display: flex;
   justify-content: space-between;
 }
-.input{
+
+.image-buttons button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.image-buttons button mat-icon {
+  font-size: 24px;
+  color: #555555;
+  transition: color 0.3s;
+}
+
+.image-buttons button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 36px;
+  height: 36px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.3s;
+}
+
+.image-buttons button:hover::before {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.image-buttons button:hover mat-icon {
+  color: #000000;
+}
+
+.selected mat-icon {
+  color: yellow;
+}
+
+.transparent-button {
+  background-color: #007BFF; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px; 
+  margin-right: 10px; 
+  cursor: pointer;
+  transition: background-color 0.3s; 
+}
+
+.transparent-button:hover {
+  background-color: #0056b3; 
+}
+
+.save-button {
+  background-color: #28a745; 
+  color: white; 
+  border-radius: 5px; 
+  padding: 10px 15px; 
+  cursor: pointer;
+  transition: background-color 0.3s; 
+}
+
+.save-button:hover {
+  background-color: #218838;
+}
+
+.mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px; 
+}
+
+.spacer {
+  flex: 1;
+}
+
+.input {
   display: flex;
 }

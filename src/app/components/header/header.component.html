@@ -42,7 +42,7 @@
           </div>
         </ng-template>
       </div>
-      <span *ngIf="currentUser && currentUser.group === 'cliente'" class="fa fa-shopping-cart" id="cartIcon" (click)="goToShoppingCart()" >
+      <span *ngIf="!currentUser || (currentUser.group != 'admin' && currentUser.group != 'estoquista')" class="fa fa-shopping-cart" id="cartIcon" (click)="goToShoppingCart()">
         <span class="cart-badge" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
       </span>
     </div>

@@ -46,8 +46,8 @@ export class ProductsComponent implements OnInit {
       const product = this.products.find(p => p.id === productId);
       if (product) {
         const dialogRef = this.dialog.open(DialogPreviewComponent, {
-          width: '800px',
-          height: '80%',
+          width: '901px',
+          height: '700px',
           data: product
         });
         dialogRef.afterClosed().subscribe(result => {

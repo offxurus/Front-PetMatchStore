@@ -69,10 +69,9 @@
                         </div>
                         <div class="payment-form-group-flex" *ngIf="!order.is_bolet">
                             <div class="payment-form-group">
-                                <input type="date" placeholder=" " class="payment-form-control" id="expiry-date" required>
-                                <label for="expiry-date" class="payment-form-label payment-form-label-required">Expiry
-                                    Date</label>
-                            </div>
+                                <input type="month" class="payment-form-control" id="expiry-date" required>
+                                <label for="expiry-date" class="payment-form-label payment-form-label-required">Expiry Date (MM/YY)</label>
+                            </div>                            
                             <div class="payment-form-group">
                                 <input type="text" placeholder=" " class="payment-form-control" id="cvv" required>
                                 <label for="cvv" class="payment-form-label payment-form-label-required">CVV</label>

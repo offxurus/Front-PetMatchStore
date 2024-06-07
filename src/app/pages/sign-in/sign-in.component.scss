@@ -1,36 +1,49 @@
-
 @import '../../../assets/styles/variables.scss';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root {
+  --primary-color: #3498db; // Cor fixa primária
+  --input-bg-color: #f5f5f5; // Cor de fundo dos inputs
+  --input-border-color: #ccc; // Cor da borda dos inputs
+  --input-text-color: #333; // Cor do texto dos inputs
+  --input-label-color: #888; // Cor do label dos inputs
+  --input-focus-border-color: #3498db; // Cor da borda dos inputs ao focar
+  --button-bg-color: #3498db; // Cor de fundo dos botões
+  --button-hover-bg-color: #2980b9; // Cor de fundo dos botões ao passar o mouse
+}
+
 .container-content {
-  margin-top: 16vh;
+  margin-top: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 100%;
-  overflow-y: hidden;
+  padding: 0 20px;
+  box-sizing: border-box;
 
   .login-title {
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    color: $light;
-    font-size: 40px;
+    color: #3498db;
+    font-size: 2.5em;
     text-transform: uppercase;
     text-align: center;
-    min-height: 60px;
-    display: flex;
-    align-items: center;
+    margin-bottom: 20px;
   }
-  
 
   .sign-in-description {
     padding: 20px;
-    font-size: 20px;
-    color: #E5E8E8;
+    font-size: 1.25em;
+    color: #666;
 
     .sign-in {
       cursor: pointer;
-      color: #26648E;
+      color: #3498db;
+      text-decoration: underline;
+
+      &:hover {
+        color: #2980b9;
+      }
     }
   }
 
@@ -38,50 +51,46 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    max-width: 400px;
   }
 
   mat-form-field {
-    background-color: #17202A;
-    border: solid;
-    border-color: #E5E8E8;
-    min-width: 380px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    width: 400px !important;
+    margin-right: 20px;
     margin-bottom: 20px;
+    border-radius: 5px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
     mat-label {
-      color: #E5E8E8;
+      color: #888;
+      font-size: 1em;
     }
 
-    input {
-      color: #E5E8E8;
-    }
-
-    input:-webkit-autofill,
-    input:-webkit-autofill:hover,
-    input:-webkit-autofill:focus,
-    input:-webkit-autofill:active {
-      -webkit-box-shadow: 0 0 0 30px #17202A inset !important;
-      -webkit-text-fill-color: #E5E8E8 !important;
+    input, mat-select {
+      color: #333;
+      font-size: 1em;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
     }
 
     .mat-form-field-label-wrapper {
-      background-color: #17202A;
-      color: #E5E8E8;
+      background-color: #f5f5f5;
     }
 
     button {
       border: none;
-      background-color: #17202A;
-      
+      background-color: transparent;
+      cursor: pointer;
 
       mat-icon {
-        color: #E5E8E8;
+        color: #333;
         font-size: 24px;
       }
     }
-  }
-
-  section {
-    display: table;
   }
 
   .login-button {
@@ -91,20 +100,40 @@
     margin-top: 10px;
 
     button {
-       height: 60px;
-      font-size: 20px;
-      color: $light;
+      height: 60px;
+      width: 200px; /* Define a largura igual à altura para tornar o botão quadrado */
+      font-size: 1.25em;
+      color: #fff;
       cursor: pointer;
-      min-width: 200px;
       margin-bottom: 40px;
-      background-color: $primary;
-      border-radius: 20px;
-      border-color: transparent;
+      background-color: #3498db;
+      border-radius: 0; /* Remove o arredondamento das bordas */
+      border: none;
+      transition: background-color 0.3s ease;
+    
+      &:hover {
+        background-color: #2980b9;
+      }
     }
+    
   }
 
   .spinner {
     display: flex;
     justify-content: center;
   }
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.form-row.full-width {
+  justify-content: flex-start;
+}
+
+.mat-form-field:last-child {
+  margin-right: 0;
 }

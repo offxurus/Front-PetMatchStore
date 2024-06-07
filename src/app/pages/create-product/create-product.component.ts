@@ -45,8 +45,8 @@ export class CreateProductComponent {
     if(productId){
       this.newProduct.id = productId
       const dialogRef = this.dialog.open(DialogGalleryComponent, {
-        width: '80%',
-        height: '80%',
+        width: '1300px',
+        height: '600px',
         panelClass: 'gallery-modal',
         disableClose: true,
         data: this.newProduct
